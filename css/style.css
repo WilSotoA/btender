@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;1,700&family=Roboto:wght@300;400;700&display=swap');
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+p, label, span, table{
+	font-family: 'BrixSansRegular';
+	font-family: 'Poppins', sans-serif;
+	font-size: 9pt;
+}
+.h2{
+	font-size: 16pt;
+}
+.h3{
+	font-size: 12pt;
+	display: block;
+	background: #0a4661;
+	color: #FFF;
+	text-align: center;
+	padding: 3px;
+	margin-bottom: 5px;
+}
+#page_pdf{
+	width: 95%;
+	margin: 15px auto 10px auto;
+}
+
+#factura_head, .detalle__factura{
+	width: 100%;
+	margin-bottom: 10px;
+}
+.logo_factura{
+	width: 20%;
+}
+.info_factura{
+	width: 25%;
+}
+.round{
+	border-radius: 10px;
+	border: 1px solid #0a4661;
+	overflow: hidden;
+	padding-bottom: 15px;
+}
+.round p{
+	padding: 0 15px;
+}
+
+.detalle__factura{
+	margin: 3rem 0;
+	border-collapse: collapse;
+	width: max-content;
+}
+.detalle__factura thead th{
+	background: #058167;
+	color: #FFF;
+	padding: 5px;
+}
+tbody .row__detalle:nth-child(even) {
+    background: #f8cdcd;
+}
+tbody .row__detalle:nth-child(odd) {
+    background: #f3e8e8;
+}
+.items__detalle{
+	text-align: center;
+}
+/* total */
+.total__factura{
+	margin-top: 2rem;
+	width: 100%;
+	border-collapse: collapse;
+	border: 2px solid rgb(122, 120, 120);
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
+}
+.row__theadtotal{
+	border: 2px solid rgb(122, 120, 120);
+	background-color: rgb(173, 173, 173);
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
+}
+.items__total{
+	text-align: left;
+	font-size: 1rem;
+	padding-left: 1rem;
+}
+.items__total--totales{
+	text-align: right;
+	padding-right: 1rem;
+}
+.row_tbodytotal{
+	font-size: 0.4rem;
+	font-weight: lighter;
+}
+.row__theadtotal--total{
+	font-size: 1.5rem;
+	background-color: rgb(196, 196, 196);
+	padding: 1rem;
+	color: #0f1e25;
+}
+.items__total--total{
+	background-color: beige;
+	font-size: 1.3rem;
+	padding: 0.7rem;
+}
+.bolder{
+	font-weight: bolder;
+	font-family: 'Poppins', sans-serif;;
+}
+.logo{
+	width: 250px;
+	height: 250px;
+}
+.title{
+	text-align: center;
+}
