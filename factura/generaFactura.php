@@ -2,7 +2,7 @@
 	include "../include/conexion.php";
 	require_once '../dompdf/vendor/autoload.php';
 	use Dompdf\Dompdf;
-	$noCosto = $_REQUEST['f'];;
+	$noCosto = $_REQUEST['f'];
 	 if(empty($noCosto))
 	{
 		echo "No es posible generar la factura.";

@@ -509,31 +509,23 @@
 		}
 	?>
 	<table class="total__factura">
-		<thead class="thead__total">
 			<tr class="row__theadtotal">
 				<th class="items__total">SUBTOTAL</th>
 				<th class="items__total items__total--totales"><?php echo  $subTotal ?></th>
 			</tr>
-		</thead>
-		<tbody class="tbody__total">
 			<tr class="row_tbodytotal">
 				<td class="items__total">CIF</td>
 				<td class="items__total items__total--totales"><?php echo  $sumacif ?></td>
 			</tr>
-			<tbody class="tbody__total">
 			<tr class="row_tbodytotal">
 				<td class="items__total">% Utilidad</td>
 				<td class="items__total items__total--totales"><?php echo  $sumautilidad ?></td>
 			</tr>
-		</tbody>
-		<thead class="thead__total">
 			<tr class="row__theadtotal">
 				<th class="items__total">TOTAL BRUTO FACTURA (+)</th>
 				<th class="items__total items__total--totales"><?php echo  $totalBruto ?></th>
 			</tr>
-		</thead>
-		<tbody class="tbody__total">
-		<tr class="row_tbodytotal">
+			<tr class="row_tbodytotal">
 				<td class="items__total">RETE</td>
 				<td class="items__total items__total--totales"><?php echo  $sumarete ?></td>
 			</tr>
@@ -545,19 +537,14 @@
 				<td class="items__total">IVA</td>
 				<td class="items__total items__total--totales"><?php echo  $sumaiva ?></td>
 			</tr>
-		</tbody>
-		<thead class="thead__total">
 			<tr class="row__theadtotal">
 				<th class="items__total">TOTAL IMPUESTOS (=)</th>
 				<th class="items__total items__total--totales"><?php echo  $Totalimpuesto ?></th>
 			</tr>
-		</thead>
-		<thead class="thead__total">
 			<tr class="row__theadtotal row__theadtotal--total">
 				<th class="items__total items__total--total">TOTAL DE COSTOS ( $ ) </th>
 				<th class="items__total items__total--totales items__total--total"> $ <?php echo  $TotalCosto ?></th>
 			</tr>
-		</thead>
 	</table>
 </div>
 </div>
