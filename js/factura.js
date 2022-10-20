@@ -80,7 +80,7 @@
         $("#costo").html(preciototal);
 
         //oculta el boton agregar si cantidad menor que 1
-        if ($(this).val() < 1 || isNaN($(this).val())) {
+        if ($(this).val() < 0 || isNaN($(this).val())) {
           $("#aggtela").slideUp();
         } else {
           $("#aggtela").slideDown();
@@ -927,8 +927,8 @@
      var preciototal = $(this).val() * $("#precioterminacion").html();
      $("#costo--terminacion").html(preciototal);
 
-     //oculta el boton agregar si cantidad menor que 1
-     if ($(this).val() < 1 || isNaN($(this).val())) {
+     //oculta el boton agregar si cantidad menor que 0
+     if ($(this).val() < 0 || isNaN($(this).val())) {
        $("#aggterminacion").slideUp();
      } else {
        $("#aggterminacion").slideDown();
@@ -1585,14 +1585,7 @@
       var rowscuero = $("#detacuero tr").length;
       var rowsinsumos = $("#detainsumo tr").length;
       var action = "facturar";
-      if (rowstela > 0 && rowscuero > 0 && rowsinsumos > 0) {
-        var validaterows = true;
-        var messagerows = '';
-      } else {
-        var validaterows = false;
-        var messagerows = '\nIngrese por lo menos una Tela,Cuero e Insumo';
 
-      }
       if (fecha.trim() === '' || descripcion.trim() === '' || cliente.trim() === '' ) {
         var validateinputs = false;
         var message = 'Ingrese los campos requeridos * ';
@@ -1600,7 +1593,7 @@
         var validateinputs = true;
         var message = '';
       }
-      if (validaterows == true && validateinputs == true) {
+      if (validateinputs == true) {
       
         $.ajax({
         type: "POST",
@@ -1620,8 +1613,10 @@
         },
         success: function (response) {
           if (response != 'error') {
+            console.log(response);
           generarPDF(response);
           location.reload();
+
   
              } else {
               console.log('no data');
