@@ -177,7 +177,7 @@ include "include/conexion.php";
             <h1 class="title">Impuestos</h1>
             <div class="item__factura">
                 <label for="cif">CIF</label>
-                    <input type="number" name="cif" id="cif" class="ipt__factura" placeholder="0%">
+                    <input type="number" name="cif" id="cif" class="ipt__factura" placeholder="$0">
             </div>
             <div class="item__factura">
                 <label for="utilidad">UTILIDAD</label>
@@ -192,7 +192,7 @@ include "include/conexion.php";
                     $result = mysqli_num_rows($sql);
                     if ($result > 0) {
                         while ($proceso = mysqli_fetch_assoc($sql)) {
-                            echo '<option value="' . $proceso['Valor_impuesto'] . '">' .number_format($proceso['Valor_impuesto'], 2).'%</option>';
+                            echo '<option value="' . $proceso['Valor_impuesto'] . '">' .$proceso['Valor_impuesto'].'%</option>';
                         }
                     }
                     ?>
@@ -207,7 +207,7 @@ include "include/conexion.php";
                     $result = mysqli_num_rows($sql);
                     if ($result > 0) {
                         while ($proceso = mysqli_fetch_assoc($sql)) {
-                            echo '<option value="' . $proceso['Valor_impuesto'] . '">' .number_format($proceso['Valor_impuesto'], 2).'%</option>';
+                            echo '<option value="' . $proceso['Valor_impuesto'] . '">' .$proceso['Valor_impuesto'].'%</option>';
                         }
                     }
                     ?>
@@ -222,7 +222,7 @@ include "include/conexion.php";
                     $result = mysqli_num_rows($sql);
                     if ($result > 0) {
                         while ($proceso = mysqli_fetch_assoc($sql)) {
-                            echo '<option value="' . $proceso['Valor_impuesto'] . '">' .number_format($proceso['Valor_impuesto'], 2). '%</option>';
+                            echo '<option value="' . $proceso['Valor_impuesto'] . '">' .$proceso['Valor_impuesto']. '%</option>';
                         }
                     }
                     ?>
@@ -743,6 +743,7 @@ include "include/conexion.php";
         <footer class="copy">
             <small class="textcopy">&copy; 2022 <b>B&bull;TENDER</b> - Todos los Derechos Reservados. ---- DISEÑADO POR: WILMER S.</small>
         </footer>
+
         <script src="js/jquery-3.6.0.min.js"></script>
         <script src="js/factura.js"></script>
         <script>
