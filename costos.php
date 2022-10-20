@@ -2,14 +2,19 @@
 include "include/conexion.php";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
+    <meta name="author" content="Wilmer Soto">
+    <meta name="keywords" content="btender, BTENDER, Btender, Facturación">
+    <meta name="copyright" content="© Derechos reservados B●TENDER">
+    <meta name="description" content="Sistema de información B●TENDER">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hoja de Costos</title>
+    <title>Hoja de Costos B●TENDER</title>
     <link rel="stylesheet" href="css/costos.css">
+    
 </head>
 
 <body>
