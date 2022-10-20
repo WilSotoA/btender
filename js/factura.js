@@ -266,7 +266,6 @@
       $("#cantcuero").keyup(function (e) {
         e.preventDefault();
         var preciototal = ($("#consumotroquel").html() * $("#preciocuero").html())*$(this).val();
-        console.log(preciototal);
         $("#costo--cuero").html(preciototal);
 
         //oculta el boton agregar si cantidad menor que 1
@@ -304,7 +303,6 @@
             },
             success: function (response) {
               if (response != "error") {
-                console.log(response);
                 var info = JSON.parse(response);
                 $("#detacuero").html(info.detalle);
                 $("#cuerototal").html(info.totales);
@@ -1598,6 +1596,9 @@
       var iva = $("#iva").val();
       var rete = $("#rete").val();
       var cif = $("#cif").val();
+      if ( cif.trim() === ''){
+        var cif = 0; 
+      }
       var submitutilidad = parseFloat($("#utilidad").val());
       var utilidad = submitutilidad.toFixed(3);
       var action = "facturar";

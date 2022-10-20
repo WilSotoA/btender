@@ -23,15 +23,6 @@
 		} else {
 			$utilidad = 0.00;
 		}		
-		// datos cif
-		$queryimpuestos = mysqli_query($conex, "SELECT * FROM impuestoscostos WHERE ID_COSTOS = '$noCosto' AND Impuestos LIKE 'CIF' ");
-		$resultimpuestos = mysqli_num_rows($queryimpuestos);
-		if( $resultimpuestos > 0){
-			$arregloimpuestos = mysqli_fetch_assoc($queryimpuestos);
-			$cif = $arregloimpuestos['Valor_impuesto'];
-		} else {
-			$cif = 0.00;
-		}
 		//datos RETE
 		$queryimpuestos = mysqli_query($conex, "SELECT * FROM impuestoscostos WHERE ID_COSTOS = '$noCosto' AND Impuestos LIKE 'RETE' ");
 		$resultimpuestos = mysqli_num_rows($queryimpuestos);

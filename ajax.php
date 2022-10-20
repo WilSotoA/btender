@@ -2567,7 +2567,7 @@ if ($_POST['action'] == 'facturar') {
     $rete = $_POST['rete'];
     $cif = $_POST['cif'];
     $utilidad = $_POST['utilidad'];
-    $sql = mysqli_query($conex, "INSERT INTO costos(Descripcion_costos, Fecha, Cliente, Cotizacion) VALUES ('$descripcion','$fecha','$cliente','$cotizacion')");
+    $sql = mysqli_query($conex, "INSERT INTO costos(Descripcion_costos, Fecha, Cliente, Cotizacion, CIF) VALUES ('$descripcion','$fecha','$cliente','$cotizacion',$cif)");
     echo $idcostos = mysqli_insert_id($conex);
 
     //guardar impuestos
@@ -2585,11 +2585,6 @@ if ($_POST['action'] == 'facturar') {
         $queryimpuesto = mysqli_query($conex, "INSERT INTO impuestoscostos(ID_COSTOS, Impuestos, Valor_impuesto) VALUES ('$idcostos','RETE','$rete')");
     } else {
         $queryimpuesto = mysqli_query($conex, "INSERT INTO impuestoscostos(ID_COSTOS, Impuestos, Valor_impuesto) VALUES ('$idcostos','RETE', 0)");
-    }
-    if ($cif !== 0) {
-        $query = mysqli_query($conex, "INSERT INTO impuestoscostos(ID_COSTOS, Impuestos, Valor_impuesto) VALUES ('$idcostos','CIF','$cif')");
-    } else {
-        $queryimpuesto = mysqli_query($conex, "INSERT INTO impuestoscostos(ID_COSTOS, Impuestos, Valor_impuesto) VALUES ('$idcostos','CIF', 0)");
     }
     if ($utilidad !== 0) {
         $queryimpuesto = mysqli_query($conex, "INSERT INTO impuestoscostos(ID_COSTOS, Impuestos, Valor_impuesto) VALUES ('$idcostos','UTILIDAD','$utilidad')");

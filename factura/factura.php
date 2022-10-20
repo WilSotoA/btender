@@ -474,23 +474,27 @@
 	<?php 
 		}
 		// subtotal
-		$sumacostos = round($totaltela+$totalcuero+$totalinsumo+$totalcortemanual+$totalsublimacion+$totalconfeccion+$totalterminacion+$totalentretelado+$totalcortedigital+$totallaser+$totalbordado, 2);
-		$sumacif = round($sumacostos*$cif, 2);
-		$sumautilidad = round($sumacostos*$utilidad, 2);
-		$subtotal = round($sumacostos+$sumacif+$sumautilidad, 2);
+		$subtotal = round($totaltela+$totalcuero+$totalinsumo+$totalcortemanual+$totalsublimacion+$totalconfeccion+$totalterminacion+$totalentretelado+$totalcortedigital+$totallaser+$totalbordado, 2);
+		$sumautilidad = round($subtotal*$utilidad, 2);
+		$cif = $arreglocostos['CIF'];
+		$totalbruto = $subtotal+$sumautilidad+$cif;
 		//rete
-		$sumarete = round($sumacostos*$rete, 2);
-		$sumaica = round($sumacostos*$ica, 2);
-		$sumaiva = round($sumacostos*$iva, 2);
-		$totalimpuestos = $sumarete+$sumaica+$sumaiva;
+		$calcrete = $totalbruto*$rete;
+		$sumarete = round($totalbruto+$calcrete, 2);
+		$calcica = $totalbruto*$ica;
+		$sumaica = round($totalbruto+$calcica, 2);
+		$sumaimp = $totalbruto+$calcica+$calcrete;
+		$calciva = $sumaimp*$iva;
+		$sumaiva = round($sumaimp+$calciva, 2);
+		$totalimpuestos = $totalbruto+$calcrete+$calcica+$calciva;
 		//total costos
-		$Total= $subtotal+$totalimpuestos;
+		$Total= $totalimpuestos;
 		//verificar que los campos no esten vaciós		
 		$queryverify = mysqli_query($conex, "SELECT * FROM costos WHERE Id_costos = '$noCosto' AND Total_bruto = 0 OR Subtotal = 0 OR Total_impuesto = 0 OR Total = 0");
 		$resultverify = mysqli_num_rows($queryverify); 
 		if ($resultverify > 0){
 		//insertar datos totales
-		$queryinsert = mysqli_query($conex, "UPDATE costos SET Total_bruto = '$sumacostos',Subtotal='$subtotal',Total_impuesto= '$totalimpuestos',Total='$Total' WHERE ID_COSTOS = '$noCosto'");
+		$queryinsert = mysqli_query($conex, "UPDATE costos SET Total_bruto = '$totalbruto',Subtotal='$subtotal',Total_impuesto= '$totalimpuestos',Total='$Total' WHERE ID_COSTOS = '$noCosto'");
 			if ($queryinsert == true) {
 				$queryselect = mysqli_query($conex, "SELECT Total_bruto,Subtotal,Total_impuesto,Total FROM costos WHERE ID_COSTOS = '$noCosto'");
 				$arrayselect = mysqli_fetch_assoc($queryselect);
@@ -511,19 +515,19 @@
 	<table class="total__factura">
 			<tr class="row__theadtotal">
 				<th class="items__total">SUBTOTAL</th>
-				<th class="items__total items__total--totales"><?php echo  $subTotal ?></th>
+				<th class="items__total items__total--totales">$ <?php echo  $subTotal ?></th>
 			</tr>
 			<tr class="row_tbodytotal">
 				<td class="items__total">CIF</td>
-				<td class="items__total items__total--totales"><?php echo  $sumacif ?></td>
+				<td class="items__total items__total--totales">$ <?php echo $cif?></td>
 			</tr>
 			<tr class="row_tbodytotal">
 				<td class="items__total">% Utilidad</td>
-				<td class="items__total items__total--totales"><?php echo  $sumautilidad ?></td>
+				<td class="items__total items__total--totales">$ <?php echo  $sumautilidad ?></td>
 			</tr>
 			<tr class="row__theadtotal">
 				<th class="items__total">TOTAL BRUTO FACTURA (+)</th>
-				<th class="items__total items__total--totales"><?php echo  $totalBruto ?></th>
+				<th class="items__total items__total--totales">$ <?php echo  $totalBruto ?></th>
 			</tr>
 			<tr class="row_tbodytotal">
 				<td class="items__total">RETE</td>
