@@ -457,9 +457,10 @@ if ($_POST['action'] == 'aggCuerotemp') {
         $preciocuero = $_POST['preciocuero'];
         $nomtroquel = $_POST['nomtroquel'];
         $dcmtroquel = $_POST['consumotroquel'];
+        $cantidadcuero = $_POST['cantcuero'];
         $costocuero = $_POST['costocuero'];
 
-        $query = mysqli_query($conex, "INSERT INTO detatempcuero(Descripcion_cuero, Precio_cuero, Troquel, dcm, Costo) VALUES ('$nomcuero','$preciocuero','$nomtroquel','$dcmtroquel','$costocuero')");
+        $query = mysqli_query($conex, "INSERT INTO detatempcuero(Descripcion_cuero, Precio_cuero, Troquel, dcm, Cantidad, Costo) VALUES ('$nomcuero','$preciocuero','$nomtroquel','$dcmtroquel','$cantidadcuero','$costocuero')");
         $consultar = mysqli_query($conex, "SELECT * FROM detatempcuero");
         $result = mysqli_num_rows($consultar);
 
@@ -477,6 +478,7 @@ if ($_POST['action'] == 'aggCuerotemp') {
                         <td class="item__items">' . $data['Precio_cuero'] . '</td>
                         <td class="item__items">' . $data['Troquel'] . '</td>
                         <td class="item__items">' . $data['dcm'] . '</td>
+                        <td class="item__items">' . $data['Cantidad'] . '</td>
                         <td class="item__items">' . $data['Costo'] . '</td>
                         <td class="item__items">
                             <a href="eliminar/elimdetallecuero.php?id=' . $Idtempcuero . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a>
@@ -527,6 +529,7 @@ if ($_POST['action'] == 'serchForDetalleCuero') {
                         <td class="item__items">' . $data['Precio_cuero'] . '</td>
                         <td class="item__items">' . $data['Troquel'] . '</td>
                         <td class="item__items">' . $data['dcm'] . '</td>
+                        <td class="item__items">' . $data['Cantidad'] . '</td>
                         <td class="item__items">' . $data['Costo'] . '</td>
                         <td class="item__items">
                             <a href="eliminar/elimdetallecuero.php?id=' . $Idtempcuero . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a>

@@ -152,7 +152,6 @@
               //ocultar boton agregar
               $("#aggcuero").slideUp();
             } else {
-              multiCuero();
               var data = $.parseJSON(response);
               $("#nomcuero").val(data.Descripcion_cuero);
               $("#preciocuero").html(data.Valor_uni);
@@ -219,8 +218,10 @@
             } else {
               var data = $.parseJSON(response);
               $("#nomtroquel").val(data.Nombre_troquel);
-              multiCuero();
               $("#consumotroquel").html(data.DCM);
+              $("#costocuero").val("0");
+              //Activar cantidad
+              $("#cantcuero").removeAttr("disabled");     
             }
           },
         error: function (error) {},
@@ -261,6 +262,20 @@
           }
         });
       });
+         //validar cantidad de cuero antes de agg
+      $("#cantcuero").keyup(function (e) {
+        e.preventDefault();
+        var preciototal = ($("#consumotroquel").html() * $("#preciocuero").html())*$(this).val();
+        console.log(preciototal);
+        $("#costo--cuero").html(preciototal);
+
+        //oculta el boton agregar si cantidad menor que 1
+        if ($(this).val() < 0 || isNaN($(this).val())) {
+          $("#aggcuero").slideUp();
+        } else {
+          $("#aggcuero").slideDown();
+        }
+      });
       //agg cuero y troquel a detatemp
       $("#aggcuero").click(function (e) {
         e.preventDefault();
@@ -270,6 +285,7 @@
           var preciocuero= $("#preciocuero").html();
           var nomtroquel = $("#nomtroquel").val();
           var consumotroquel= $("#consumotroquel").html();
+          var cantcuero= $("#cantcuero").val();
           var costocuero= $("#costo--cuero").html();
           var action = "aggCuerotemp";
 
@@ -283,10 +299,12 @@
             preciocuero: preciocuero,
             nomtroquel: nomtroquel,
             consumotroquel: consumotroquel,
+            cantcuero: cantcuero,
             costocuero: costocuero,
             },
             success: function (response) {
               if (response != "error") {
+                console.log(response);
                 var info = JSON.parse(response);
                 $("#detacuero").html(info.detalle);
                 $("#cuerototal").html(info.totales);
@@ -294,8 +312,10 @@
                 $("#preciocuero").html("-");
                 $("#nomtroquel").val("");
                 $("#consumotroquel").html("0.00");
+                $("#cantcuero").val("0");
                 $("#costo--cuero").html("0.00");
-
+                //desactivar cantidad
+                $("#cantcuero").attr("disabled", "disabled");
                 //ocultar boton agregar
                 $("#aggcuero").slideUp();
               } else {
@@ -388,7 +408,7 @@
      $("#costo--insumo").html(preciototal);
 
      //oculta el boton agregar si cantidad menor que 1
-     if ($(this).val() < 1 || isNaN($(this).val())) {
+     if ($(this).val() < 0 || isNaN($(this).val())) {
        $("#agginsumo").slideUp();
      } else {
        $("#agginsumo").slideDown();
@@ -525,7 +545,7 @@
      $("#costo--sublimacion").html(preciototal);
 
      //oculta el boton agregar si cantidad menor que 1
-     if ($(this).val() < 1 || isNaN($(this).val())) {
+     if ($(this).val() < 0 || isNaN($(this).val())) {
        $("#aggsublimacion").slideUp();
      } else {
        $("#aggsublimacion").slideDown();
@@ -663,7 +683,7 @@
     $("#costo--cortemanual").html(preciototal);
 
     //oculta el boton agregar si cantidad menor que 1
-    if ($(this).val() < 1 || isNaN($(this).val())) {
+    if ($(this).val() < 0 || isNaN($(this).val())) {
       $("#aggcortemanual").slideUp();
     } else {
       $("#aggcortemanual").slideDown();
@@ -797,7 +817,7 @@
      $("#costo--confeccion").html(preciototal);
 
      //oculta el boton agregar si cantidad menor que 1
-     if ($(this).val() < 1 || isNaN($(this).val())) {
+     if ($(this).val() < 0 || isNaN($(this).val())) {
        $("#aggconfeccion").slideUp();
      } else {
        $("#aggconfeccion").slideDown();
@@ -1059,7 +1079,7 @@
      $("#costo--entretelado").html(preciototal);
 
      //oculta el boton agregar si cantidad menor que 1
-     if ($(this).val() < 1 || isNaN($(this).val())) {
+     if ($(this).val() < 0 || isNaN($(this).val())) {
        $("#aggentretelado").slideUp();
      } else {
        $("#aggentretelado").slideDown();
@@ -1190,7 +1210,7 @@
      $("#costo--cortedigital").html(preciototal);
 
      //oculta el boton agregar si cantidad menor que 1
-     if ($(this).val() < 1 || isNaN($(this).val())) {
+     if ($(this).val() < 0 || isNaN($(this).val())) {
        $("#aggcortedigital").slideUp();
      } else {
        $("#aggcortedigital").slideDown();
@@ -1323,7 +1343,7 @@
      $("#costo--laser").html(preciototal);
 
      //oculta el boton agregar si cantidad menor que 1
-     if ($(this).val() < 1 || isNaN($(this).val())) {
+     if ($(this).val() < 0 || isNaN($(this).val())) {
        $("#agglaser").slideUp();
      } else {
        $("#agglaser").slideDown();
@@ -1458,7 +1478,7 @@
      $("#costo--bordado").html(preciototal);
 
      //oculta el boton agregar si cantidad menor que 1
-     if ($(this).val() < 1 || isNaN($(this).val())) {
+     if ($(this).val() < 0 || isNaN($(this).val())) {
        $("#aggbordado").slideUp();
      } else {
        $("#aggbordado").slideDown();
@@ -1577,13 +1597,9 @@
       var ica = $("#ica").val();
       var iva = $("#iva").val();
       var rete = $("#rete").val();
-      var submitcif = parseFloat($("#cif").val());
+      var cif = $("#cif").val();
       var submitutilidad = parseFloat($("#utilidad").val());
       var utilidad = submitutilidad.toFixed(3);
-      var cif = submitcif.toFixed(3);
-      var rowstela = $("#detatela tr").length;
-      var rowscuero = $("#detacuero tr").length;
-      var rowsinsumos = $("#detainsumo tr").length;
       var action = "facturar";
 
       if (fecha.trim() === '' || descripcion.trim() === '' || cliente.trim() === '' ) {
@@ -1627,7 +1643,7 @@
         },
       });
       } else {
-        alert (message+messagerows);
+        alert (message);
       }
     });
       //cancelar factura
@@ -1701,18 +1717,6 @@ function generarPDF(factura) {
 // prevenir recarga
 function recargar(event) {
   event.preventDefault();
-}
-
-// multiplicar cuero x decimetro
-function multiCuero() {
-  let preciocuero = $("#preciocuero").html();
-  let consumotroquel = $("#consumotroquel").html();
-  if(preciocuero !== "0.00"  && consumotroquel !== "0.00"){
-
-  var precioTotalCuero = $("#preciocuero").html() * $('#consumotroquel').html() ;
-  $("#costo--cuero").html(precioTotalCuero);
-  $("#aggcuero").slideDown();
-  }
 }
 
 //TELAS
@@ -1837,7 +1841,9 @@ function selectTroquel(id) {
               var data = $.parseJSON(response);
               $("#nomtroquel").val(data.Nombre_troquel);
               $("#consumotroquel").html(data.DCM);
-              multiCuero();
+              $("#cantcuero").val("0");
+              //Activar cantidad
+              $("#cantcuero").removeAttr("disabled");
             }
           },
         error: function (error) {},

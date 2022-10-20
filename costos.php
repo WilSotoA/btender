@@ -282,6 +282,7 @@ include "include/conexion.php";
                         <th>Precio</th>
                         <th>Troquel</th>
                         <th>Consumo</th>
+                        <th>Cantidad</th>
                         <th>Costo</th>
                         <th>Acción</th>
                     </tr>
@@ -290,6 +291,7 @@ include "include/conexion.php";
                         <td id="preciocuero" class="item__items">0</td>
                         <td class="item__items item__items--search"><input type="text" class="ipt__item" name="nomtroquel" id="nomtroquel"><a href="#" id="buscar--troquel" class="buscar buscar--troquel"><img src="src/svg/search.svg" alt="Buscar" class="svg svg--search"></a></td>
                         <td id="consumotroquel" class="item__items">0</td>
+                        <td><input type="text" class="ipt__item" name="cantcuero" id="cantcuero" value="0" min="1" disabled></td>
                         <td id="costo--cuero" class="item__items">0</td>
                         <td class="item__items"><a href="#" id="aggcuero" class="agg aggcuero"><img src="src/svg/add.svg" alt="Agregar" class="svg svg--add"></a></td>
                     </tr>
@@ -298,6 +300,7 @@ include "include/conexion.php";
                         <th>Precio</th>
                         <th>Troquel</th>
                         <th>Consumo</th>
+                        <th>Cantidad</th>
                         <th>Costo</th>
                         <th>Acción</th>
                     </tr>
