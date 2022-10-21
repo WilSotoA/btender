@@ -2736,8 +2736,9 @@ if ($_POST['action'] == 'facturar') {
             $preciocuero = $arreglo['Precio_cuero'];
             $nomtroquel = $arreglo['Troquel'];
             $dcm = $arreglo['dcm'];
+            $cantidad = $arreglo['Cantidad'];
             $costo = $arreglo['Costo'];
-            $queryde = mysqli_query($conex, "INSERT INTO detallescuero(ID_COSTOS, CUERO, Precio, TROQUEL, DCM, Costo) VALUES ('$idcostos','$nomcuero','$preciocuero','$nomtroquel','$dcm','$costo')");
+            $queryde = mysqli_query($conex, "INSERT INTO detallescuero(ID_COSTOS, CUERO, Precio, TROQUEL, DCM, Cantidad, Costo) VALUES ('$idcostos','$nomcuero','$preciocuero','$nomtroquel','$dcm','$cantidad','$costo')");
         }
         $query = mysqli_query($conex, "DELETE FROM detatempcuero");
     };

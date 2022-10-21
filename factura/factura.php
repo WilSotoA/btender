@@ -91,6 +91,7 @@
 					<th class="items__detalle">Precio</th>
 					<th class="items__detalle">Troquel</th>
 					<th class="items__detalle">DCM</th>
+					<th class="items__detalle">Cantidad</th>
 					<th class="items__detalle">Costos</th>
 				</tr>
 			</thead>
@@ -105,6 +106,7 @@
 					<td class="items__detalle"><?php  echo $arreglodeta['Precio']; ?></td>
 					<td class="items__detalle"><?php  echo $arreglodeta['TROQUEL']; ?></td>
 					<td class="items__detalle"><?php  echo $arreglodeta['DCM']; ?></td>
+					<td class="items__detalle"><?php  echo $arreglodeta['Cantidad']; ?></td>
 					<td class="items__detalle"><?php  echo $arreglodeta['Costo']; ?></td>
 				</tr>
 			<?php

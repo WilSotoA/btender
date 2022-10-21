@@ -231,7 +231,7 @@ include "include/conexion.php";
     </section>
     <!-- costos-->
     <h1 class="title">Hoja de Costos</h1>
-    <form class="form" id="form" method="post">
+    <form class="form" id="costos" method="post">
         <section class="factura">
             <div class="item__factura">
                 <label for="descripfactura">Descripción <span class="required"> *</span></label>
@@ -256,7 +256,7 @@ include "include/conexion.php";
             </div>
             <div class="item__factura">
                 <label for="utilidad">UTILIDAD</label>
-                    <input type="number" name="utilidad" id="utilidad" class="ipt__factura" placeholder="0%">
+                    <input type="number" name="utilidad" id="utilidad" class="ipt__factura" placeholder="0%" step="0.01">
             </div>
             <div class="item__factura">
                 <label for="iva">IVA</label>
@@ -304,10 +304,11 @@ include "include/conexion.php";
                 </select>
             </div>
             <div class="container__btn">
-                <input type="button" value="Facturar" id="facturar" class="btn__factura btn__factura--facturar">
+                <button type="sumbmit" value="Facturar" id="facturar" class="btn__factura btn__factura--facturar">Facturar</button>
                 <a href="#" id="cancelar" class="btn__factura btn__factura--cancelar">Cancelar</a>
             </div>
         </section>
+    </form>
         <!-- detalles costos -->
         <h1 class="title">Materia Prima</h1>
         <section class="materiaprima">
@@ -849,7 +850,6 @@ include "include/conexion.php";
                 serchForDetalleBordado();
                 });
         </script>
-    </form>
 </body>
 
 </html>

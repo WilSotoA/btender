@@ -1936,7 +1936,7 @@
     }
   });
     //FACTURAR
-    $("#facturar").click(function (e) {
+    $("#costos").on("submit",function (e) {
       e.preventDefault();
       var descripcion = $("#descripfactura").val();
       var fecha = $("#fecha").val();
