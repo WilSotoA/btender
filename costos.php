@@ -14,13 +14,11 @@ include "include/conexion.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hoja de Costos B●TENDER</title>
     <link rel="stylesheet" href="css/costos.css">
+    <link rel="shortcut icon" href="src/favicon.jpg" type="image/x-icon">
     
 </head>
 
 <body>
-    <div class="container__back">
-        <a href="#" class="back">Regresar</a>
-    </div>
     <!-- modales -->
     <section class="modal modal--telas">
         <div class="modal__container">
@@ -239,7 +237,7 @@ include "include/conexion.php";
             </div>
             <div class="item__factura">
                 <label for="fecha">Fecha <span class="required"> *</span></label>
-                <input class="ipt__factura" type="date" name="fecha" id="fecha" placeholder="Ingrese la fecha" required>
+                <input class="ipt__factura ipt__factura--date" type="date" name="fecha" id="fecha" placeholder="Ingrese la fecha" required>
             </div>
             <div class="item__factura">
                 <label for="cliente">Cliente <span class="required"> *</span></label>
@@ -258,10 +256,11 @@ include "include/conexion.php";
                 <label for="utilidad">UTILIDAD</label>
                     <input type="number" name="utilidad" id="utilidad" class="ipt__factura" placeholder="0%" step="0.01">
             </div>
-            <div class="item__factura">
+            <div class="item__factura item__factura--selects">
                 <label for="iva">IVA</label>
+                <div class="select__factura">
                 <select name="iva" id="iva" class="list__factura">
-                <option value="0" class="option__procesos">0%</option>
+                <option value="0" class="option__procesos" >0%</option>
                     <?php
                     $sql = mysqli_query($conex, "SELECT * FROM impuestos where Impuesto = 'IVA'");
                     $result = mysqli_num_rows($sql);
@@ -272,9 +271,11 @@ include "include/conexion.php";
                     }
                     ?>
                 </select>
+                </div>
             </div>
-            <div class="item__factura">
+            <div class="item__factura item__factura--selects">
                 <label for="ica">ICA</label>
+                <div class="select__factura">
                 <select name="ica" id="ica" class="list__factura">
                 <option value="0" class="option__procesos">0%</option>
                     <?php
@@ -287,9 +288,11 @@ include "include/conexion.php";
                     }
                     ?>
                 </select>
+                </div>
             </div>
-            <div class="item__factura">
+            <div class="item__factura item__factura--selects">
                 <label for="rete">RETE</label>
+                <div class="select__factura">
                 <select name="rete" id="rete" class="list__factura">
                     <option value="0" class="option__procesos">0%</option>
                     <?php
@@ -302,6 +305,7 @@ include "include/conexion.php";
                     }
                     ?>
                 </select>
+                </div>
             </div>
             <div class="container__btn">
                 <button type="sumbmit" value="Facturar" id="facturar" class="btn__factura btn__factura--facturar">Facturar</button>
