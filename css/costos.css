@@ -155,9 +155,18 @@ border-top: 2px solid rgb(53, 53, 53);
     width: 100%;
     display: flex;
     margin: 0.8rem 0;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     align-content: center;
+    flex-wrap: wrap;
+}
+.btn__create{
+    background-color: var(--marron);
+    border-radius: 10px;
+    color: var(--blanco);
+    box-shadow: 1px 1px 1px 1px brown;
+    padding: 0.6rem;
+    cursor: pointer;
 }
 .modal__ipt{
     min-width: 30%;
@@ -169,6 +178,10 @@ border-top: 2px solid rgb(53, 53, 53);
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+    margin-top: 0.5rem;
+}
+.img__modal {
+    max-width: 100px;
 }
 .modal__message{
     width: 100%;
@@ -217,6 +230,7 @@ td{
     min-width: 20%;
     width: 200px;
 }
+
 .item__items--search{
     display: flex;
     justify-content: center;

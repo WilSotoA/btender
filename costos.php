@@ -28,6 +28,12 @@ include "include/conexion.php";
             <a href="#" class="modal__btn">X</a>
             <div class="container__ipt">
                 <input type="text" class="modal__ipt" name="searchtela" id="searchtela" placeholder="Ingrese el nombre de la tela">
+                <a href="#" class="btn__create" id="creartela">Agregar tela</a>
+            </div>
+            <div class="container__ipt">
+                <input type="text" class="modal__ipt" id="descriptela" placeholder="Nombre de tela">
+                <input type="text"class="modal__ipt" id="proveedortela" placeholder="Proveedor tela">
+                <input type="number" class="modal__ipt" id="valortela" placeholder="Valor tela">
             </div>
             <div id="modal__telas" class="modal__telas">
             </div>
@@ -39,6 +45,12 @@ include "include/conexion.php";
             <a href="#" class="modal__btn modal__btn--cueros">X</a>
             <div class="container__ipt">
                 <input type="text" class="modal__ipt" name="searchcuero" id="searchcuero" placeholder="Ingrese el nombre del cuero">
+                <a href="#" class="btn__create" id="crearcuero">Agregar Cuero</a>
+            </div>
+            <div class="container__ipt">
+                <input type="text" class="modal__ipt" id="descripcuero" placeholder="Nombre del cuero">
+                <input type="text"class="modal__ipt" id="proveedorcuero" placeholder="Proveedor cuero">
+                <input type="number" class="modal__ipt" id="valorcuero" placeholder="Valor cuero">
             </div>
             <div id="modal__cueros" class="modal__cueros">
             </div>
@@ -48,9 +60,17 @@ include "include/conexion.php";
         <div class="modal__container">
             <h1 class="modal__title">Seleccione el Troquel</h1>
             <a href="#" class="modal__btn modal__btn--troquel">X</a>
+            <form action="procesar.php" method="post" id="enviartroquel" enctype="multipart/form-data">
             <div class="container__ipt">
                 <input type="text" class="modal__ipt" name="searchtroquel" id="searchtroquel" placeholder="Ingrese el nombre del troquel">
+                <button type="submit" class="btn__create" name="creartroquel" id="creartroquel">Agg troquel</button>
             </div>
+            <div class="container__ipt">
+                <input type="text" class="modal__ipt" name="nombretroquel" id="nombretroquel" placeholder="nombre troquel" required>
+                <input type="number"class="modal__ipt" name="dcm" id="dcm" placeholder="dcm troquel" step="0.01" required>
+                <input type="file"class="modal__ipt" name="imagentroquel" id="imagentroquel" accept="image/png" >
+            </div>
+            </form>
             <div id="modal__troquel" class="modal__troquel">
             </div>
         </div>
@@ -61,6 +81,12 @@ include "include/conexion.php";
             <a href="#" class="modal__btn modal__btn--insumos">X</a>
             <div class="container__ipt">
                 <input type="text" class="modal__ipt" name="searchinsumo" id="searchinsumo" placeholder="Ingrese descripción del insumo">
+                <a href="#" class="btn__create" id="crearinsumo">Agregar Insumo</a>
+            </div>
+            <div class="container__ipt">
+                <input type="text" class="modal__ipt" id="descripinsumo" placeholder="Nombre del insumo">
+                <input type="text"class="modal__ipt" id="proveedorinsumo" placeholder="Proveedor insumo">
+                <input type="number" class="modal__ipt" id="valorinsumo" placeholder="Valor insumo">
             </div>
             <div id="modal__insumos" class="modal__insumos">
             </div>
@@ -72,6 +98,12 @@ include "include/conexion.php";
             <a href="#" class="modal__btn modal__btn--sublimacion">X</a>
             <div class="container__ipt">
                 <input type="text" class="modal__ipt" name="searchsublimacion" id="searchsublimacion" placeholder="Ingrese el proveedor de sublimación">
+                <a href="#" class="btn__create" id="crearsublimacion">Agregar Sublimación</a>
+            </div>
+            <div class="container__ipt">
+                <input type="text"class="modal__ipt" id="proveedorsublimacion" placeholder="Proveedor sublimación">
+                <input type="number" class="modal__ipt" id="metrosublimacion"  placeholder="metro sublimación">
+                <input type="number" class="modal__ipt" id="valorsublimacion" placeholder="Valor sublimación">
             </div>
             <div id="modal__sublimacion" class="modal__sublimacion">
             </div>
@@ -83,6 +115,13 @@ include "include/conexion.php";
             <a href="#" class="modal__btn modal__btn--cortemanual">X</a>
             <div class="container__ipt">
                 <input type="number" class="modal__ipt" name="searchcortemanual" id="searchcortemanual" placeholder="Ingrese el codigo del corte manual">
+                <a href="#" class="btn__create" id="crearcortemanual">Agregar Corte Manual</a>
+            </div>
+            <div class="container__ipt">
+                <input type="number" class="modal__ipt" id="codigocortemanual" placeholder="Codigo Corte Manual">
+                <input type="number"class="modal__ipt" id="anchocortemanual" placeholder="Ancho Corte Manual">
+                <input type="number" class="modal__ipt" id="largocortemanual"  placeholder="Largo Corte Manual">
+                <input type="number" class="modal__ipt" id="valorcortemanual" placeholder="Valor Corte Manual">
             </div>
             <div id="modal__cortemanual" class="modal__cortemanual">
             </div>
@@ -94,6 +133,11 @@ include "include/conexion.php";
             <a href="#" class="modal__btn modal__btn--confeccion">X</a>
             <div class="container__ipt">
                 <input type="text" class="modal__ipt" name="searchconfeccion" id="searchconfeccion" placeholder="Ingrese descripción de la confección">
+                <a href="#" class="btn__create" id="crearconfeccion">Agregar Confección</a>
+            </div>
+            <div class="container__ipt">
+                <input type="text"class="modal__ipt" id="descripconfeccion" placeholder="Descripción confección">
+                <input type="number" class="modal__ipt" id="valorconfeccion" placeholder="Valor Confección">
             </div>
             <div id="modal__confeccion" class="modal__confeccion">
             </div>
@@ -105,6 +149,11 @@ include "include/conexion.php";
             <a href="#" class="modal__btn modal__btn--terminacion">X</a>
             <div class="container__ipt">
                 <input type="text" class="modal__ipt" name="searchterminacion" id="searchterminacion" placeholder="Ingrese descripción de la terminación">
+                <a href="#" class="btn__create" id="crearterminacion">Agregar Terminación</a>
+            </div>
+            <div class="container__ipt">
+                <input type="text"class="modal__ipt" id="descripterminacion" placeholder="Descripción Terminación">
+                <input type="number" class="modal__ipt" id="valorterminacion" placeholder="Valor Terminación">
             </div>
             <div id="modal__terminacion" class="modal__terminacion">
             </div>
@@ -116,6 +165,11 @@ include "include/conexion.php";
             <a href="#" class="modal__btn modal__btn--entretelado">X</a>
             <div class="container__ipt">
                 <input type="text" class="modal__ipt" name="searchentretelado" id="searchentretelado" placeholder="Ingrese descripción de entretelado">
+                <a href="#" class="btn__create" id="crearentretelado">Agregar Entretelado</a>
+            </div>
+            <div class="container__ipt">
+                <input type="text"class="modal__ipt" id="descripentretelado" placeholder="Descripción Entretelado">
+                <input type="number" class="modal__ipt" id="valorentretelado" placeholder="Valor Entretelado">
             </div>
             <div id="modal__entretelado" class="modal__entretelado">
             </div>
@@ -127,6 +181,11 @@ include "include/conexion.php";
             <a href="#" class="modal__btn modal__btn--cortedigital">X</a>
             <div class="container__ipt">
                 <input type="text" class="modal__ipt" name="searchcortedigital" id="searchcortedigital" placeholder="Ingrese la pieza del corte digital">
+                <a href="#" class="btn__create" id="crearcortedigital">Agregar Corte Digital</a>
+            </div>
+            <div class="container__ipt">
+                <input type="text"class="modal__ipt" id="descripcortedigital" placeholder="Descripción Corte Digital">
+                <input type="number" class="modal__ipt" id="valorcortedigital" placeholder="Valor Corte Digital">
             </div>
             <div id="modal__cortedigital" class="modal__cortedigital">
             </div>
@@ -138,6 +197,12 @@ include "include/conexion.php";
             <a href="#" class="modal__btn modal__btn--laser">X</a>
             <div class="container__ipt">
                 <input type="text" class="modal__ipt" name="searchlaser" id="searchlaser" placeholder="Ingrese el nombre del laser">
+                <a href="#" class="btn__create" id="crearlaser">Agregar Laser</a>
+            </div>
+            <div class="container__ipt">
+                <input type="text"class="modal__ipt" id="descriplaser" placeholder="Descripción Laser">
+                <input type="text"class="modal__ipt" id="nomlaser" placeholder="Nombre Laser">
+                <input type="number" class="modal__ipt" id="valorlaser" placeholder="Valor Laser">
             </div>
             <div id="modal__laser" class="modal__laser">
             </div>
@@ -149,6 +214,16 @@ include "include/conexion.php";
             <a href="#" class="modal__btn modal__btn--bordado">X</a>
             <div class="container__ipt">
                 <input type="text" class="modal__ipt" name="searchbordado" id="searchbordado" placeholder="Ingrese el nombre del bordado">
+                <a href="#" class="btn__create" id="crearbordado">Agregar Bordado</a>
+            </div>
+            <div class="container__ipt">
+                <input type="text"class="modal__ipt" id="descripbordado" placeholder="Descripción Bordado">
+                <input type="text"class="modal__ipt" id="nombordado" placeholder="Nombre Bordado">
+                <select name="estadobordado" id="estadobordado">
+                    <option value="">estado</option>
+                    <option value="D">D</option>
+                </select>
+                <input type="number" class="modal__ipt" id="valorbordado" placeholder="Valor Bordado">
             </div>
             <div id="modal__bordado" class="modal__bordado">
             </div>
@@ -743,7 +818,6 @@ include "include/conexion.php";
         <footer class="copy">
             <small class="textcopy">&copy; 2022 <b>B&bull;TENDER</b> - Todos los Derechos Reservados. ---- DISEÑADO POR: WILMER S.</small>
         </footer>
-
         <script src="js/jquery-3.6.0.min.js"></script>
         <script src="js/factura.js"></script>
         <script>
@@ -754,6 +828,11 @@ include "include/conexion.php";
                     event.preventDefault();
                 }
             }
+            if (window.history.replaceState) { // verificamos disponibilidad
+            window.history.replaceState(null, null, window.location.href);
+            }   
+
+
         </script>
         <script>
             $(document).ready(function() {

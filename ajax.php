@@ -116,6 +116,17 @@ if ($_POST['action'] == 'searchTela') {
 
     mysqli_close($conex);
 }
+//guardar tela
+if ($_POST['action'] == 'crearTela') {
+    $nomtela = $_POST['nomtela'];
+    $proveedortela = $_POST['proveedortela'];
+    $valortela = $_POST['valortela'];
+
+    $insert = mysqli_query($conex, "INSERT INTO telas(Descripcion_tela, Proveedor, Valor_uni) VALUES ('$nomtela','$proveedortela','$valortela')");
+    if ($insert){
+        echo "exitoso";
+    }
+}
 //agg tela a detatemp
 if ($_POST['action'] == 'aggTelatemp') {
     if (!empty($_POST['nomtela'])) {
@@ -284,6 +295,17 @@ if ($_POST['action'] == 'infoCuero') {
     }
     exit;
 }
+// guardar cuero
+if ($_POST['action'] == 'crearCuero') {
+    $nomcuero = $_POST['nomcuero'];
+    $proveedorcuero = $_POST['proveedorcuero'];
+    $valorcuero = $_POST['valorcuero'];
+
+    $insert = mysqli_query($conex, "INSERT INTO cueros(Descripcion_cuero, Proveedor, Valor_uni) VALUES ('$nomcuero','$proveedorcuero','$valorcuero')");
+    if ($insert){
+        echo "exitoso";
+    }
+}
 // buscar cueros en el modal
 if ($_POST['action'] == 'searchCuero') {
     $detalleTabla = "";
@@ -360,7 +382,7 @@ if ($_POST['action'] == 'buscarTroquel') {
                         <td class="item__items"><a href="#" onclick="selectTroquel(' . $data['Id_troquel'] . ');recargar(event);" class="select--troquel"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
                         <td class="item__items">' . $data['Nombre_troquel'] . '</td>
                         <td class="item__items">' . $data['DCM'] . '</td>
-                        <td class="item__items"><img src="data:image/jpeg;base64,' . base64_encode($data['Img_troquel']) . '" alt=""></td>
+                        <td class="item__items"><img class="img__modal" src="data:image/jpeg;base64,' . base64_encode($data['Img_troquel']) . '"></td>
                     </tr>
                     ';
         }
@@ -430,7 +452,7 @@ if ($_POST['action'] == 'searchTroquel') {
                     <td class="item__items"><a href="#" onclick="selectTroquel(' . $data['Id_troquel'] . ');recargar(event);" class="select--troquel"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
                     <td class="item__items">' . $data['Nombre_troquel'] . '</td>
                     <td class="item__items">' . $data['DCM'] . '</td>
-                    <td class="item__items"><img src="data:image/jpeg;base64,' . base64_encode($data['Img_troquel']) . '" alt=""></td>
+                    <td class="item__items"><img class="img__modal" src="data:image/jpeg;base64,' . base64_encode($data['Img_troquel']) . '"></td>
                 </tr>
                 ';
         }
@@ -676,6 +698,17 @@ if ($_POST['action'] == 'searchInsumo') {
 
     mysqli_close($conex);
 }
+// guardar insumo
+if ($_POST['action'] == 'crearInsumo') {
+    $nominsumo = $_POST['nominsumo'];
+    $proveedorinsumo = $_POST['proveedorinsumo'];
+    $valorinsumo = $_POST['valorinsumo'];
+
+    $insert = mysqli_query($conex, "INSERT INTO insumos(Descripcion_insumo, Proveedor_insumo, Valor_uni) VALUES ('$nominsumo','$proveedorinsumo','$valorinsumo')");
+    if ($insert){
+        echo "exitoso";
+    }
+}
 //agg insumo a detatemp
 if ($_POST['action'] == 'aggInsumotemp') {
     if (!empty($_POST['nominsumo'])) {
@@ -903,6 +936,17 @@ if ($_POST['action'] == 'searchSublimacion') {
 
     mysqli_close($conex);
 }
+//guardar sublimacion
+if ($_POST['action'] == 'crearSublimacion') {
+    $proveedorsublimacion = $_POST['proveedorsublimacion'];
+    $valorsublimacion = $_POST['valorsublimacion'];
+    $metrosublimacion = $_POST['metrosublimacion'];
+
+    $insert = mysqli_query($conex, "INSERT INTO sublimacion(Proveedores, Metro, Precio) VALUES ('$proveedorsublimacion', '$metrosublimacion', '$valorsublimacion')");
+    if ($insert){
+        echo "exitoso";
+    }
+}
 //agg sublimacion a detatemp
 if ($_POST['action'] == 'aggSublimaciontemp') {
     if (!empty($_POST['provSublimacion'])) {
@@ -1128,6 +1172,18 @@ if ($_POST['action'] == 'searchCorteManual') {
 
     mysqli_close($conex);
 }
+//guardar corte manual
+if ($_POST['action'] == 'crearCorteManual') {   
+    $codigo = $_POST['codigo'];
+    $ancho = $_POST['ancho'];
+    $largo = $_POST['largo'];
+    $valor = $_POST['valor'];
+
+    $insert = mysqli_query($conex, "INSERT INTO cortemanual(Codigo, Media_ancho, Media_largo, Valor_uni) VALUES ('$codigo', '$ancho','$largo' ,'$valor')");
+    if ($insert){
+        echo "exitoso";
+    }
+}
 //agg corte manual a detatemp
 if ($_POST['action'] == 'aggCorteManualtemp') {
     if (!empty($_POST['codigocortemanual'])) {
@@ -1347,6 +1403,16 @@ if ($_POST['action'] == 'searchConfeccion') {
 
     mysqli_close($conex);
 }
+//guardar confección
+if ($_POST['action'] == 'crearConfeccion') {   
+    $descrip = $_POST['descrip'];
+    $valor = $_POST['valor'];
+
+    $insert = mysqli_query($conex, "INSERT INTO confeccion(Descripcion_confeccion, Valor_confeccion) VALUES ('$descrip','$valor')");
+    if ($insert){
+        echo "exitoso";
+    }
+}
 //agg confección a detatemp
 if ($_POST['action'] == 'aggConfecciontemp') {
     if (!empty($_POST['descripcionconfeccion'])) {
@@ -1561,6 +1627,16 @@ if ($_POST['action'] == 'searchTerminacion') {
 
     mysqli_close($conex);
 }
+//guardar confección
+if ($_POST['action'] == 'crearTerminacion') {   
+    $descrip = $_POST['descrip'];
+    $valor = $_POST['valor'];
+
+    $insert = mysqli_query($conex, "INSERT INTO terminacion(Descripcion_terminacion, Valor_terminacion) VALUES ('$descrip','$valor')");
+    if ($insert){
+        echo "exitoso";
+    }
+}
 //agg terminación a detatemp
 if ($_POST['action'] == 'aggTerminaciontemp') {
     if (!empty($_POST['descripcionterminacion'])) {
@@ -1774,6 +1850,16 @@ if ($_POST['action'] == 'searchEntretelado') {
 
     mysqli_close($conex);
 }
+//guardar entretelado
+if ($_POST['action'] == 'crearEntretelado') {   
+    $descrip = $_POST['descrip'];
+    $valor = $_POST['valor'];
+
+    $insert = mysqli_query($conex, "INSERT INTO entretelado(Descripcion_entretelado, Valor_entretelado) VALUES ('$descrip','$valor')");
+    if ($insert){
+        echo "exitoso";
+    }
+}
 //agg entretelado a detatemp
 if ($_POST['action'] == 'aggEntreteladotemp') {
     if (!empty($_POST['descripcionentretelado'])) {
@@ -1986,6 +2072,17 @@ if ($_POST['action'] == 'searchCorteDigital') {
     echo json_encode($arrayData, JSON_UNESCAPED_UNICODE);
 
     mysqli_close($conex);
+}
+//guardar corte digital
+if ($_POST['action'] == 'crearCorteDigital') {   
+    $descrip = $_POST['descrip'];
+    $valor = $_POST['valor'];
+
+    $insert = mysqli_query($conex, "INSERT INTO cortedigital(Descripcion_cortedigital, Valor_cortedigital) VALUES ('$descrip','$valor')");
+    if ($insert){
+
+        echo "exitoso";
+    }
 }
 //agg corte digital a detatemp
 if ($_POST['action'] == 'aggCorteDigitaltemp') {
@@ -2203,6 +2300,18 @@ if ($_POST['action'] == 'searchLaser') {
     echo json_encode($arrayData, JSON_UNESCAPED_UNICODE);
 
     mysqli_close($conex);
+}
+//guardar laser
+if ($_POST['action'] == 'crearLaser') {   
+    $descrip = $_POST['descrip'];
+    $nombre = $_POST['nombre'];
+    $valor = $_POST['valor'];
+
+    $insert = mysqli_query($conex, "INSERT INTO laser(Descripcion_laser, Nombre_laser, Valor_laser) VALUES ('$descrip','$nombre','$valor')");
+    if ($insert){
+
+        echo "exitoso";
+    }
 }
 //agg laser a detatemp
 if ($_POST['action'] == 'aggLasertemp') {
@@ -2425,6 +2534,19 @@ if ($_POST['action'] == 'searchBordado') {
     echo json_encode($arrayData, JSON_UNESCAPED_UNICODE);
 
     mysqli_close($conex);
+}
+//guardar bordado
+if ($_POST['action'] == 'crearBordado') {   
+    $descrip = $_POST['descrip'];
+    $nombre = $_POST['nombre'];
+    $estado = $_POST['estado'];
+    $valor = $_POST['valor'];
+
+    $insert = mysqli_query($conex, "INSERT INTO bordado(Descripcion_bordado, Nombre_bordado, Estado_bordado, Precio_bordado) VALUES ('$descrip','$nombre','$estado','$valor')");
+    if ($insert){
+
+        echo "exitoso";
+    }
 }
 //agg bordado a detatemp
 if ($_POST['action'] == 'aggBordadotemp') {

@@ -132,6 +132,38 @@
           });
         }
       });
+      //insertar tela desde el mdal
+      $("#creartela").click(function (e) {  
+        e.preventDefault();
+        var nomtela = $("#descriptela").val();
+        var proveedortela = $("#proveedortela").val();
+        var valortela = $("#valortela").val();
+        var action = "crearTela";
+
+        if (nomtela.trim() !== '' && proveedortela.trim() !== '' && valortela.trim() !== '') {      
+          $.ajax({
+            type: "POST",
+            url: "ajax.php",
+            async: true,
+            data: {
+              action: action,
+              nomtela: nomtela,
+              proveedortela: proveedortela,
+              valortela: valortela
+            },
+            success: function (response) {
+              if (response == 'exitoso'){
+                $("#descriptela").val("");
+                $("#proveedortela").val("");
+                $("#valortela").val("");
+                alert("Se ha guardado exitosamente!");
+              }
+            }
+          });
+        } else {
+          alert("por favor complete los campos");
+        }
+      });
 
       //CUEROS
     //buscar cuero
@@ -196,6 +228,38 @@
           }
         });
       });
+      //insertar cuero desde el modal
+      $("#crearcuero").click(function (e) {  
+        e.preventDefault();
+        var nomcuero = $("#descripcuero").val();
+        var proveedorcuero = $("#proveedorcuero").val();
+        var valorcuero = $("#valorcuero").val();
+        var action = "crearCuero";
+
+        if (nomcuero.trim() !== '' && proveedorcuero.trim() !== '' && valorcuero.trim() !== '') {      
+          $.ajax({
+            type: "POST",
+            url: "ajax.php",
+            async: true,
+            data: {
+              action: action,
+              nomcuero: nomcuero,
+              proveedorcuero: proveedorcuero,
+              valorcuero: valorcuero
+            },
+            success: function (response) {
+              if (response == 'exitoso'){
+                $("#descripcuero").val("");
+                $("#proveedorcuero").val("");
+                $("#valorcuero").val("");
+                alert("Se ha guardado exitosamente!");
+              }
+            }
+          });
+        } else {
+          alert("por favor complete los campos");
+        }
+      });      
 
         //TROQUEL
           //buscar troquel
@@ -381,7 +445,7 @@
      error: function (error) {},
  });
        });
-      //buscar registros de troquel en modal
+      //buscar registros de insumo en modal
       $("#searchinsumo").keyup(function (e) { 
         var searchinsumo = $("#searchinsumo").val();
         var action = "searchInsumo";
@@ -397,7 +461,38 @@
           }
         });
       });
+      //insertar insumo desde el modal
+      $("#crearinsumo").click(function (e) {  
+        e.preventDefault();
+        var proveedorinsumo = $("#proveedorinsumo").val();
+        var nominsumo = $("#nominsumo").val();
+        var valorinsumo = $("#valorinsumo").val();
+        var action = "crearInsumo";
 
+        if (nominsumo.trim() !== '' && proveedorinsumo.trim() !== '' && valorinsumo.trim() !== '') {  
+          $.ajax({
+            type: "POST",
+            url: "ajax.php",
+            async: true,
+            data: {
+              action: action,
+              nominsumo: nominsumo,
+              proveedorinsumo: proveedorinsumo,
+              valorinsumo: valorinsumo
+            },
+            success: function (response) {
+              if (response == 'exitoso'){
+                $("#descripinsumo").val("");
+                $("#proveedorinsumo").val("");
+                $("#valorinsumo").val("");
+                alert("Se ha guardado exitosamente!");
+              }
+            }
+          });
+        } else {
+          alert("por favor complete los campos");
+        }
+      });       
    //validar cantidad de insumos antes de agg
    $("#cantinsumo").keyup(function (e) {
      e.preventDefault();
@@ -534,7 +629,37 @@
           }
         });
       });
+      //insertar sublimacion desde el modal
+      $("#crearsublimacion").click(function (e) {  
+        e.preventDefault();
+        var proveedorsublimacion = $("#proveedorsublimacion").val();
+        var metrosublimacion = $("#metrosublimacion").val();
+        var valorsublimacion = $("#valorsublimacion").val();
+        var action = "crearSublimacion";
 
+        if (metrosublimacion.trim() !== '' && proveedorsublimacion.trim() !== '' && valorsublimacion.trim() !== '') {  
+          $.ajax({
+            type: "POST",
+            url: "ajax.php",
+            async: true,
+            data: {
+              action: action,
+              proveedorsublimacion: proveedorsublimacion,
+              metrosublimacion: metrosublimacion,
+              valorsublimacion: valorsublimacion
+            },
+            success: function (response) {
+              if (response == 'exitoso'){
+                $("#proveedorsublimacion").val("");
+                $("#valorsublimacion").val("");
+                alert("Se ha guardado exitosamente!");
+              }
+            }
+          });
+        } else {
+          alert("por favor complete los campos");
+        }
+      });       
    //validar cantidad de sublimacion antes de agg
    $("#cantsublimacion").keyup(function (e) {
      e.preventDefault();
@@ -673,6 +798,41 @@
         }
       });
     });
+      //insertar cortemanual desde el modal
+      $("#crearcortemanual").click(function (e) {  
+        e.preventDefault();
+        var codigo = $("#codigocortemanual").val();
+        var ancho = $("#anchocortemanual").val();
+        var largo = $("#largocortemanual").val();
+        var valor = $("#valorcortemanual").val();
+        var action = "crearCorteManual";
+
+        if (codigo.trim() !== '' && ancho.trim() !== '' && largo.trim() !== '' && valor.trim() !== '') {  
+          $.ajax({
+            type: "POST",
+            url: "ajax.php",
+            async: true,
+            data: {
+              action: action,
+              codigo: codigo,
+              ancho: ancho,
+              largo: largo,
+              valor: valor,
+            },
+            success: function (response) {
+              if (response == 'exitoso'){
+                $("#codigocortemanual").val("");
+                $("#anchocortemanual").val("");
+                $("#largocortemanual").val("");
+                $("#valorcortemanual").val("");
+                alert("Se ha guardado exitosamente!");
+              }
+            }
+          });
+        } else {
+          alert("por favor complete los campos");
+        }
+      });   
    //validar cantidad de cortemanual antes de agg
    $("#cantcortemanual").keyup(function (e) {
     e.preventDefault();
@@ -806,7 +966,36 @@
           $("#modal__confeccion").html(info.detalle);
         }
       });
-    });       
+    });      
+      //insertar confección desde el modal
+      $("#crearconfeccion").click(function (e) {  
+        e.preventDefault();
+        var descrip = $("#descripconfeccion").val();
+        var valor = $("#valorconfeccion").val();
+        var action = "crearConfeccion";
+
+        if (descrip.trim() !== '' && valor.trim() !== '') {  
+          $.ajax({
+            type: "POST",
+            url: "ajax.php",
+            async: true,
+            data: {
+              action: action,
+              descrip: descrip,
+              valor: valor,
+            },
+            success: function (response) {
+              if (response == 'exitoso'){
+                $("#descripconfeccion").val("");
+                $("#valorconfeccion").val("");
+                alert("Se ha guardado exitosamente!");
+              }
+            }
+          });
+        } else {
+          alert("por favor complete los campos");
+        }
+      });    
    //validar cantidad de confección antes de agg
    $("#cantconfeccion").keyup(function (e) {
      e.preventDefault();
@@ -938,6 +1127,35 @@
         }
       });
     }); 
+      //insertar terminación desde el modal
+      $("#crearterminacion").click(function (e) {  
+        e.preventDefault();
+        var descrip = $("#descripterminacion").val();
+        var valor = $("#valorterminacion").val();
+        var action = "crearTerminacion";
+
+        if (descrip.trim() !== '' && valor.trim() !== '') {  
+          $.ajax({
+            type: "POST",
+            url: "ajax.php",
+            async: true,
+            data: {
+              action: action,
+              descrip: descrip,
+              valor: valor,
+            },
+            success: function (response) {
+              if (response == 'exitoso'){
+                $("#descripterminacion").val("");
+                $("#valorterminacion").val("");
+                alert("Se ha guardado exitosamente!");
+              }
+            }
+          });
+        } else {
+          alert("por favor complete los campos");
+        }
+      });    
    //validar cantidad de terminación antes de agg
    $("#canterminacion").keyup(function (e) {
      e.preventDefault();
@@ -1069,6 +1287,35 @@
         }
       });
     }); 
+      //insertar entretelado desde el modal
+      $("#crearentretelado").click(function (e) {  
+        e.preventDefault();
+        var descrip = $("#descripentretelado").val();
+        var valor = $("#valorentretelado").val();
+        var action = "crearEntretelado";
+
+        if (descrip.trim() !== '' && valor.trim() !== '') {  
+          $.ajax({
+            type: "POST",
+            url: "ajax.php",
+            async: true,
+            data: {
+              action: action,
+              descrip: descrip,
+              valor: valor,
+            },
+            success: function (response) {
+              if (response == 'exitoso'){
+                $("#descripentretelado").val("");
+                $("#valorentretelado").val("");
+                alert("Se ha guardado exitosamente!");
+              }
+            }
+          });
+        } else {
+          alert("por favor complete los campos");
+        }
+      }); 
    //validar cantidad de entretelado antes de agg
    $("#cantentretelado").keyup(function (e) {
      e.preventDefault();
@@ -1200,20 +1447,49 @@
         }
       });
     }); 
-   //validar cantidad de corte digital antes de agg
-   $("#cantcortedigital").keyup(function (e) {
-     e.preventDefault();
+      //insertar corte digital desde el modal
+      $("#crearcortedigital").click(function (e) {  
+        e.preventDefault();
+        var descrip = $("#descripcortedigital").val();
+        var valor = $("#valorcortedigital").val();
+        var action = "crearCorteDigital";
 
-     var preciototal = $(this).val() * $("#preciocortedigital").html();
-     $("#costo--cortedigital").html(preciototal);
+        if (descrip.trim() !== '' && valor.trim() !== '') {  
+          $.ajax({
+            type: "POST",
+            url: "ajax.php",
+            async: true,
+            data: {
+              action: action,
+              descrip: descrip,
+              valor: valor,
+            },
+            success: function (response) {
+              if (response == 'exitoso'){
+                $("#descripcortedigital").val("");
+                $("#valorcortedigital").val("");
+                alert("Se ha guardado exitosamente!");
+              }
+            }
+          });
+        } else {
+          alert("por favor complete los campos");
+        }
+      }); 
+    //validar cantidad de corte digital antes de agg
+    $("#cantcortedigital").keyup(function (e) {
+      e.preventDefault();
 
-     //oculta el boton agregar si cantidad menor que 1
-     if ($(this).val() < 0 || isNaN($(this).val())) {
-       $("#aggcortedigital").slideUp();
-     } else {
-       $("#aggcortedigital").slideDown();
-     }
-   });
+      var preciototal = $(this).val() * $("#preciocortedigital").html();
+      $("#costo--cortedigital").html(preciototal);
+
+      //oculta el boton agregar si cantidad menor que 1
+      if ($(this).val() < 0 || isNaN($(this).val())) {
+        $("#aggcortedigital").slideUp();
+      } else {
+        $("#aggcortedigital").slideDown();
+      }
+    });
 
    //agg corte digital a detatemp
    $("#aggcortedigital").click(function (e) {
@@ -1333,6 +1609,41 @@
         }
       });
     });  
+    //insertar laser desde el modal
+    $("#crearlaser").click(function (e) {  
+      e.preventDefault();
+      var descrip = $("#descriplaser").val();
+      var nombre = $("#nomlaser").val();
+      var valor = $("#valorlaser").val();
+      var action = "crearLaser";
+
+      if (descrip.trim() !== '' && valor.trim() !== '' && nombre.trim() !== '') {  
+        $.ajax({
+          type: "POST",
+          url: "ajax.php",
+          async: true,
+          data: {
+            action: action,
+            descrip: descrip,
+            nombre: nombre,
+            valor: valor,
+          },
+          success: function (response) {
+            console.log(response);
+            if (response == 'exitoso'){
+              $("#descriplaser").val("");
+              $("#nomlaser").val("");
+              $("#valorlaser").val("");
+              alert("Se ha guardado exitosamente!");
+            } else {
+              alert("NO Se ha guardado exitosamente");
+            }
+          }
+        });
+      } else {
+        alert("por favor complete los campos");
+      }
+    }); 
    //validar cantidad de laser antes de agg
    $("#cantlaser").keyup(function (e) {
      e.preventDefault();
@@ -1468,6 +1779,45 @@
         }
       });
     });  
+    //insertar bordado desde el modal
+    $("#crearbordado").click(function (e) {  
+      e.preventDefault();
+      var descrip = $("#descripbordado").val();
+      var nombre = $("#nombordado").val();
+      var estado = $("#estadobordado").val();
+      var valor = $("#valorbordado").val();
+      console.log(nombre, estado, valor, descrip);
+      var action = "crearBordado";
+
+      if (descrip.trim() !== '' && valor.trim() !== '' && nombre.trim() !== '') {  
+        $.ajax({
+          type: "POST",
+          url: "ajax.php",
+          async: true,
+          data: {
+            action: action,
+            descrip: descrip,
+            nombre: nombre,
+            estado: estado,
+            valor: valor,
+          },
+          success: function (response) {
+            console.log(response);
+            if (response == 'exitoso'){
+              $("#descripbordado").val("");
+              $("#nombordado").val("");
+              $("#estado").val("");
+              $("#valorbordado").val("");
+              alert("Se ha guardado exitosamente!");
+            } else {
+              alert("NO Se ha guardado exitosamente");
+          }
+          }
+        });
+      } else {
+        alert("por favor complete los campos");
+      }
+    }); 
    //validar cantidad de bordado antes de agg
    $("#cantbordado").keyup(function (e) {
      e.preventDefault();
