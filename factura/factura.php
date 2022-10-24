@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Hoja de Costos</title>
+	<title>Hoja de Costos B●TENDER</title>
     <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/BTENDER/css/style.css">
 	<link rel="shortcut icon" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/BTENDER/src/favicon.png" type="image/x-icon">
 </head>
@@ -130,10 +130,10 @@
 			<thead>
 				<tr class="row__detalle">
 					<th class="items__detalle head">Descripción</th>
-					<th class="items__detalle">Proveedor</th>
-					<th class="items__detalle">Precio</th>
-					<th class="items__detalle">Cantidad</th>
-					<th class="items__detalle">Costos</th>
+					<th class="items__detalle color">Proveedor</th>
+					<th class="items__detalle color">Precio</th>
+					<th class="items__detalle color">Cantidad</th>
+					<th class="items__detalle color">Costos</th>
 				</tr>
 			</thead>
 			<tbody id="detalle_productos">
@@ -417,11 +417,11 @@
 						$totallaser =  $totallaser+$arreglodeta['Costo'];
 			 ?>
 				<tr>
-					<td class="items__detalle"><?php   echo $arreglodeta['LASER']; ?></td>
-					<td class="items__detalle"><?php   echo $arreglodeta['Descripcion']; ?></td>
-					<td class="items__detalle"><?php   echo $arreglodeta['Precio']; ?></td>
-					<td class="items__detalle"><?php   echo $arreglodeta['Cantidad']; ?></td>
-					<td class="items__detalle"><?php   echo $arreglodeta['Costo']; ?></td>
+					<td class="items__detalle head"><?php   echo $arreglodeta['LASER']; ?></td>
+					<td class="items__detalle color"><?php   echo $arreglodeta['Descripcion']; ?></td>
+					<td class="items__detalle color"><?php   echo $arreglodeta['Precio']; ?></td>
+					<td class="items__detalle color"><?php   echo $arreglodeta['Cantidad']; ?></td>
+					<td class="items__detalle color"><?php   echo $arreglodeta['Costo']; ?></td>
 				</tr>
 			<?php
 					}
@@ -443,11 +443,11 @@
 			</tr>
 			<thead>
 				<tr class="row__detalle">
-					<th class="items__detalle">Descripción</th>
-					<th class="items__detalle">Nombre</th>
-					<th class="items__detalle">Precio Uni.</th>
-					<th class="items__detalle">Cantidad</th>
-					<th class="items__detalle">Costos</th>
+					<th class="items__detalle head">Descripción</th>
+					<th class="items__detalle color">Nombre</th>
+					<th class="items__detalle color">Precio Uni.</th>
+					<th class="items__detalle color">Cantidad</th>
+					<th class="items__detalle color">Costos</th>
 				</tr>
 			</thead>
 			<tbody id="detalle_productos">

@@ -412,7 +412,7 @@ include "include/conexion.php";
                     </tr>
                     <tr class="item">
                         <td class="item__items item__items--search"><input type="text" class="ipt__item" name="nominsumo" id="nominsumo"><a href="#" id="buscar--insumo" class="buscar buscar--insumo"><img src="src/svg/search.svg" alt="Buscar" class="svg svg--search"></a></td>
-                        <td id="proveedorinsumo" class="item__items">--</td>
+                        <td id="provinsumo" class="item__items">--</td>
                         <td id="precioinsumo" class="item__items">0</td>
                         <td><input type="text" class="ipt__item" name="cantinsumo" id="cantinsumo" value="0" min="1" disabled></td>
                         <td id="costo--insumo" class="item__items">0</td>

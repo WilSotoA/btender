@@ -414,7 +414,7 @@
          } else {
            var data = $.parseJSON(response);
            $("#nominsumo").val(data.Descripcion_insumo);
-           $("#proveedorinsumo").html(data.Proveedor_insumo);
+          $("#provinsumo").html(data.Proveedor_insumo);
            $("#cantinsumo").val("0");
            $("#precioinsumo").html(data.Valor_uni);
            $("#costo--insumo").html("0");
@@ -513,7 +513,7 @@
 
     if ($("#cantinsumo").val() > 0) {
       var nominsumo = $("#nominsumo").val();
-      var proveedorinsumo = $("#proveedorinsumo").html();
+      var proveedorinsumo = $("#provinsumo").html();
       var precioinsumo = $("#precioinsumo").html();
       var cantinsumo = $("#cantinsumo").val();
       var costoinsumo = $("#costo--insumo").html();
@@ -537,7 +537,7 @@
             $("#detainsumo").html(info.detalle);
             $("#insumototal").html(info.totales);
             $("#nominsumo").val("");
-            $("#proveedorinsumo").html("--");
+            $("#provinsumo").html("--");
             $("#precioinsumo").html("0.00");
             $("#cantinsumo").val("0");
             $("#costo--insumo").html("0.00");
@@ -2242,7 +2242,7 @@ function selectInsumo(id) {
             } else {
               var data = $.parseJSON(response);
               $("#nominsumo").val(data.Descripcion_insumo);
-              $("#proveedorinsumo").html(data.Proveedor_insumo);
+              $("#provinsumo").html(data.Proveedor_insumo);
               $("#cantinsumo").val("0");
               $("#precioinsumo").html(data.Valor_uni);
               $("#costo--insumo").html("0");

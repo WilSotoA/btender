@@ -34,7 +34,7 @@ p, label, span, table{
 }
 .text_info{
 	font-family: "Century Gothic";
-	color:rgb(88, 84, 72);
+	color:rgb(17, 17, 16);
 	font-size: 12pt;
 	text-align: center;
 }
@@ -58,7 +58,8 @@ img{
 	height: 120px;
 }
 .info_factura{
-	width: 25%;
+	width: 15%;
+	max-width: 45%;
 }
 .round{
 	border-radius: 10px;
@@ -102,7 +103,7 @@ img{
 	font-size: 12pt;
 }
 .head{
-	color:rgb(88, 84, 72);
+	color:rgb(253, 253, 253);
 	font-family: "Century Gothic";
 	font-size: 12pt;
 }
