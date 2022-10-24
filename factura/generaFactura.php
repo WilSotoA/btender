@@ -113,4 +113,3 @@
 			$dompdf->stream('HojadeCosto_'.$noCosto.'.pdf',array('Attachment'=> false));
 			exit;
 		}
-?>

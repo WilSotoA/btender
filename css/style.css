@@ -1,29 +1,36 @@
-:root{
-    --rojo: rgb(143, 15, 15);
-    --blanco: rgb(255, 255, 255);
-    --titulos: rgb(55, 52, 53);
-    --bordes: rgb(123, 84, 81);
-    --colorletra: rgb(247, 149, 62);
-    --colorletrahead: rgb(88, 84, 72);
+:root {
+	--rojo: rgb(143, 15, 15);
+	--blanco: rgb(255, 255, 255);
+	--titulos: rgb(55, 52, 53);
+	--bordes: rgb(123, 84, 81);
+	--colorletra: rgb(247, 149, 62);
+	--colorletrahead: rgb(88, 84, 72);
 	--fondo: rgb(132, 91, 66);
-    --fontcentury: "Century Gothic";
+	--fontcentury: "Century Gothic";
 
 }
-*{
+
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: "Century Gothic";
 }
-p, label, span, table{
+
+p,
+label,
+span,
+table {
 	font-family: "Gill Sans MT";
 	font-family: "Arial";
 	font-size: 9pt;
 }
-.h2{
+
+.h2 {
 	font-size: 16pt;
 }
-.h3{
+
+.h3 {
 	font-size: 12pt;
 	display: block;
 	background: rgb(185, 125, 97);
@@ -32,83 +39,100 @@ p, label, span, table{
 	padding: 3px;
 	margin-bottom: 5px;
 }
-.text_info{
+
+.text_info {
 	font-family: "Century Gothic";
-	color:rgb(17, 17, 16);
+	color: rgb(17, 17, 16);
 	font-size: 12pt;
 	text-align: center;
 }
-#page_pdf{
+
+#page_pdf {
 	width: 95%;
 	margin: 15px auto 10px auto;
 }
 
-#costos_head, .detalle__factura{
+#costos_head,
+.detalle__factura {
 	width: 100%;
 	margin-bottom: 10px;
 }
-.logo_factura{
+
+.logo_factura {
 	width: 40%;
 	padding-left: 10px;
 	margin: 2px 10px;
 }
-img{
+
+img {
 	padding-left: 10px;
 	width: 300px;
 	height: 120px;
 }
-.info_factura{
+
+.info_factura {
 	width: 15%;
 	max-width: 45%;
 }
-.round{
+
+.round {
 	border-radius: 10px;
-	border: 1px solid rgb(123, 84, 81);;
+	border: 1px solid rgb(123, 84, 81);
+	;
 	overflow: hidden;
 	padding-bottom: 15px;
 }
-.round p{
+
+.round p {
 	padding: 0 15px;
 }
 
-.detalle__factura{
+.detalle__factura {
 	margin: 3rem 0;
 	border-collapse: collapse;
 	width: max-content;
 }
-.head_detalle{
-	color:rgb(88, 84, 72);
+
+.head_detalle {
+	color: rgb(88, 84, 72);
 	font-size: 1.10rem;
 }
-.detalle__factura thead th{
+
+.detalle__factura thead th {
 	border: 1px solid rgb(123, 84, 81);
 	padding: 5px;
 	background-color: rgba(132, 91, 66, 0.705);
 	font-size: 1.05rem;
 }
- .detalle__factura tbody tr:nth-child(even) {
-    background: #f3e8e8;
+
+.detalle__factura tbody tr:nth-child(even) {
+	background: #f3e8e8;
 }
-.items__detalle{
+
+.items__detalle {
 	text-align: center;
-    font-size: 0.9rem;
+	font-size: 0.9rem;
 }
-.item__detalle--totales{
+
+.item__detalle--totales {
 	text-align: right;
-	padding-top: 0.5rem; 
+	padding-top: 0.5rem;
 	padding-right: 2rem;
 }
-.color{
-	color:rgb(253, 253, 253);
+
+.color {
+	color: rgb(253, 253, 253);
 	font-size: 12pt;
 }
-.head{
-	color:rgb(253, 253, 253);
+
+.head {
+	color: rgb(253, 253, 253);
 	font-family: "Century Gothic";
 	font-size: 12pt;
 }
+
 /* total */
-.total__factura{
+.total__factura {
 	margin-top: 2rem;
 	width: 100%;
 	border-collapse: collapse;
@@ -119,7 +143,8 @@ img{
 	-ms-border-radius: 8px;
 	-o-border-radius: 8px;
 }
-.row__theadtotal{
+
+.row__theadtotal {
 	border: 2px solid rgb(122, 120, 120);
 	background-color: rgb(173, 173, 173);
 	border-radius: 8px;
@@ -128,28 +153,33 @@ img{
 	-ms-border-radius: 8px;
 	-o-border-radius: 8px;
 }
-.items__total{
+
+.items__total {
 	text-align: left;
 	font-size: 1rem;
 	padding-left: 1rem;
 }
-.items__total--totales{
+
+.items__total--totales {
 	text-align: right;
 	padding-right: 1rem;
 }
-.items__total--total{
+
+.items__total--total {
 	background-color: beige;
 	font-size: 1.3rem;
 	padding: 0.7rem;
 }
-.bolder{
+
+.bolder {
 	font-weight: bolder;
-	font-family: 'Poppins', sans-serif;;
 }
-.logo{
+
+.logo {
 	width: 250px;
 	height: 250px;
 }
-.title{
+
+.title {
 	text-align: center;
 }
