@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Hoja de Costos</title>
     <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/BTENDER/css/style.css">
+	<link rel="shortcut icon" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/BTENDER/src/favicon.png" type="image/x-icon">
 </head>
 <body>
 <div class="pdf" id="page_pdf">
@@ -22,13 +23,12 @@
 	?>
 	<table id="costos_head">
 		<tr>
-			<!-- <td class="logo_factura">
+			<td class="logo_factura">
 				<div>
-					<img src="http://<?php // echo $_SERVER['HTTP_HOST'];?>/Panaderia/images/icon.jpeg" width="200px" height="200px">
+					<img src="http://<?php echo $_SERVER['HTTP_HOST'];?>/BTENDER/src/logo.jpg" alt="Icono">
 				</div>
-			</td> -->
-
-			<td class="costos_info">
+			</td>
+			<td class="info_factura">
 				<div class="round">
 					<span class="h3">Hoja de Costos</span>
 					<p class="text_info">No. Hoja Costos: <span class="bolder"><?php echo $arreglocostos['Id_costos']; ?></span></p>
@@ -49,10 +49,10 @@
 			</tr>
 			<thead>
 				<tr class="row__head">
-					<th class="items__detalle">Nombre</th>
-					<th class="items__detalle">Precio</th>
-					<th class="items__detalle">Cant.</th>
-					<th class="items__detalle">Costos</th>
+					<th class="items__detalle head">Nombre</th>
+					<th class="items__detalle color">Precio</th>
+					<th class="items__detalle color">Cant.</th>
+					<th class="items__detalle color">Costos</th>
 				</tr>
 			</thead>
 			<tbody id="detalle_productos">
@@ -83,16 +83,16 @@
 	?>
 	<table class="detalle__factura" id="detalle_cuero">
 			<tr class="head_detalle">
-			<th class="items_detalle" colspan="5">CUERO</th>
+			<th class="items_detalle" colspan="6">CUERO</th>
 			</tr>
 			<thead>
 				<tr class="row__head">
-					<th class="items__detalle">Nombre</th>
-					<th class="items__detalle">Precio</th>
-					<th class="items__detalle">Troquel</th>
-					<th class="items__detalle">DCM</th>
-					<th class="items__detalle">Cantidad</th>
-					<th class="items__detalle">Costos</th>
+					<th class="items__detalle head">Nombre</th>
+					<th class="items__detalle color">Precio</th>
+					<th class="items__detalle color">Troquel</th>
+					<th class="items__detalle color">DCM</th>
+					<th class="items__detalle color">Cantidad</th>
+					<th class="items__detalle color">Costos</th>
 				</tr>
 			</thead>
 			<tbody id="detalle_productos">
@@ -101,7 +101,7 @@
 					while ($arreglodeta = mysqli_fetch_assoc($querycuero)){
 						$totalcuero = $totalcuero+$arreglodeta['Costo'];
 			 ?>
-				<tr class="row__detalle">
+				<tr class="row__detalle prueba">
 					<td class="items__detalle"><?php  echo $arreglodeta['CUERO']; ?></td>
 					<td class="items__detalle"><?php  echo $arreglodeta['Precio']; ?></td>
 					<td class="items__detalle"><?php  echo $arreglodeta['TROQUEL']; ?></td>
@@ -115,7 +115,7 @@
 			</tbody>
 			<tfoot>
 				<tr class="row__total">
-                    <td class="items__detalle item__detalle--totales" colspan="5">TOTAL CUERO: <?php echo $totalcuero ?></td>
+                    <td class="items__detalle item__detalle--totales" colspan="6">TOTAL CUERO: <?php echo $totalcuero ?></td>
                 </tr>
 			</tfoot>
 	</table>
@@ -129,7 +129,7 @@
 			</tr>
 			<thead>
 				<tr class="row__detalle">
-					<th class="items__detalle">Descripción</th>
+					<th class="items__detalle head">Descripción</th>
 					<th class="items__detalle">Proveedor</th>
 					<th class="items__detalle">Precio</th>
 					<th class="items__detalle">Cantidad</th>
@@ -169,12 +169,12 @@
 			</tr>
 			<thead>
 				<tr class="row__detalle">
-					<th class="items__detalle">Codigo</th>
-					<th class="items__detalle">Ancho</th>
-					<th class="items__detalle">Largo</th>
-					<th class="items__detalle">Precio</th>
-					<th class="items__detalle">Cantidad</th>
-					<th class="items__detalle">Costos</th>
+					<th class="items__detalle head">Codigo</th>
+					<th class="items__detalle color">Ancho</th>
+					<th class="items__detalle color">Largo</th>
+					<th class="items__detalle color">Precio</th>
+					<th class="items__detalle color">Cantidad</th>
+					<th class="items__detalle color">Costos</th>
 				</tr>
 			</thead>
 			<tbody id="detalle_productos">
@@ -211,11 +211,11 @@
 			</tr>
 			<thead>
 				<tr class="row__thead">
-					<th class="items__detalle">Proveedor</th>
-					<th class="items__detalle">Metro</th>
-					<th class="items__detalle">Precio</th>
-					<th class="items__detalle">Cantidad</th>
-					<th class="items__detalle">Costos</th>
+					<th class="items__detalle head">Proveedor</th>
+					<th class="items__detalle color">Metro</th>
+					<th class="items__detalle color">Precio</th>
+					<th class="items__detalle color">Cantidad</th>
+					<th class="items__detalle color">Costos</th>
 				</tr>
 			</thead>
 			<tbody id="detalle_productos">
@@ -251,10 +251,10 @@
 			</tr>
 			<thead>
 				<tr class="row__detalle">
-					<th class="items__detalle">Descripción</th>
-					<th class="items__detalle">Precio</th>
-					<th class="items__detalle">Cantidad</th>
-					<th class="items__detalle">Costos</th>
+					<th class="items__detalle head">Descripción</th>
+					<th class="items__detalle color">Precio</th>
+					<th class="items__detalle color">Cantidad</th>
+					<th class="items__detalle color">Costos</th>
 				</tr>
 			</thead>
 			<tbody id="detalle_productos">
@@ -289,10 +289,10 @@
 			</tr>
 			<thead>
 				<tr class="row__detalle">
-					<th class="items__detalle">Descripción</th>
-					<th class="items__detalle">Precio</th>
-					<th class="items__detalle">Cantidad</th>
-					<th class="items__detalle">Costos</th>
+					<th class="items__detalle head">Descripción</th>
+					<th class="items__detalle color">Precio</th>
+					<th class="items__detalle color">Cantidad</th>
+					<th class="items__detalle color">Costos</th>
 				</tr>
 			</thead>
 			<tbody id="detalle_productos">
@@ -327,10 +327,10 @@
 			</tr>
 			<thead>
 				<tr class="row__detalle">
-					<th class="items__detalle">Descripción</th>
-					<th class="items__detalle">Valor Pieza</th>
-					<th class="items__detalle">Cantidad</th>
-					<th class="items__detalle">Costos</th>
+					<th class="items__detalle head">Descripción</th>
+					<th class="items__detalle color">Valor Pieza</th>
+					<th class="items__detalle color">Cantidad</th>
+					<th class="items__detalle color">Costos</th>
 				</tr>
 			</thead>
 			<tbody id="detalle_productos">
@@ -365,10 +365,10 @@
 			</tr>
 			<thead>
 				<tr class="row__detalle">
-					<th class="items__detalle">Pieza</th>
-					<th class="items__detalle">Valor</th>
-					<th class="items__detalle">Cantidad</th>
-					<th class="items__detalle">Costos</th>
+					<th class="items__detalle head">Pieza</th>
+					<th class="items__detalle color">Valor</th>
+					<th class="items__detalle color">Cantidad</th>
+					<th class="items__detalle color">Costos</th>
 				</tr>
 			</thead>
 			<tbody id="detalle_productos">
@@ -403,7 +403,7 @@
 			</tr>
 			<thead>
 				<tr class="row__detalle">
-					<th class="items__detalle">Descripción</th>
+					<th class="items__detalle head">Descripción</th>
 					<th class="items__detalle">Nombre</th>
 					<th class="items__detalle">Precio Uni.</th>
 					<th class="items__detalle">Cantidad</th>
@@ -490,28 +490,28 @@
 		$sumaiva = round($sumaimp+$calciva, 2);
 		$totalimpuestos = $totalbruto+$calcrete+$calcica+$calciva;
 		//total costos
-		$Total= $totalimpuestos;
+		$Total= $totalbruto;
 		//verificar que los campos no esten vaciós		
 		$queryverify = mysqli_query($conex, "SELECT * FROM costos WHERE Id_costos = '$noCosto' AND Total_bruto = 0 OR Subtotal = 0 OR Total_impuesto = 0 OR Total = 0");
 		$resultverify = mysqli_num_rows($queryverify); 
 		if ($resultverify > 0){
-		//insertar datos totales
-		$queryinsert = mysqli_query($conex, "UPDATE costos SET Total_bruto = '$totalbruto',Subtotal='$subtotal',Total_impuesto= '$totalimpuestos',Total='$Total' WHERE ID_COSTOS = '$noCosto'");
-			if ($queryinsert == true) {
+			//insertar datos totales
+			$queryinsert = mysqli_query($conex, "UPDATE costos SET Total_bruto = '$totalbruto',Subtotal='$subtotal',Total_impuesto= '$totalimpuestos',Total='$Total' WHERE ID_COSTOS = '$noCosto'");
+				if ($queryinsert == true) {
+					$queryselect = mysqli_query($conex, "SELECT Total_bruto,Subtotal,Total_impuesto,Total FROM costos WHERE ID_COSTOS = '$noCosto'");
+					$arrayselect = mysqli_fetch_assoc($queryselect);
+					$totalBruto = $arrayselect['Total_bruto'];
+				$subTotal = $arrayselect['Subtotal'];
+				$Totalimpuesto = $arrayselect['Total_impuesto'];
+				$TotalCosto = $arrayselect['Total'];
+				}
+		} else {
 				$queryselect = mysqli_query($conex, "SELECT Total_bruto,Subtotal,Total_impuesto,Total FROM costos WHERE ID_COSTOS = '$noCosto'");
 				$arrayselect = mysqli_fetch_assoc($queryselect);
 				$totalBruto = $arrayselect['Total_bruto'];
-			$subTotal = $arrayselect['Subtotal'];
-			$Totalimpuesto = $arrayselect['Total_impuesto'];
-			$TotalCosto = $arrayselect['Total'];
-			}
-		} else {
-			$queryselect = mysqli_query($conex, "SELECT Total_bruto,Subtotal,Total_impuesto,Total FROM costos WHERE ID_COSTOS = '$noCosto'");
-			$arrayselect = mysqli_fetch_assoc($queryselect);
-			$totalBruto = $arrayselect['Total_bruto'];
-			$subTotal = $arrayselect['Subtotal'];
-			$Totalimpuesto = $arrayselect['Total_impuesto'];
-			$TotalCosto = $arrayselect['Total'];
+				$subTotal = $arrayselect['Subtotal'];
+				$Totalimpuesto = $arrayselect['Total_impuesto'];
+				$TotalCosto = $arrayselect['Total'];
 		}
 	?>
 	<table class="total__factura">

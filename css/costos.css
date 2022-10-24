@@ -1,14 +1,14 @@
 :root{
     --rojo: rgb(143, 15, 15);
-    --marron: rgb(204, 140, 21);
-    --verde: rgb(38, 112, 38);
     --blanco: rgb(255, 255, 255);
     --titulos: rgb(55, 52, 53);
     --bordes: rgb(123, 84, 81);
-    --headtabla: rgb(255, 255, 255);
+    --headtabla: rgb(243, 243, 243);
     --colorletra: rgb(247, 149, 62);
+	--fondo: rgba(132, 91, 66, 0.767);
+    --colorletrahead: rgb(88, 84, 72);
     --fontcentury: "Century Gothic";
-    --fontaarial: "Arial";
+
 }
 *{
     margin: 0;
@@ -16,7 +16,7 @@
     box-sizing: border-box;
     list-style: none;
     text-decoration: none;
-    font-family: var(--fontaarial);
+    font-family: var(--fontcentury)
 }
 body{
     overflow-x: hidden;
@@ -36,7 +36,22 @@ box-shadow: 2px 2px 2px 3px var(--bordes);
     width: 100%;
     color: var(--titulos);
     font-size: 20pt;
-    font-family: var(--fontaarial);
+}
+.containerhead{
+    width: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.title__head{
+    width: max-content;
+}
+.icon{
+    width: 130px;
+    height: 80px;
+    min-width: 50px;
+    min-height: 30px;
 }
 .factura{
     margin: 0 auto;
@@ -70,7 +85,6 @@ box-shadow: 2px 2px 2px 3px var(--bordes);
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
-    font-family: var(--fontcentury);
     font-size: 11pt;
     border: 1px solid var(--bordes);
     transition: border, background-color 1s;
@@ -100,7 +114,6 @@ box-shadow: 2px 2px 2px 3px var(--bordes);
     appearance: none;
     width: 100%;
     background-color: transparent;
-    font-family: var(--fontcentury);
     font-size: 11pt;
     outline: 0;
     border: 0!important;
@@ -128,6 +141,7 @@ box-shadow: 2px 2px 2px 3px var(--bordes);
     flex: 1;
     padding: 0 .5em;
     cursor: pointer;
+    color: white;
 }
 .select__factura::after{
     content: '▼';
@@ -142,7 +156,6 @@ box-shadow: 2px 2px 2px 3px var(--bordes);
     -ms-transition: .25s all ease;
     -o-transition: .25s all ease;
 }
-
 .select__factura:hover::after{
     color: burlywood;
     transform: rotate(180deg);
@@ -170,14 +183,28 @@ box-shadow: 2px 2px 2px 3px var(--bordes);
     font-size: 1.2rem;
 }
 .btn__factura--facturar{
-    background: rgb(121,52,9);
-background: linear-gradient(90deg, rgba(121,52,9,1) 35%, rgb(238, 187, 145) 100%);
+    background: rgb(88,84,72);
+    background: linear-gradient(22deg, rgba(88,84,72,1) 14%, rgba(123,84,81,1) 50%);
     color: var(--blanco);
     cursor: pointer;
+}
+.btn__factura--facturar:hover{
+    background: rgb(123,84,81);
+    background: linear-gradient(22deg, rgba(123,84,81,1) 11%, rgba(88,84,72,1) 68%);
 }
 .btn__factura--cancelar{
     background-color: var(--rojo);
     color: var(--blanco);
+}
+.btn__factura--cancelar:hover{
+    background-color: var(--blanco);
+    color: var(--rojo);
+    border: 1px solid var(--rojo);
+    transition: all 0.5s ease-in;
+    -webkit-transition: all 0.5s ease-in;
+    -moz-transition: all 0.5s ease-in;
+    -ms-transition: all 0.5s ease-in;
+    -o-transition: all 0.5s ease-in;
 }
  /* modal */
 .modal{
@@ -213,7 +240,7 @@ background: linear-gradient(90deg, rgba(121,52,9,1) 35%, rgb(238, 187, 145) 100%
 .modal__container{
     width: 80%;
     min-height: 400px;
-    background-color: #fcd1a9;
+    background-color: whitesmoke;
     margin: auto;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -300,7 +327,26 @@ background: linear-gradient(90deg, rgba(121,52,9,1) 35%, rgb(238, 187, 145) 100%
     -ms-transition: font-weight, color 1s;
     -o-transition: font-weight, color 1s;
 }
-
+/* procesos */
+.title__procesos{
+    width: max-content;
+}
+.list__procesos{
+    padding: 0.5rem;
+    outline: 0;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-color: var(--bordes);
+    font-family: var(--fontsans);
+}
+option {
+   font-family: var(--fontcentury);
+   color: var(--colorletrahead);
+   background-color: aliceblue;
+}
 /* tablas */
 .tb{
     display: flex;
@@ -318,11 +364,14 @@ background-color: white;
 th{
     min-width: 20%;
     width: 200px;
+    color: var(--headtabla);
+    background-color: var(--fondo);
 }
 td{
     text-align: center;
     min-width: 20%;
     width: 200px;
+    font-family: var(--fontcentury);
 }
 
 .item__items--search{
@@ -342,7 +391,21 @@ tfoot{
     margin: 0 auto;
 }
 .ipt__item{
-    font-family: "poppins";
+    font-family: var(--fontsans);
+    border-radius: 8px;
+    border: 1px solid var(--bordes);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    padding: 3px;
+}
+.ipt__item:focus{
+    outline: none;
+    border: 2px solid var(--bordes);
+}
+.ipt__item:disabled{
+    background-color: #e7e7e7;
 }
 .item__items--search .ipt__item{
     margin-left: 5px;

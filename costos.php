@@ -14,7 +14,7 @@ include "include/conexion.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hoja de Costos B●TENDER</title>
     <link rel="stylesheet" href="css/costos.css">
-    <link rel="shortcut icon" href="src/favicon.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="src/favicon.png" type="image/x-icon">
     
 </head>
 
@@ -228,7 +228,10 @@ include "include/conexion.php";
         </div>
     </section>
     <!-- costos-->
-    <h1 class="title">Hoja de Costos</h1>
+    <div class="containerhead">
+    <h1 class="title title__head">Hoja de Costos</h1>
+    <img class="icon" src="src/iconop.png" alt="Icono">
+    </div>
     <form class="form" id="costos" method="post">
         <section class="factura">
             <div class="item__factura">
@@ -324,10 +327,10 @@ include "include/conexion.php";
                     </tr>
                     <tr class="tcabeza">
                         <th>Nombre</th>
-                        <th>Precio</th>
-                        <th>Consumo</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Precio</th>
+                        <th class="colorletra">Consumo</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                     <tr class="item">
                         <td class="item__items item__items--search"><input type="text" class="ipt__item" name="nomtela" id="nomtela"><a href="#" id="buscar--telas" class="buscar buscar--telas"><img src="src/svg/search.svg" alt="Buscar" class="svg svg--search"></a></td>
@@ -338,10 +341,10 @@ include "include/conexion.php";
                     </tr>
                     <tr class="tcabeza">
                         <th>Nombre</th>
-                        <th>Precio</th>
-                        <th>Consumo</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Precio</th>
+                        <th class="colorletra">Consumo</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                 </thead>
                 <tbody id="detatela" class="tbody">
@@ -355,16 +358,16 @@ include "include/conexion.php";
             <table class="tb tbcuero">
                 <thead class="thead">
                     <tr class="tr__title">
-                        <th colspan="6">CUEROS</th>
+                        <th colspan="7">CUEROS</th>
                     </tr>
                     <tr class="tcabeza">
                         <th>Nombre</th>
-                        <th>Precio</th>
+                        <th class="colorletra">Precio</th>
                         <th>Troquel</th>
-                        <th>Consumo</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Consumo</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                     <tr class="item">
                         <td class="item__items item__items--search"><input type="text" class="ipt__item" name="nomcuero" id="nomcuero"><a href="#" id="buscar--cueros" class="buscar buscar--cueros"><img src="src/svg/search.svg" alt="Buscar" class="svg svg--search"></a></td>
@@ -377,12 +380,12 @@ include "include/conexion.php";
                     </tr>
                     <tr class="tcabeza">
                         <th>Nombre</th>
-                        <th>Precio</th>
+                        <th  class="colorletra">Precio</th>
                         <th>Troquel</th>
-                        <th>Consumo</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Consumo</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                 </thead>
                 <tbody id="detacuero" class="tbody">
@@ -401,11 +404,11 @@ include "include/conexion.php";
                     </tr>
                     <tr class="tcabeza">
                         <th>Descripción</th>
-                        <th>Proveedor</th>
-                        <th>Valor Uni.</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Proveedor</th>
+                        <th class="colorletra">Valor Uni.</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                     <tr class="item">
                         <td class="item__items item__items--search"><input type="text" class="ipt__item" name="nominsumo" id="nominsumo"><a href="#" id="buscar--insumo" class="buscar buscar--insumo"><img src="src/svg/search.svg" alt="Buscar" class="svg svg--search"></a></td>
@@ -417,11 +420,11 @@ include "include/conexion.php";
                     </tr>
                     <tr class="tcabeza">
                         <th>Descripción</th>
-                        <th>Proveedor</th>
-                        <th>Valor Uni.</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Proveedor</th>
+                        <th class="colorletra">Valor Uni.</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                 </thead>
                 <tbody id="detainsumo" class="tbody">
@@ -435,7 +438,7 @@ include "include/conexion.php";
 
             <!-- procesos -->
             <div class="procesos">
-                <h3 class="procesos__title">Selecccione el Proceso</h3>
+                <h3 class="title title__procesos">Seleccione el Proceso</h3>
                 <select name="procesos" id="procesos" class="list__procesos">
                     <option value="0" class="option__procesos">Seleccione</option>
                     <?php
@@ -458,11 +461,11 @@ include "include/conexion.php";
                     </tr>
                     <tr class="tcabeza">
                         <th>Proveedor</th>
-                        <th>Precio/Metro</th>
-                        <th>Valor Uni.</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Precio/Metro</th>
+                        <th class="colorletra">Valor Uni.</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                     <tr class="item">
                         <td class="item__items item__items--search"><input type="text" class="ipt__item" name="provsublimacion" id="provsublimacion"><a href="#" id="buscar--sublimacion" class="buscar buscar--sublimacion"><img src="src/svg/search.svg" alt="Buscar" class="svg svg--search"></a></td>
@@ -480,12 +483,12 @@ include "include/conexion.php";
                         <th colspan="6">Sublimación</th>
                     </tr>
                     <tr class="tcabeza">
-                        <th>Descripción</th>
                         <th>Proveedor</th>
-                        <th>Valor Uni.</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Precio/Metro</th>
+                        <th class="colorletra">Valor Uni.</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                 </thead>
                 <tbody id="detasublimacion" class="tbody">
@@ -505,12 +508,12 @@ include "include/conexion.php";
                     </tr>
                     <tr class="tcabeza">
                         <th>Codigo</th>
-                        <th>Medida Ancho</th>
-                        <th>Medida Largo</th>
-                        <th>Valor Uni.</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Medida Ancho</th>
+                        <th class="colorletra">Medida Largo</th>
+                        <th class="colorletra">Valor Uni.</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                     <tr class="item">
                         <td class="item__items item__items--search"><input type="text" class="ipt__item" name="codigocortemanual" id="codigocortemanual"><a href="#" id="buscar--cortemanual" class="buscar buscar--cortemanual"><img src="src/svg/search.svg" alt="Buscar" class="svg svg--search"></a></td>
@@ -530,12 +533,12 @@ include "include/conexion.php";
                     </tr>
                     <tr class="tcabeza">
                         <th>Codigo</th>
-                        <th>Medida Ancho</th>
-                        <th>Medida Largo</th>
-                        <th>Valor Uni.</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Medida Ancho</th>
+                        <th class="colorletra">Medida Largo</th>
+                        <th class="colorletra">Valor Uni.</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                 </thead>
                 <tbody id="detacortemanual" class="tbody">
@@ -555,10 +558,10 @@ include "include/conexion.php";
                     </tr>
                     <tr class="tcabeza">
                         <th>Descripción</th>
-                        <th>Valor</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Valor</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                     <tr class="item">
                         <td class="item__items item__items--search"><input type="text" class="ipt__item" name="descripcionconfeccion" id="descripcionconfeccion"><a href="#" id="buscar--confeccion" class="buscar buscar--confeccion"><img src="src/svg/search.svg" alt="Buscar" class="svg svg--search"></a></td>
@@ -576,10 +579,10 @@ include "include/conexion.php";
                     </tr>
                     <tr class="tcabeza">
                         <th>Descripción</th>
-                        <th>Valor</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Valor</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                 </thead>
                 <tbody id="detaconfeccion" class="tbody">
@@ -599,10 +602,10 @@ include "include/conexion.php";
                     </tr>
                     <tr class="tcabeza">
                         <th>Descripción</th>
-                        <th>Valor</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Valor</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                     <tr class="item">
                         <td class="item__items item__items--search"><input type="text" class="ipt__item" name="descripcionterminacion" id="descripcionterminacion"><a href="#" id="buscar--terminacion" class="buscar buscar--terminacion"><img src="src/svg/search.svg" alt="Buscar" class="svg svg--search"></a></td>
@@ -620,10 +623,10 @@ include "include/conexion.php";
                     </tr>
                     <tr class="tcabeza">
                         <th>Descripción</th>
-                        <th>Valor</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Valor</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                 </thead>
                 <tbody id="detaterminacion" class="tbody">
@@ -643,10 +646,10 @@ include "include/conexion.php";
                     </tr>
                     <tr class="tcabeza">
                         <th>Descripción</th>
-                        <th>Valor</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Valor</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                     <tr class="item">
                         <td class="item__items item__items--search"><input type="text" class="ipt__item" name="descripcionentretelado" id="descripcionentretelado"><a href="#" id="buscar--entretelado" class="buscar buscar--entretelado"><img src="src/svg/search.svg" alt="Buscar" class="svg svg--search"></a></td>
@@ -664,10 +667,10 @@ include "include/conexion.php";
                     </tr>
                     <tr class="tcabeza">
                         <th>Descripción</th>
-                        <th>Valor</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Valor</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                 </thead>
                 <tbody id="detaentretelado" class="tbody">
@@ -687,10 +690,10 @@ include "include/conexion.php";
                     </tr>
                     <tr class="tcabeza">
                         <th>Pieza</th>
-                        <th>Valor</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Valor</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                     <tr class="item">
                         <td class="item__items item__items--search"><input type="text" class="ipt__item" name="descripcioncortedigital" id="descripcioncortedigital"><a href="#" id="buscar--cortedigital" class="buscar buscar--cortedigital"><img src="src/svg/search.svg" alt="Buscar" class="svg svg--search"></a></td>
@@ -709,10 +712,10 @@ include "include/conexion.php";
                     </tr>
                     <tr class="tcabeza">
                         <th>Pieza</th>
-                        <th>Valor</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Valor</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                 </thead>
                 <tbody id="detacortedigital" class="tbody">
@@ -732,11 +735,11 @@ include "include/conexion.php";
                     </tr>
                     <tr class="tcabeza">
                         <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Valor</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Descripción</th>
+                        <th class="colorletra">Valor</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                     <tr class="item">
                         <td class="item__items item__items--search"><input type="text" class="ipt__item" name="nombrelaser" id="nombrelaser"><a href="#" id="buscar--laser" class="buscar buscar--laser"><img src="src/svg/search.svg" alt="Buscar" class="svg svg--search"></a></td>
@@ -756,11 +759,11 @@ include "include/conexion.php";
                     </tr>
                     <tr class="tcabeza">
                         <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Valor</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Descripción</th>
+                        <th class="colorletra">Valor</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                 </thead>
                 <tbody id="detalaser" class="tbody">
@@ -771,6 +774,7 @@ include "include/conexion.php";
 
                 </tfoot>
             </table>
+
             <!-- Bordado -->
             <table class="tb tbprocesos tbbordado">
                 <thead class="thead">
@@ -779,11 +783,11 @@ include "include/conexion.php";
                     </tr>
                     <tr class="tcabeza">
                         <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Valor</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Descripción</th>
+                        <th class="colorletra">Valor</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                     <tr class="item">
                         <td class="item__items item__items--search"><input type="text" class="ipt__item" name="nombrebordado" id="nombrebordado"><a href="#" id="buscar--bordado" class="buscar buscar--bordado"><img src="src/svg/search.svg" alt="Buscar" class="svg svg--search"></a></td>
@@ -802,12 +806,12 @@ include "include/conexion.php";
                         <th colspan="6">Bordado</th>
                     </tr>
                     <tr class="tcabeza">
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Valor</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Acción</th>
+                        <th class="colorletra">Nombre</th>
+                        <th class="colorletra">Descripción</th>
+                        <th class="colorletra">Valor</th>
+                        <th class="colorletra">Cantidad</th>
+                        <th class="colorletra">Costo</th>
+                        <th class="colorletra">Acción</th>
                     </tr>
                 </thead>
                 <tbody id="detabordado" class="tbody">

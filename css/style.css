@@ -1,13 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;1,700&family=Roboto:wght@300;400;700&display=swap');
+:root{
+    --rojo: rgb(143, 15, 15);
+    --blanco: rgb(255, 255, 255);
+    --titulos: rgb(55, 52, 53);
+    --bordes: rgb(123, 84, 81);
+    --colorletra: rgb(247, 149, 62);
+    --colorletrahead: rgb(88, 84, 72);
+	--fondo: rgb(132, 91, 66);
+    --fontcentury: "Century Gothic";
 
+}
 *{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: "Century Gothic";
 }
 p, label, span, table{
-	font-family: 'BrixSansRegular';
-	font-family: 'Poppins', sans-serif;
+	font-family: "Gill Sans MT";
+	font-family: "Arial";
 	font-size: 9pt;
 }
 .h2{
@@ -16,30 +26,43 @@ p, label, span, table{
 .h3{
 	font-size: 12pt;
 	display: block;
-	background: #0a4661;
-	color: #FFF;
+	background: rgb(185, 125, 97);
+	color: white;
 	text-align: center;
 	padding: 3px;
 	margin-bottom: 5px;
+}
+.text_info{
+	font-family: "Century Gothic";
+	color:rgb(88, 84, 72);
+	font-size: 12pt;
+	text-align: center;
 }
 #page_pdf{
 	width: 95%;
 	margin: 15px auto 10px auto;
 }
 
-#factura_head, .detalle__factura{
+#costos_head, .detalle__factura{
 	width: 100%;
 	margin-bottom: 10px;
 }
 .logo_factura{
-	width: 20%;
+	width: 40%;
+	padding-left: 10px;
+	margin: 2px 10px;
+}
+img{
+	padding-left: 10px;
+	width: 300px;
+	height: 120px;
 }
 .info_factura{
 	width: 25%;
 }
 .round{
 	border-radius: 10px;
-	border: 1px solid #0a4661;
+	border: 1px solid rgb(123, 84, 81);;
 	overflow: hidden;
 	padding-bottom: 15px;
 }
@@ -52,19 +75,36 @@ p, label, span, table{
 	border-collapse: collapse;
 	width: max-content;
 }
+.head_detalle{
+	color:rgb(88, 84, 72);
+	font-size: 1.10rem;
+}
 .detalle__factura thead th{
-	background: #058167;
-	color: #FFF;
+	border: 1px solid rgb(123, 84, 81);
 	padding: 5px;
+	background-color: rgba(132, 91, 66, 0.705);
+	font-size: 1.05rem;
 }
-tbody .row__detalle:nth-child(even) {
-    background: #f8cdcd;
-}
-tbody .row__detalle:nth-child(odd) {
+ .detalle__factura tbody tr:nth-child(even) {
     background: #f3e8e8;
 }
 .items__detalle{
 	text-align: center;
+    font-size: 0.9rem;
+}
+.item__detalle--totales{
+	text-align: right;
+	padding-top: 0.5rem; 
+	padding-right: 2rem;
+}
+.color{
+	color:rgb(253, 253, 253);
+	font-size: 12pt;
+}
+.head{
+	color:rgb(88, 84, 72);
+	font-family: "Century Gothic";
+	font-size: 12pt;
 }
 /* total */
 .total__factura{
