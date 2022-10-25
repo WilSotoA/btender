@@ -1,3 +1,7 @@
+@font-face {
+	font-family: 'Century Ghotic';
+	src: url(../src/GOTHIC.TTF) format(truetype);
+}
 :root {
     --rojo: rgb(143, 15, 15);
     --blanco: rgb(255, 255, 255);
@@ -395,7 +399,7 @@ label {
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
     border-color: var(--bordes);
-    font-family: var(--fontsans);
+    font-family: var(--fontcentury);
 }
 
 option {
@@ -453,7 +457,7 @@ tfoot {
 }
 
 .ipt__item {
-    font-family: var(--fontsans);
+    font-family: var(--fontcentury);
     border-radius: 8px;
     border: 1px solid var(--bordes);
     -webkit-border-radius: 8px;

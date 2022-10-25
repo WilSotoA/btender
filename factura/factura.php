@@ -51,10 +51,10 @@
 				</tr>
 				<thead>
 					<tr class="row__head">
-						<th class="items__detalle head">Nombre</th>
-						<th class="items__detalle color">Precio</th>
-						<th class="items__detalle color">Cant.</th>
-						<th class="items__detalle color">Costos</th>
+						<th class="items__detalle">Nombre</th>
+						<th class="items__detalle">Precio</th>
+						<th class="items__detalle">Cant.</th>
+						<th class="items__detalle">Costos</th>
 					</tr>
 				</thead>
 				<tbody id="detalle_productos">
@@ -65,9 +65,9 @@
 					?>
 						<tr>
 							<td class="items__detalle"><?php echo $arreglodeta['TELA']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Precio']; ?></td>
+							<td class="items__detalle">$ <?php echo number_format($arreglodeta['Precio']); ?></td>
 							<td class="items__detalle"><?php echo $arreglodeta['Cantidad']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Costo']; ?></td>
+							<td class="items__detalle">$ <?php echo number_format($arreglodeta['Costo']); ?></td>
 						</tr>
 					<?php
 					}
@@ -75,7 +75,8 @@
 				</tbody>
 				<tfoot>
 					<tr class="row__total">
-						<td class="items__detalle item__detalle--totales" colspan="6">TOTAL TELA: <?php echo $totaltela ?></td>
+						<td class="items__detalle item__detalle--totales" colspan="3">TOTAL TELA:</td>
+						<td class="items__detalle item__detalle--totales center">$ <?php echo number_format($totaltela) ?></td>
 					</tr>
 				</tfoot>
 			</table>
@@ -89,12 +90,12 @@
 				</tr>
 				<thead>
 					<tr class="row__head">
-						<th class="items__detalle head">Nombre</th>
-						<th class="items__detalle color">Precio</th>
-						<th class="items__detalle color">Troquel</th>
-						<th class="items__detalle color">DCM</th>
-						<th class="items__detalle color">Cantidad</th>
-						<th class="items__detalle color">Costos</th>
+						<th class="items__detalle">Nombre</th>
+						<th class="items__detalle">Precio</th>
+						<th class="items__detalle">Troquel</th>
+						<th class="items__detalle">DCM</th>
+						<th class="items__detalle">Cantidad</th>
+						<th class="items__detalle">Costos</th>
 					</tr>
 				</thead>
 				<tbody id="detalle_productos">
@@ -105,11 +106,11 @@
 					?>
 						<tr class="row__detalle prueba">
 							<td class="items__detalle"><?php echo $arreglodeta['CUERO']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Precio']; ?></td>
+							<td class="items__detalle">$ <?php echo number_format($arreglodeta['Precio']); ?></td>
 							<td class="items__detalle"><?php echo $arreglodeta['TROQUEL']; ?></td>
 							<td class="items__detalle"><?php echo $arreglodeta['DCM']; ?></td>
 							<td class="items__detalle"><?php echo $arreglodeta['Cantidad']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Costo']; ?></td>
+							<td class="items__detalle">$ <?php echo number_format($arreglodeta['Costo']); ?></td>
 						</tr>
 					<?php
 					}
@@ -117,7 +118,8 @@
 				</tbody>
 				<tfoot>
 					<tr class="row__total">
-						<td class="items__detalle item__detalle--totales" colspan="6">TOTAL CUERO: <?php echo $totalcuero ?></td>
+						<td class="items__detalle item__detalle--totales" colspan="5">TOTAL CUERO:</td>
+						<td class="items__detalle item__detalle--totales center">$ <?php echo number_format($totalcuero) ?></td>
 					</tr>
 				</tfoot>
 			</table>
@@ -131,15 +133,14 @@
 				</tr>
 				<thead>
 					<tr class="row__detalle">
-						<th class="items__detalle head">Descripción</th>
-						<th class="items__detalle color">Proveedor</th>
-						<th class="items__detalle color">Precio</th>
-						<th class="items__detalle color">Cantidad</th>
-						<th class="items__detalle color">Costos</th>
+						<th class="items__detalle">Descripción</th>
+						<th class="items__detalle">Proveedor</th>
+						<th class="items__detalle">Precio</th>
+						<th class="items__detalle">Cantidad</th>
+						<th class="items__detalle">Costos</th>
 					</tr>
 				</thead>
 				<tbody id="detalle_productos">
-
 					<?php
 					while ($arreglodeta = mysqli_fetch_assoc($queryinsumo)) {
 						$totalinsumo = $totalinsumo + $arreglodeta['Costo'];
@@ -147,17 +148,20 @@
 						<tr>
 							<td class="items__detalle"><?php echo $arreglodeta['INSUMO']; ?></td>
 							<td class="items__detalle"><?php echo $arreglodeta['Proveedor']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Precio']; ?></td>
+							<td class="items__detalle">$ <?php echo number_format($arreglodeta['Precio']); ?></td>
 							<td class="items__detalle"><?php echo $arreglodeta['Cantidad']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Costo']; ?></td>
+							<td class="items__detalle">$ <?php echo number_format($arreglodeta['Costo']); ?></td>
 						</tr>
+
 					<?php
 					}
 					?>
 				</tbody>
 				<tfoot>
 					<tr class="row__detalle">
-						<td class="items__detalle item__detalle--totales" colspan="6">TOTAL INSUMO: <?php echo $totalinsumo ?></td>
+						<td class="items__detalle item__detalle--totales" colspan="4">TOTAL INSUMO:</td>					
+						<td class="items__detalle item__detalle--totales center">$ <?php echo number_format($totalinsumo) ?></td>
+
 					</tr>
 				</tfoot>
 			</table>
@@ -171,12 +175,12 @@
 				</tr>
 				<thead>
 					<tr class="row__detalle">
-						<th class="items__detalle head">Codigo</th>
-						<th class="items__detalle color">Ancho</th>
-						<th class="items__detalle color">Largo</th>
-						<th class="items__detalle color">Precio</th>
-						<th class="items__detalle color">Cantidad</th>
-						<th class="items__detalle color">Costos</th>
+						<th class="items__detalle">Codigo</th>
+						<th class="items__detalle">Ancho</th>
+						<th class="items__detalle">Largo</th>
+						<th class="items__detalle">Precio</th>
+						<th class="items__detalle">Cantidad</th>
+						<th class="items__detalle">Costos</th>
 					</tr>
 				</thead>
 				<tbody id="detalle_productos">
@@ -189,9 +193,9 @@
 							<td class="items__detalle"><?php echo $arreglodeta['CORTEMANUAL']; ?></td>
 							<td class="items__detalle"><?php echo $arreglodeta['Ancho']; ?></td>
 							<td class="items__detalle"><?php echo $arreglodeta['Largo']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Precio']; ?></td>
+							<td class="items__detalle">$ <?php echo number_format($arreglodeta['Precio']); ?></td>
 							<td class="items__detalle"><?php echo $arreglodeta['Cantidad']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Costo']; ?></td>
+							<td class="items__detalle">$ <?php echo number_format($arreglodeta['Costo']); ?></td>
 						</tr>
 					<?php
 					}
@@ -199,7 +203,8 @@
 				</tbody>
 				<tfoot>
 					<tr class="row__detalle">
-						<td class="items__detalle item__detalle--totales" colspan="6">TOTAL CORTE MANUAL: <?php echo $totalcortemanual ?></td>
+					<td class="items__detalle item__detalle--totales" colspan="6">TOTAL CORTE MANUAL:</td>
+					<td class="items__detalle item__detalle--totales" colspan="6">$ <?php echo number_format($totalcortemanual) ?></td>
 					</tr>
 				</tfoot>
 			</table>
@@ -213,11 +218,11 @@
 				</tr>
 				<thead>
 					<tr class="row__thead">
-						<th class="items__detalle head">Proveedor</th>
-						<th class="items__detalle color">Metro</th>
-						<th class="items__detalle color">Precio</th>
-						<th class="items__detalle color">Cantidad</th>
-						<th class="items__detalle color">Costos</th>
+						<th class="items__detalle">Proveedor</th>
+						<th class="items__detalle">Metro</th>
+						<th class="items__detalle">Precio</th>
+						<th class="items__detalle">Cantidad</th>
+						<th class="items__detalle">Costos</th>
 					</tr>
 				</thead>
 				<tbody id="detalle_productos">
@@ -229,9 +234,9 @@
 						<tr class="row__detalle">
 							<td class="items__detalle"><?php echo $arreglodeta['SUBLIMACION']; ?></td>
 							<td class="items__detalle"><?php echo $arreglodeta['Metro']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Precio']; ?></td>
+							<td class="items__detalle">$ <?php echo number_format($arreglodeta['Precio']); ?></td>
 							<td class="items__detalle"><?php echo $arreglodeta['Cantidad']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Costo']; ?></td>
+							<td class="items__detalle">$ <?php echo number_format($arreglodeta['Costo']); ?></td>
 						</tr>
 					<?php
 					}
@@ -239,7 +244,8 @@
 				</tbody>
 				<tfoot>
 					<tr class="row__total">
-						<td class="items__detalle item__detalle--totales" colspan="5">TOTAL SUBLIMACIÓN: <?php echo $totalsublimacion ?></td>
+					<td class="items__detalle item__detalle--totales" colspan="4">TOTAL SUBLIMACIÓN:</td>
+					<td class="items__detalle item__detalle--totales center">$ <?php echo number_format($totalsublimacion) ?></td>
 					</tr>
 				</tfoot>
 			</table>
@@ -253,10 +259,10 @@
 				</tr>
 				<thead>
 					<tr class="row__detalle">
-						<th class="items__detalle head">Descripción</th>
-						<th class="items__detalle color">Precio</th>
-						<th class="items__detalle color">Cantidad</th>
-						<th class="items__detalle color">Costos</th>
+						<th class="items__detalle">Descripción</th>
+						<th class="items__detalle">Precio</th>
+						<th class="items__detalle">Cantidad</th>
+						<th class="items__detalle">Costos</th>
 					</tr>
 				</thead>
 				<tbody id="detalle_productos">
@@ -267,9 +273,9 @@
 					?>
 						<tr>
 							<td class="items__detalle"><?php echo $arreglodeta['CONFECCION']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Precio']; ?></td>
+							<td class="items__detalle"><?php echo number_format($arreglodeta['Precio']); ?></td>
 							<td class="items__detalle"><?php echo $arreglodeta['Cantidad']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Costo']; ?></td>
+							<td class="items__detalle"><?php echo number_format($arreglodeta['Costo']); ?></td>
 						</tr>
 					<?php
 					}
@@ -277,7 +283,8 @@
 				</tbody>
 				<tfoot>
 					<tr class="row__detalle">
-						<td class="items__detalle item__detalle--totales" colspan="4">TOTAL CONFECCIÓN: <?php echo $totalconfeccion ?></td>
+					<td class="items__detalle item__detalle--totales" colspan="3">TOTAL CONFECCIÓN:</td>
+					<td class="items__detalle item__detalle--totales center">$ <?php echo number_format($totalconfeccion) ?></td>
 					</tr>
 				</tfoot>
 			</table>
@@ -292,9 +299,9 @@
 				<thead>
 					<tr class="row__detalle">
 						<th class="items__detalle head">Descripción</th>
-						<th class="items__detalle color">Precio</th>
-						<th class="items__detalle color">Cantidad</th>
-						<th class="items__detalle color">Costos</th>
+						<th class="items__detalle ">Precio</th>
+						<th class="items__detalle ">Cantidad</th>
+						<th class="items__detalle ">Costos</th>
 					</tr>
 				</thead>
 				<tbody id="detalle_productos">
@@ -305,9 +312,9 @@
 					?>
 						<tr>
 							<td class="items__detalle"><?php echo $arreglodeta['TERMINACION']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Precio']; ?></td>
+							<td class="items__detalle">$ <?php echo number_format($arreglodeta['Precio']); ?></td>
 							<td class="items__detalle"><?php echo $arreglodeta['Cantidad']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Costo']; ?></td>
+							<td class="items__detalle">$ <?php echo number_format($arreglodeta['Costo']); ?></td>
 						</tr>
 					<?php
 					}
@@ -315,7 +322,8 @@
 				</tbody>
 				<tfoot>
 					<tr class="row__detalle">
-						<td class="items__detalle item__detalle--totales" colspan="4">TOTAL TERMINACIÓN: <?php echo $totalterminacion ?></td>
+					<td class="items__detalle item__detalle--totales" colspan="3">TOTAL TERMINACIÓN:</td>
+					<td class="items__detalle item__detalle--totales center">$ <?php echo number_format($totalterminacion) ?></td>
 					</tr>
 				</tfoot>
 			</table>
@@ -329,10 +337,10 @@
 				</tr>
 				<thead>
 					<tr class="row__detalle">
-						<th class="items__detalle head">Descripción</th>
-						<th class="items__detalle color">Valor Pieza</th>
-						<th class="items__detalle color">Cantidad</th>
-						<th class="items__detalle color">Costos</th>
+						<th class="items__detalle">Descripción</th>
+						<th class="items__detalle">Valor Pieza</th>
+						<th class="items__detalle">Cantidad</th>
+						<th class="items__detalle">Costos</th>
 					</tr>
 				</thead>
 				<tbody id="detalle_productos">
@@ -343,9 +351,9 @@
 					?>
 						<tr>
 							<td class="items__detalle"><?php echo $arreglodeta['ENTRETELADO']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Precio']; ?></td>
+							<td class="items__detalle">$ <?php echo number_format($arreglodeta['Precio']); ?></td>
 							<td class="items__detalle"><?php echo $arreglodeta['Cantidad']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Costo']; ?></td>
+							<td class="items__detalle">$ <?php echo number_format($arreglodeta['Costo']); ?></td>
 						</tr>
 					<?php
 					}
@@ -353,7 +361,8 @@
 				</tbody>
 				<tfoot>
 					<tr class="row__detalle">
-						<td class="items__detalle item__detalle--totales" colspan="4">TOTAL ENTRETELADO: <?php echo $totalentretelado ?></td>
+					<td class="items__detalle item__detalle--totales" colspan="3">TOTAL ENTRETELADO:</td>
+					<td class="items__detalle item__detalle--totales center">$ <?php echo number_format($totalentretelado) ?></td>
 					</tr>
 				</tfoot>
 			</table>
@@ -368,9 +377,9 @@
 				<thead>
 					<tr class="row__detalle">
 						<th class="items__detalle head">Pieza</th>
-						<th class="items__detalle color">Valor</th>
-						<th class="items__detalle color">Cantidad</th>
-						<th class="items__detalle color">Costos</th>
+						<th class="items__detalle ">Valor</th>
+						<th class="items__detalle ">Cantidad</th>
+						<th class="items__detalle ">Costos</th>
 					</tr>
 				</thead>
 				<tbody id="detalle_productos">
@@ -381,9 +390,9 @@
 					?>
 						<tr>
 							<td class="items__detalle"><?php echo $arreglodeta['CORTEDIGITAL']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Precio']; ?></td>
+							<td class="items__detalle">$ <?php echo number_format($arreglodeta['Precio']); ?></td>
 							<td class="items__detalle"><?php echo $arreglodeta['Cantidad']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Costo']; ?></td>
+							<td class="items__detalle">$ <?php echo number_format($arreglodeta['Costo']); ?></td>
 						</tr>
 					<?php
 					}
@@ -391,7 +400,8 @@
 				</tbody>
 				<tfoot>
 					<tr class="row__detalle">
-						<td class="items__detalle item__detalle--totales" colspan="4">TOTAL CORTE DIGITAL: <?php echo $totalcortedigital ?></td>
+						<td class="items__detalle item__detalle--totales" colspan="3">TOTAL CORTE DIGITAL:</td>
+						<td class="items__detalle item__detalle--totales center">$ <?php echo number_format($totalcortedigital) ?></td>
 					</tr>
 				</tfoot>
 			</table>
@@ -420,10 +430,10 @@
 					?>
 						<tr>
 							<td class="items__detalle head"><?php echo $arreglodeta['LASER']; ?></td>
-							<td class="items__detalle color"><?php echo $arreglodeta['Descripcion']; ?></td>
-							<td class="items__detalle color"><?php echo $arreglodeta['Precio']; ?></td>
-							<td class="items__detalle color"><?php echo $arreglodeta['Cantidad']; ?></td>
-							<td class="items__detalle color"><?php echo $arreglodeta['Costo']; ?></td>
+							<td class="items__detalle "><?php echo $arreglodeta['Descripcion']; ?></td>
+							<td class="items__detalle ">$ <?php echo number_format($arreglodeta['Precio']); ?></td>
+							<td class="items__detalle "><?php echo $arreglodeta['Cantidad']; ?></td>
+							<td class="items__detalle ">$ <?php echo number_format($arreglodeta['Costo']); ?></td>
 						</tr>
 					<?php
 					}
@@ -431,7 +441,8 @@
 				</tbody>
 				<tfoot>
 					<tr class="row__detalle">
-						<td class="items__detalle item__detalle--totales" colspan="5">TOTAL LASER: <?php echo $totallaser ?></td>
+						<td class="items__detalle item__detalle--totales" colspan="4">TOTAL LASER:</td>
+						<td class="items__detalle item__detalle--totales">$ <?php echo number_format($totallaser) ?></td>
 					</tr>
 				</tfoot>
 			</table>
@@ -446,10 +457,10 @@
 				<thead>
 					<tr class="row__detalle">
 						<th class="items__detalle head">Descripción</th>
-						<th class="items__detalle color">Nombre</th>
-						<th class="items__detalle color">Precio Uni.</th>
-						<th class="items__detalle color">Cantidad</th>
-						<th class="items__detalle color">Costos</th>
+						<th class="items__detalle ">Nombre</th>
+						<th class="items__detalle ">Precio Uni.</th>
+						<th class="items__detalle ">Cantidad</th>
+						<th class="items__detalle ">Costos</th>
 					</tr>
 				</thead>
 				<tbody id="detalle_productos">
@@ -461,9 +472,9 @@
 						<tr>
 							<td class="items__detalle"><?php echo $arreglodeta['BORDADO']; ?></td>
 							<td class="items__detalle"><?php echo $arreglodeta['Descripcion']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Precio']; ?></td>
+							<td class="items__detalle">$ <?php echo number_format($arreglodeta['Precio']); ?></td>
 							<td class="items__detalle"><?php echo $arreglodeta['Cantidad']; ?></td>
-							<td class="items__detalle"><?php echo $arreglodeta['Costo']; ?></td>
+							<td class="items__detalle">$ <?php echo number_format($arreglodeta['Costo']); ?></td>
 						</tr>
 					<?php
 					}
@@ -471,25 +482,26 @@
 				</tbody>
 				<tfoot>
 					<tr class="row__detalle">
-						<td class="items__detalle item__detalle--totales" colspan="5">TOTAL BORDADO: <?php echo $totalbordado ?></td>
+						<td class="items__detalle item__detalle--totales" colspan="4">TOTAL BORDADO:</td>
+						<td class="items__detalle item__detalle--totales center">$ <?php echo number_format($totalbordado) ?></td>
 					</tr>
 				</tfoot>
 			</table>
 		<?php
 		}
 		// subtotal
-		$subtotal = round($totaltela + $totalcuero + $totalinsumo + $totalcortemanual + $totalsublimacion + $totalconfeccion + $totalterminacion + $totalentretelado + $totalcortedigital + $totallaser + $totalbordado, 2);
-		$sumautilidad = round($subtotal * $utilidad, 2);
+		$subtotal = round($totaltela + $totalcuero + $totalinsumo + $totalcortemanual + $totalsublimacion + $totalconfeccion + $totalterminacion + $totalentretelado + $totalcortedigital + $totallaser + $totalbordado);
+		$sumautilidad = round($subtotal * $utilidad);
 		$cif = $arreglocostos['CIF'];
 		$totalbruto = $subtotal + $sumautilidad + $cif;
 		//rete
 		$calcrete = $totalbruto * $rete;
-		$sumarete = round($totalbruto + $calcrete, 2);
+		$sumarete = round($totalbruto + $calcrete);
 		$calcica = $totalbruto * $ica;
-		$sumaica = round($totalbruto + $calcica, 2);
+		$sumaica = round($totalbruto + $calcica);
 		$sumaimp = $totalbruto + $calcica + $calcrete;
 		$calciva = $sumaimp * $iva;
-		$sumaiva = round($sumaimp + $calciva, 2);
+		$sumaiva = round($sumaimp + $calciva);
 		$totalimpuestos = $totalbruto + $calcrete + $calcica + $calciva;
 		//total costos
 		$Total = $totalbruto;
@@ -519,39 +531,39 @@
 		<table class="total__factura">
 			<tr class="row__theadtotal">
 				<th class="items__total">SUBTOTAL</th>
-				<th class="items__total items__total--totales">$ <?php echo  $subTotal ?></th>
+				<th class="items__total items__total--totales">$ <?php echo  number_format($subTotal) ?></th>
 			</tr>
 			<tr class="row_tbodytotal">
 				<td class="items__total">CIF</td>
-				<td class="items__total items__total--totales">$ <?php echo $cif ?></td>
+				<td class="items__total items__total--totales">$ <?php echo number_format($cif) ?></td>
 			</tr>
 			<tr class="row_tbodytotal">
 				<td class="items__total">% Utilidad</td>
-				<td class="items__total items__total--totales">$ <?php echo  $sumautilidad ?></td>
+				<td class="items__total items__total--totales">$ <?php echo  number_format($sumautilidad) ?></td>
 			</tr>
 			<tr class="row__theadtotal">
 				<th class="items__total">TOTAL BRUTO FACTURA (+)</th>
-				<th class="items__total items__total--totales">$ <?php echo  $totalBruto ?></th>
+				<th class="items__total items__total--totales">$ <?php echo  number_format($totalBruto) ?></th>
 			</tr>
 			<tr class="row_tbodytotal">
 				<td class="items__total">RETE</td>
-				<td class="items__total items__total--totales"><?php echo  $sumarete ?></td>
+				<td class="items__total items__total--totales">$ <?php echo  number_format($sumarete) ?></td>
 			</tr>
 			<tr class="row_tbodytotal">
 				<td class="items__total">ICA</td>
-				<td class="items__total items__total--totales"><?php echo  $sumaica ?></td>
+				<td class="items__total items__total--totales">$ <?php echo  number_format($sumaica) ?></td>
 			</tr>
 			<tr class="row_tbodytotal">
 				<td class="items__total">IVA</td>
-				<td class="items__total items__total--totales"><?php echo  $sumaiva ?></td>
+				<td class="items__total items__total--totales">$ <?php echo  number_format($sumaiva) ?></td>
 			</tr>
 			<tr class="row__theadtotal">
 				<th class="items__total">TOTAL IMPUESTOS (=)</th>
-				<th class="items__total items__total--totales"><?php echo  $Totalimpuesto ?></th>
+				<th class="items__total items__total--totales">$ <?php echo  number_format($Totalimpuesto) ?></th>
 			</tr>
 			<tr class="row__theadtotal row__theadtotal--total">
 				<th class="items__total items__total--total">TOTAL DE COSTOS ( $ ) </th>
-				<th class="items__total items__total--totales items__total--total"> $ <?php echo  $TotalCosto ?></th>
+				<th class="items__total items__total--totales items__total--total"> $ <?php echo  number_format($TotalCosto) ?></th>
 			</tr>
 		</table>
 	</div>
