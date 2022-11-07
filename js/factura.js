@@ -470,9 +470,9 @@ $(document).ready(function () {
   //insertar insumo desde el modal
   $("#crearinsumo").click(function (e) {
     e.preventDefault();
-    var proveedorinsumo = $("#proveedorinsumo").val();
-    var nominsumo = $("#nominsumo").val();
-    var valorinsumo = $("#valorinsumo").val();
+    var proveedorinsumo = $("#proveedorminsumo").val();
+    var nominsumo = $("#descripminsumo").val();
+    var valorinsumo = $("#valorminsumo").val();
     var action = "crearInsumo";
 
     if (
@@ -492,9 +492,9 @@ $(document).ready(function () {
         },
         success: function (response) {
           if (response == "exitoso") {
-            $("#descripinsumo").val("");
-            $("#proveedorinsumo").val("");
-            $("#valorinsumo").val("");
+            $("#descripminsumo").val("");
+            $("#proveedorminsumo").val("");
+            $("#valorminsumo").val("");
             alert("Se ha guardado exitosamente!");
           }
         },
@@ -641,9 +641,9 @@ $(document).ready(function () {
   //insertar sublimacion desde el modal
   $("#crearsublimacion").click(function (e) {
     e.preventDefault();
-    var proveedorsublimacion = $("#proveedorsublimacion").val();
-    var metrosublimacion = $("#metrosublimacion").val();
-    var valorsublimacion = $("#valorsublimacion").val();
+    var proveedorsublimacion = $("#proveedormsublimacion").val();
+    var metrosublimacion = $("#metromsublimacion").val();
+    var valorsublimacion = $("#valormsublimacion").val();
     var action = "crearSublimacion";
 
     if (
@@ -663,8 +663,9 @@ $(document).ready(function () {
         },
         success: function (response) {
           if (response == "exitoso") {
-            $("#proveedorsublimacion").val("");
-            $("#valorsublimacion").val("");
+            $("#proveedormsublimacion").val("");
+            $("#metromsublimacion").val("");
+            $("#valormsublimacion").val("");
             alert("Se ha guardado exitosamente!");
           }
         },
@@ -813,10 +814,10 @@ $(document).ready(function () {
   //insertar cortemanual desde el modal
   $("#crearcortemanual").click(function (e) {
     e.preventDefault();
-    var codigo = $("#codigocortemanual").val();
-    var ancho = $("#anchocortemanual").val();
-    var largo = $("#largocortemanual").val();
-    var valor = $("#valorcortemanual").val();
+    var codigo = $("#codigomcortemanual").val();
+    var ancho = $("#anchomcortemanual").val();
+    var largo = $("#largomcortemanual").val();
+    var valor = $("#valormcortemanual").val();
     var action = "crearCorteManual";
 
     if (
@@ -838,10 +839,10 @@ $(document).ready(function () {
         },
         success: function (response) {
           if (response == "exitoso") {
-            $("#codigocortemanual").val("");
-            $("#anchocortemanual").val("");
-            $("#largocortemanual").val("");
-            $("#valorcortemanual").val("");
+            $("#codigomcortemanual").val("");
+            $("#anchomcortemanual").val("");
+            $("#largomcortemanual").val("");
+            $("#valormcortemanual").val("");
             alert("Se ha guardado exitosamente!");
           }
         },
@@ -1797,7 +1798,6 @@ $(document).ready(function () {
     var nombre = $("#nombordado").val();
     var estado = $("#estadobordado").val();
     var valor = $("#valorbordado").val();
-    console.log(nombre, estado, valor, descrip);
     var action = "crearBordado";
 
     if (descrip.trim() !== "" && valor.trim() !== "" && nombre.trim() !== "") {
@@ -1817,7 +1817,7 @@ $(document).ready(function () {
           if (response == "exitoso") {
             $("#descripbordado").val("");
             $("#nombordado").val("");
-            $("#estado").val("");
+            $("#estadobordado").val("");
             $("#valorbordado").val("");
             alert("Se ha guardado exitosamente!");
           } else {

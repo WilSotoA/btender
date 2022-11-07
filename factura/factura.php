@@ -7,22 +7,23 @@
 	<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/BTENDER/css/style.css">
 	<link rel="shortcut icon" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/BTENDER/src/favicon.png" type="image/x-icon">
 </head>
-
 <body>
 	<div class="pdf" id="page_pdf">
+		<!-- variables total -->
 		<?php
-		$totaltela = 0;
-		$totalcuero = 0;
-		$totalinsumo = 0;
-		$totalcortemanual = 0;
-		$totalsublimacion = 0;
-		$totalconfeccion = 0;
-		$totalterminacion = 0;
-		$totalentretelado = 0;
-		$totalcortedigital = 0;
-		$totallaser = 0;
-		$totalbordado = 0;
+			$totaltela = 0;
+			$totalcuero = 0;
+			$totalinsumo = 0;
+			$totalcortemanual = 0;
+			$totalsublimacion = 0;
+			$totalconfeccion = 0;
+			$totalterminacion = 0;
+			$totalentretelado = 0;
+			$totalcortedigital = 0;
+			$totallaser = 0;
+			$totalbordado = 0;
 		?>
+		<!-- descripcion y logo -->
 		<table id="costos_head">
 			<tr>
 				<td class="logo_factura">
@@ -41,7 +42,11 @@
 					</div>
 				</td>
 			</tr>
+			<tr class="parrafo">
+				<td colspan="2"><p>&lt;/ &quot;Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga dicta iusto, a porro aliquam numquam ipsam sequi placeat. Error excepturi alias eos fugiat earum, harum doloribus provident possimus. Dolorem, iste?&quot; /&gt;</p></td>
+			</tr>
 		</table>
+		<!-- materia prima -->
 		<?php
 		if ($resultela > 0) {
 		?>
@@ -165,6 +170,7 @@
 					</tr>
 				</tfoot>
 			</table>
+			<!-- procesos -->
 		<?php
 		}
 		if ($resultcortemanual > 0) {
@@ -487,46 +493,41 @@
 					</tr>
 				</tfoot>
 			</table>
+			<!-- totales -->
 		<?php
 		}
 		// subtotal
-		$subtotal = round($totaltela + $totalcuero + $totalinsumo + $totalcortemanual + $totalsublimacion + $totalconfeccion + $totalterminacion + $totalentretelado + $totalcortedigital + $totallaser + $totalbordado);
-		$sumautilidad = round($subtotal * $utilidad);
-		$cif = $arreglocostos['CIF'];
-		$totalbruto = $subtotal + $sumautilidad + $cif;
-		//rete
-		$calcrete = $totalbruto * $rete;
-		$sumarete = round($totalbruto + $calcrete);
-		$calcica = $totalbruto * $ica;
-		$sumaica = round($totalbruto + $calcica);
-		$sumaimp = $totalbruto + $calcica + $calcrete;
-		$calciva = $sumaimp * $iva;
-		$sumaiva = round($sumaimp + $calciva);
-		$totalimpuestos = $totalbruto + $calcrete + $calcica + $calciva;
+			$subtotal = round($totaltela + $totalcuero + $totalinsumo + $totalcortemanual + $totalsublimacion + $totalconfeccion + $totalterminacion + $totalentretelado + $totalcortedigital + $totallaser + $totalbordado);
+			$sumautilidad = round($subtotal * $utilidad);
+			$cif = $arreglocostos['CIF'];
+			$totalbruto = $subtotal + $sumautilidad + $cif;
+			//rete
+			$calcrete = $totalbruto * $rete;
+			$calcica = $totalbruto * $ica;
+			$calciva = $totalbruto * $iva;
+			$totalimpuestos = $totalbruto + $calciva;
 		//total costos
-		$Total = $totalbruto;
-		//verificar que los campos no esten vaciós		
-		$queryverify = mysqli_query($conex, "SELECT * FROM costos WHERE Id_costos = '$noCosto' AND Total_bruto = 0 OR Subtotal = 0 OR Total_impuesto = 0 OR Total = 0");
-		$resultverify = mysqli_num_rows($queryverify);
-		if ($resultverify > 0) {
-			//insertar datos totales
-			$queryinsert = mysqli_query($conex, "UPDATE costos SET Total_bruto = '$totalbruto',Subtotal='$subtotal',Total_impuesto= '$totalimpuestos',Total='$Total' WHERE ID_COSTOS = '$noCosto'");
-			if ($queryinsert == true) {
-				$queryselect = mysqli_query($conex, "SELECT Total_bruto,Subtotal,Total_impuesto,Total FROM costos WHERE ID_COSTOS = '$noCosto'");
+			$Total = $totalbruto;
+			//verificar que los campos no esten vaciós		
+			$queryverify = mysqli_query($conex, "SELECT * FROM costos WHERE Id_costos = '$noCosto' AND Total_bruto = 0 OR Subtotal = 0 OR Total_impuesto = 0");
+			$resultverify = mysqli_num_rows($queryverify);
+			if ($resultverify > 0) {
+				//insertar datos totales
+				$queryinsert = mysqli_query($conex, "UPDATE costos SET Total_bruto = '$totalbruto',Subtotal='$subtotal',Total_impuesto= '$totalimpuestos' WHERE ID_COSTOS = '$noCosto'");
+				if ($queryinsert == true) {
+					$queryselect = mysqli_query($conex, "SELECT Total_bruto,Subtotal,Total_impuesto,Total FROM costos WHERE ID_COSTOS = '$noCosto'");
+					$arrayselect = mysqli_fetch_assoc($queryselect);
+					$totalBruto = $arrayselect['Total_bruto'];
+					$subTotal = $arrayselect['Subtotal'];
+					$Totalimpuesto = $arrayselect['Total_impuesto'];
+				}
+			} else {
+				$queryselect = mysqli_query($conex, "SELECT Total_bruto,Subtotal,Total_impuesto FROM costos WHERE ID_COSTOS = '$noCosto'");
 				$arrayselect = mysqli_fetch_assoc($queryselect);
 				$totalBruto = $arrayselect['Total_bruto'];
 				$subTotal = $arrayselect['Subtotal'];
 				$Totalimpuesto = $arrayselect['Total_impuesto'];
-				$TotalCosto = $arrayselect['Total'];
 			}
-		} else {
-			$queryselect = mysqli_query($conex, "SELECT Total_bruto,Subtotal,Total_impuesto,Total FROM costos WHERE ID_COSTOS = '$noCosto'");
-			$arrayselect = mysqli_fetch_assoc($queryselect);
-			$totalBruto = $arrayselect['Total_bruto'];
-			$subTotal = $arrayselect['Subtotal'];
-			$Totalimpuesto = $arrayselect['Total_impuesto'];
-			$TotalCosto = $arrayselect['Total'];
-		}
 		?>
 		<table class="total__factura">
 			<tr class="row__theadtotal">
@@ -547,27 +548,21 @@
 			</tr>
 			<tr class="row_tbodytotal">
 				<td class="items__total">RETE</td>
-				<td class="items__total items__total--totales">$ <?php echo  number_format($sumarete) ?></td>
+				<td class="items__total items__total--totales">$ <?php echo  number_format($calcrete) ?></td>
 			</tr>
 			<tr class="row_tbodytotal">
 				<td class="items__total">ICA</td>
-				<td class="items__total items__total--totales">$ <?php echo  number_format($sumaica) ?></td>
+				<td class="items__total items__total--totales">$ <?php echo  number_format($calcica) ?></td>
 			</tr>
 			<tr class="row_tbodytotal">
 				<td class="items__total">IVA</td>
-				<td class="items__total items__total--totales">$ <?php echo  number_format($sumaiva) ?></td>
+				<td class="items__total items__total--totales">$ <?php echo  number_format($calciva) ?></td>
 			</tr>
 			<tr class="row__theadtotal">
-				<th class="items__total">TOTAL IMPUESTOS (=)</th>
+				<th class="items__total">TOTAL(=)</th>
 				<th class="items__total items__total--totales">$ <?php echo  number_format($Totalimpuesto) ?></th>
-			</tr>
-			<tr class="row__theadtotal row__theadtotal--total">
-				<th class="items__total items__total--total">TOTAL DE COSTOS ( $ ) </th>
-				<th class="items__total items__total--totales items__total--total"> $ <?php echo  number_format($TotalCosto) ?></th>
 			</tr>
 		</table>
 	</div>
-	</div>
 </body>
-
 </html>

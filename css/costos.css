@@ -60,7 +60,6 @@ label {
 }
 
 .icon {
-    width: 130px;
     height: 80px;
     min-width: 50px;
     min-height: 30px;
@@ -139,7 +138,31 @@ label {
     box-shadow: none;
     background-image: none;
 }
-
+.btnlink{
+    border: 2px solid var(--bordes);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    color: var(--colorletrahead);
+    padding: 0.3rem;
+    transition: background-color, color 1s;
+    -webkit-transition: background-color, color 1s;
+    -moz-transition: background-color, color 1s;
+    -ms-transition: background-color, color 1s;
+    -o-transition: background-color, color 1s;
+}
+.btnlink:hover{
+    background-color: var(--bordes);
+    color: var(--blanco);
+    border: 1px solid var(--bordes);
+ transition: background-color, color 1s;
+ -webkit-transition: background-color, color 1s;
+ -moz-transition: background-color, color 1s;
+ -ms-transition: background-color, color 1s;
+ -o-transition: background-color, color 1s;
+}
 .list__factura::-mz-expand {
     display: none;
 }

@@ -2872,3 +2872,111 @@ if ($_POST['action'] == 'facturar') {
         };
     };
 }
+
+
+//REGISTROS COSTOS
+// extraer datos de hojas de costos
+if ($_POST['action'] == 'serchForDetalleCostos') {
+    $consultar = mysqli_query($conex, "SELECT * FROM costos");
+    $result = mysqli_num_rows($consultar);
+
+    $detalleTabla = '';
+    $total = 0;
+    $arrayData = array();
+
+    if ($result > 0) {
+        $detalleTabla .='
+        <table class="tb">
+        <tr>
+        <th>Descripcion</th>
+        <th>Fecha</th>
+        <th>Cliente</th>
+        <th>Cotización</th>
+        <th>TOTAL</th>
+        <th>ACCIONES</th>
+        </tr>
+        ';
+        while ($data = mysqli_fetch_assoc($consultar)) {
+            $idcostos = $data['Id_costos'];
+            $detalleTabla .= '
+            <tr class="item">
+                <td class="item__items">' . $data['Descripcion_costos'] . '</td>
+                <td class="item__items">' . $data['Fecha'] . '</td>
+                <td class="item__items">' . $data['Cliente'] . '</td>
+                <td class="item__items">' . $data['Cotizacion'] . '</td>
+                <td class="item__items">' . $data['Total_impuesto'] . '</td>
+                <td class="item__items">
+                <a href="factura/generaFactura.php?f=' . $idcostos . '" class="btndownload"><img src="src/download.png" alt="descargar" class="svg svg--download"></a>
+                <a href="eliminar/elimcostos.php?id=' . $idcostos . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a>
+                </td>
+            </tr>
+            ';
+        }
+        $detalleTabla .='
+        </table>
+        ';
+        $arrayData['detalle'] = $detalleTabla;
+
+        echo json_encode($arrayData, JSON_UNESCAPED_UNICODE);
+    } else {
+        echo 'error';
+    }
+    mysqli_close($conex);
+
+    exit;
+}
+// buscar bordado en el modal
+if ($_POST['action'] == 'searchCostos') {
+    $detalleTabla = "";
+    $arrayData = array();
+    if (isset($_POST['date'])) {
+        $q = mysqli_real_escape_string($conex, $_POST['date']);
+        $query = "SELECT * FROM costos WHERE Fecha LIKE '$q' ";
+    }
+    if($_POST['date'] == ''){
+        $query = "SELECT * FROM costos";
+        }
+    $resultado = mysqli_query($conex, $query);
+
+    if ($resultado->num_rows > 0) {
+        $detalleTabla .='
+        <table class="tb">
+        <tr>
+        <th>Descripcion</th>
+        <th>Fecha</th>
+        <th>Cliente</th>
+        <th>Cotización</th>
+        <th>TOTAL</th>
+        <th>ACCIONES</th>
+        </tr>
+        ';
+        while ($data = mysqli_fetch_assoc($resultado)) {
+            $idcostos = $data['Id_costos'];
+            $detalleTabla .= '
+            <tr class="item">
+                <td class="item__items">' . $data['Descripcion_costos'] . '</td>
+                <td class="item__items">' . $data['Fecha'] . '</td>
+                <td class="item__items">' . $data['Cliente'] . '</td>
+                <td class="item__items">' . $data['Cotizacion'] . '</td>
+                <td class="item__items">' . $data['Total_impuesto'] . '</td>
+                <td class="item__items">
+                <a href="factura/generaFactura.php?f=' . $idcostos . '" class="btndownload"><img src="src/download.png" alt="descargar" class="svg svg--download"></a>
+                <a href="eliminar/elimcostos.php?id=' . $idcostos . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a>
+                </td>
+            </tr>
+            ';
+        }
+        $detalleTabla .='
+        </table>
+        ';
+    } else {
+
+        $detalleTabla .= "<h1 class='title'>No se encontro Hoja de Costos</h1>";
+    }
+
+    $arrayData['detalle'] = $detalleTabla;
+
+    echo json_encode($arrayData, JSON_UNESCAPED_UNICODE);
+
+    mysqli_close($conex);
+}

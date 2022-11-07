@@ -81,9 +81,9 @@ include "include/conexion.php";
                 <a href="#" class="btn__create" id="crearinsumo">Agregar Insumo</a>
             </div>
             <div class="container__ipt">
-                <input type="text" class="modal__ipt" id="descripinsumo" placeholder="Nombre del insumo">
-                <input type="text" class="modal__ipt" id="proveedorinsumo" placeholder="Proveedor insumo">
-                <input type="number" class="modal__ipt" id="valorinsumo" placeholder="Valor insumo">
+                <input type="text" class="modal__ipt" id="descripminsumo" placeholder="Nombre del insumo">
+                <input type="text" class="modal__ipt" id="proveedorminsumo" placeholder="Proveedor insumo">
+                <input type="number" class="modal__ipt" id="valorminsumo" placeholder="Valor insumo">
             </div>
             <div id="modal__insumos" class="modal__insumos">
             </div>
@@ -98,9 +98,9 @@ include "include/conexion.php";
                 <a href="#" class="btn__create" id="crearsublimacion">Agregar Sublimación</a>
             </div>
             <div class="container__ipt">
-                <input type="text" class="modal__ipt" id="proveedorsublimacion" placeholder="Proveedor sublimación">
-                <input type="number" class="modal__ipt" id="metrosublimacion" placeholder="metro sublimación">
-                <input type="number" class="modal__ipt" id="valorsublimacion" placeholder="Valor sublimación">
+                <input type="text" class="modal__ipt" id="proveedormsublimacion" placeholder="Proveedor sublimación">
+                <input type="number" class="modal__ipt" id="metromsublimacion" placeholder="metro sublimación">
+                <input type="number" class="modal__ipt" id="valormsublimacion" placeholder="Valor sublimación">
             </div>
             <div id="modal__sublimacion" class="modal__sublimacion">
             </div>
@@ -115,10 +115,10 @@ include "include/conexion.php";
                 <a href="#" class="btn__create" id="crearcortemanual">Agregar Corte Manual</a>
             </div>
             <div class="container__ipt">
-                <input type="number" class="modal__ipt" id="codigocortemanual" placeholder="Codigo Corte Manual">
-                <input type="number" class="modal__ipt" id="anchocortemanual" placeholder="Ancho Corte Manual">
-                <input type="number" class="modal__ipt" id="largocortemanual" placeholder="Largo Corte Manual">
-                <input type="number" class="modal__ipt" id="valorcortemanual" placeholder="Valor Corte Manual">
+                <input type="number" class="modal__ipt" id="codigomcortemanual" placeholder="Codigo Corte Manual">
+                <input type="number" class="modal__ipt" id="anchomcortemanual" placeholder="Ancho Corte Manual">
+                <input type="number" class="modal__ipt" id="largomcortemanual" placeholder="Largo Corte Manual">
+                <input type="number" class="modal__ipt" id="valormcortemanual" placeholder="Valor Corte Manual">
             </div>
             <div id="modal__cortemanual" class="modal__cortemanual">
             </div>
@@ -228,8 +228,11 @@ include "include/conexion.php";
     </section>
     <!-- costos-->
     <div class="containerhead">
+        <div class="container__reg">
+            <a href="regcostos.php" class="btnlink">Hojas de Costos</a>
+        </div>
         <h1 class="title title__head">Hoja de Costos</h1>
-        <img class="icon" src="src/iconop.png" alt="Icono">
+        <img class="icon" src="src/logo.jpg" alt="Icono">
     </div>
     <form class="form" id="costos" method="post">
         <section class="factura">
@@ -452,53 +455,6 @@ include "include/conexion.php";
             </select>
         </div>
 
-        <!-- sublimación -->
-        <table class="tb tbprocesos tbsublimacion">
-            <thead class="thead">
-                <tr class="tr__title">
-                    <th colspan="6">Sublimación</th>
-                </tr>
-                <tr class="tcabeza">
-                    <th>Proveedor</th>
-                    <th class="colorletra">Precio/Metro</th>
-                    <th class="colorletra">Valor Uni.</th>
-                    <th class="colorletra">Cantidad</th>
-                    <th class="colorletra">Costo</th>
-                    <th class="colorletra">Acción</th>
-                </tr>
-                <tr class="item">
-                    <td class="item__items item__items--search"><input type="text" class="ipt__item" name="provsublimacion" id="provsublimacion"><a href="#" id="buscar--sublimacion" class="buscar buscar--sublimacion"><img src="src/svg/search.svg" alt="Buscar" class="svg svg--search"></a></td>
-                    <td id="metrosublimacion" class="item__items">0</td>
-                    <td id="preciosublimacion" class="item__items">0</td>
-                    <td><input type="text" class="ipt__item" name="cantsublimacion" id="cantsublimacion" value="0" min="1" disabled></td>
-                    <td id="costo--sublimacion" class="item__items">0</td>
-                    <td class="item__items"><a href="#" id="aggsublimacion" class="agg aggsublimacion"><img src="src/svg/add.svg" alt="Agregar" class="svg svg--add"></a></td>
-                </tr>
-            </thead>
-        </table>
-        <table class="tb tbprocesos tbdetasublimacion" id="tbdetasublimacion">
-            <thead>
-                <tr class="tr__title">
-                    <th colspan="6">Sublimación</th>
-                </tr>
-                <tr class="tcabeza">
-                    <th>Proveedor</th>
-                    <th class="colorletra">Precio/Metro</th>
-                    <th class="colorletra">Valor Uni.</th>
-                    <th class="colorletra">Cantidad</th>
-                    <th class="colorletra">Costo</th>
-                    <th class="colorletra">Acción</th>
-                </tr>
-            </thead>
-            <tbody id="detasublimacion" class="tbody">
-                <!-- contenido ajax sublimacion-->
-            </tbody>
-            <tfoot id="sublimaciontotal" class="tfoot">
-                <!-- contenido ajax sublimacion -->
-
-            </tfoot>
-        </table>
-
         <!-- Corte Manual -->
         <table class="tb tbprocesos tbcortemanual">
             <thead class="thead">
@@ -525,6 +481,7 @@ include "include/conexion.php";
                 </tr>
             </thead>
         </table>
+        
         <table class="tb tbprocesos tbdetacortemanual" id="tbdetacortemanual">
             <thead>
                 <tr class="tr__title">
@@ -571,6 +528,7 @@ include "include/conexion.php";
                 </tr>
             </thead>
         </table>
+        
         <table class="tb tbprocesos tbdetaconfeccion" id="tbdetaconfeccion">
             <thead class="thead">
                 <tr class="tr__title">
@@ -593,46 +551,50 @@ include "include/conexion.php";
             </tfoot>
         </table>
 
-        <!-- terminación -->
-        <table class="tb tbprocesos tbterminacion">
+        <!-- sublimación -->
+        <table class="tb tbprocesos tbsublimacion">
             <thead class="thead">
                 <tr class="tr__title">
-                    <th colspan="5">Terminación</th>
+                    <th colspan="6">Sublimación</th>
                 </tr>
                 <tr class="tcabeza">
-                    <th>Descripción</th>
-                    <th class="colorletra">Valor</th>
+                    <th>Proveedor</th>
+                    <th class="colorletra">Precio/Metro</th>
+                    <th class="colorletra">Valor Uni.</th>
                     <th class="colorletra">Cantidad</th>
                     <th class="colorletra">Costo</th>
                     <th class="colorletra">Acción</th>
                 </tr>
                 <tr class="item">
-                    <td class="item__items item__items--search"><input type="text" class="ipt__item" name="descripcionterminacion" id="descripcionterminacion"><a href="#" id="buscar--terminacion" class="buscar buscar--terminacion"><img src="src/svg/search.svg" alt="Buscar" class="svg svg--search"></a></td>
-                    <td id="precioterminacion" class="item__items">0</td>
-                    <td><input type="text" class="ipt__item" name="canterminacion" id="canterminacion" value="0" min="1" disabled></td>
-                    <td id="costo--terminacion" class="item__items">0</td>
-                    <td class="item__items"><a href="#" id="aggterminacion" class="agg aggterminacion"><img src="src/svg/add.svg" alt="Agregar" class="svg svg--add"></a></td>
+                    <td class="item__items item__items--search"><input type="text" class="ipt__item" name="provsublimacion" id="provsublimacion"><a href="#" id="buscar--sublimacion" class="buscar buscar--sublimacion"><img src="src/svg/search.svg" alt="Buscar" class="svg svg--search"></a></td>
+                    <td id="metrosublimacion" class="item__items">0</td>
+                    <td id="preciosublimacion" class="item__items">0</td>
+                    <td><input type="text" class="ipt__item" name="cantsublimacion" id="cantsublimacion" value="0" min="1" disabled></td>
+                    <td id="costo--sublimacion" class="item__items">0</td>
+                    <td class="item__items"><a href="#" id="aggsublimacion" class="agg aggsublimacion"><img src="src/svg/add.svg" alt="Agregar" class="svg svg--add"></a></td>
                 </tr>
             </thead>
         </table>
-        <table class="tb tbprocesos tbdetaterminacion" id="tbdetaterminacion">
-            <thead class="thead">
+
+        <table class="tb tbprocesos tbdetasublimacion" id="tbdetasublimacion">
+            <thead>
                 <tr class="tr__title">
-                    <th colspan="5">Terminación</th>
+                    <th colspan="6">Sublimación</th>
                 </tr>
                 <tr class="tcabeza">
-                    <th>Descripción</th>
-                    <th class="colorletra">Valor</th>
+                    <th>Proveedor</th>
+                    <th class="colorletra">Precio/Metro</th>
+                    <th class="colorletra">Valor Uni.</th>
                     <th class="colorletra">Cantidad</th>
                     <th class="colorletra">Costo</th>
                     <th class="colorletra">Acción</th>
                 </tr>
             </thead>
-            <tbody id="detaterminacion" class="tbody">
-                <!-- contenido ajax terminación-->
+            <tbody id="detasublimacion" class="tbody">
+                <!-- contenido ajax sublimacion-->
             </tbody>
-            <tfoot id="terminaciontotal" class="tfoot">
-                <!-- contenido ajax terminación -->
+            <tfoot id="sublimaciontotal" class="tfoot">
+                <!-- contenido ajax sublimacion -->
 
             </tfoot>
         </table>
@@ -659,6 +621,7 @@ include "include/conexion.php";
                 </tr>
             </thead>
         </table>
+
         <table class="tb tbprocesos tbdetaentretelado" id="tbdetaentretelado">
             <thead class="thead">
                 <tr class="tr__title">
@@ -818,6 +781,51 @@ include "include/conexion.php";
             </tbody>
             <tfoot id="bordadototal" class="tfoot">
                 <!-- contenido ajax bordado -->
+
+            </tfoot>
+        </table>
+
+        <!-- terminación -->
+        <table class="tb tbprocesos tbterminacion">
+            <thead class="thead">
+                <tr class="tr__title">
+                    <th colspan="5">Terminación</th>
+                </tr>
+                <tr class="tcabeza">
+                    <th>Descripción</th>
+                    <th class="colorletra">Valor</th>
+                    <th class="colorletra">Cantidad</th>
+                    <th class="colorletra">Costo</th>
+                    <th class="colorletra">Acción</th>
+                </tr>
+                <tr class="item">
+                    <td class="item__items item__items--search"><input type="text" class="ipt__item" name="descripcionterminacion" id="descripcionterminacion"><a href="#" id="buscar--terminacion" class="buscar buscar--terminacion"><img src="src/svg/search.svg" alt="Buscar" class="svg svg--search"></a></td>
+                    <td id="precioterminacion" class="item__items">0</td>
+                    <td><input type="text" class="ipt__item" name="canterminacion" id="canterminacion" value="0" min="1" disabled></td>
+                    <td id="costo--terminacion" class="item__items">0</td>
+                    <td class="item__items"><a href="#" id="aggterminacion" class="agg aggterminacion"><img src="src/svg/add.svg" alt="Agregar" class="svg svg--add"></a></td>
+                </tr>
+            </thead>
+        </table>
+
+        <table class="tb tbprocesos tbdetaterminacion" id="tbdetaterminacion">
+            <thead class="thead">
+                <tr class="tr__title">
+                    <th colspan="5">Terminación</th>
+                </tr>
+                <tr class="tcabeza">
+                    <th>Descripción</th>
+                    <th class="colorletra">Valor</th>
+                    <th class="colorletra">Cantidad</th>
+                    <th class="colorletra">Costo</th>
+                    <th class="colorletra">Acción</th>
+                </tr>
+            </thead>
+            <tbody id="detaterminacion" class="tbody">
+                <!-- contenido ajax terminación-->
+            </tbody>
+            <tfoot id="terminaciontotal" class="tfoot">
+                <!-- contenido ajax terminación -->
 
             </tfoot>
         </table>
