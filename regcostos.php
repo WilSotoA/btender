@@ -1,3 +1,7 @@
+<?php 
+include 'include/conexion.php';
+include 'include/logeado.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

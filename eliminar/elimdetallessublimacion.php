@@ -1,5 +1,6 @@
 <?php
 include("../include/conexion.php");
+include("../include/log.php");
 
 $id = $_GET['id'];
 $eliminar = "DELETE FROM detatempsublimacion WHERE Id_tempsublimacion = '$id'";

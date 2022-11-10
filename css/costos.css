@@ -64,6 +64,15 @@ label {
     min-width: 50px;
     min-height: 30px;
 }
+.container-log{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.text-log{
+    margin-right: 1rem;
+}
 
 .factura {
     margin: 0 auto;

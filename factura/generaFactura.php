@@ -1,6 +1,12 @@
 <?php
 	include "../include/conexion.php";
 	require_once '../dompdf/vendor/autoload.php';
+	session_start();
+	error_reporting(0);
+	if ($_SESSION['Id'] == '' || $_SESSION['Id'] == null) {
+		header('location:login.php');
+		die();
+	}
 	use Dompdf\Dompdf;
 	$noCosto = $_REQUEST['f'];
 	 if(empty($noCosto))
