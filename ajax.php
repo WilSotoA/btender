@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 include "include/conexion.php";
 
 //TELAS//
@@ -18,10 +18,11 @@ if ($_POST['action'] == 'buscarTelas') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Nombre Tela</th>
-            <th>Proveedor</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Nombre Tela</th>
+                <th>Proveedor</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -31,6 +32,8 @@ if ($_POST['action'] == 'buscarTelas') {
                         <td class="item__items">' . $data['Descripcion_tela'] . '</td>
                         <td class="item__items">' . $data['Proveedor'] . '</td>
                         <td class="item__items">' . $data['Valor_uni'] . '</td>
+                        <td><a href="actualizar/tela.php?id=' . $data['Id_tela'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/tela.php?id=' . $data['Id_tela'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -87,21 +90,24 @@ if ($_POST['action'] == 'searchTela') {
     if ($resultado->num_rows > 0) {
 
         $detalleTabla .= '<table class="tb">
-        <tr>
-        <th>Seleccionar</th>
-        <th>Nombre Tela</th>
-        <th>Proveedor</th>
-        <th>Valor</th>
+            <tr>
+            <th>Seleccionar</th>
+            <th>Nombre Tela</th>
+            <th>Proveedor</th>
+            <th>Valor</th>
+            <th>Acciones</th>   
         </tr>';
 
         while ($data = mysqli_fetch_assoc($resultado)) {
             $detalleTabla .= '
          <tr class="item">
-         <td class="item__items"><a href="#" onclick="selectTela(' . $data['Id_tela'] . ');recargar(event);" class="select--tela"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
-         <td class="item__items">' . $data['Descripcion_tela'] . '</td>
-         <td class="item__items">' . $data['Proveedor'] . '</td>
-         <td class="item__items">' . $data['Valor_uni'] . '</td>
-        </tr>
+            <td class="item__items"><a href="#" onclick="selectTela(' . $data['Id_tela'] . ');recargar(event);" class="select--tela"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
+            <td class="item__items">' . $data['Descripcion_tela'] . '</td>
+            <td class="item__items">' . $data['Proveedor'] . '</td>
+            <td class="item__items">' . $data['Valor_uni'] . '</td>
+            <td><a href="actualizar/tela.php?id=' . $data['Id_tela'] . '" class="update"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+            <a href="eliminar/tela.php?id=' . $data['Id_tela'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
+         </tr>
          ';
         }
         $detalleTabla .= "</table>";
@@ -245,10 +251,11 @@ if ($_POST['action'] == 'buscarCueros') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Nombre Cuero</th>
-            <th>Proveedor</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Nombre Cuero</th>
+                <th>Proveedor</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -258,6 +265,8 @@ if ($_POST['action'] == 'buscarCueros') {
                         <td class="item__items">' . $data['Descripcion_cuero'] . '</td>
                         <td class="item__items">' . $data['Proveedor'] . '</td>
                         <td class="item__items">' . $data['Valor_uni'] . '</td>
+                        <td><a href="actualizar/cuero.php?id=' . $data['Id_cuero'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/cuero.php?id=' . $data['Id_cuero'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -324,10 +333,11 @@ if ($_POST['action'] == 'searchCuero') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Nombre Cuero</th>
-            <th>Proveedor</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Nombre Cuero</th>
+                <th>Proveedor</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -337,6 +347,8 @@ if ($_POST['action'] == 'searchCuero') {
                         <td class="item__items">' . $data['Descripcion_cuero'] . '</td>
                         <td class="item__items">' . $data['Proveedor'] . '</td>
                         <td class="item__items">' . $data['Valor_uni'] . '</td>
+                        <td><a href="actualizar/cuero.php?id=' . $data['Id_cuero'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/cuero.php?id=' . $data['Id_cuero'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -369,10 +381,11 @@ if ($_POST['action'] == 'buscarTroquel') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Nombre Troquel</th>
-            <th>Decimetros</th>
-            <th>Imagen</th>
+                <th>Seleccionar</th>
+                <th>Nombre Troquel</th>
+                <th>Decimetros</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -383,6 +396,8 @@ if ($_POST['action'] == 'buscarTroquel') {
                         <td class="item__items">' . $data['Nombre_troquel'] . '</td>
                         <td class="item__items">' . $data['DCM'] . '</td>
                         <td class="item__items"><img class="img__modal" src="data:image/jpeg;base64,' . base64_encode($data['Img_troquel']) . '"></td>
+                        <td><a href="actualizar/troquel.php?id=' . $data['Id_troquel'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/troquel.php?id=' . $data['Id_troquel'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -443,6 +458,7 @@ if ($_POST['action'] == 'searchTroquel') {
         <th>Nombre Troquel</th>
         <th>Decimetros</th>
         <th>Imagen</th>
+        <th>Acciones</th>
         </tr>
         ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -453,7 +469,10 @@ if ($_POST['action'] == 'searchTroquel') {
                     <td class="item__items">' . $data['Nombre_troquel'] . '</td>
                     <td class="item__items">' . $data['DCM'] . '</td>
                     <td class="item__items"><img class="img__modal" src="data:image/jpeg;base64,' . base64_encode($data['Img_troquel']) . '"></td>
+                    <td><a href="actualizar/troquel.php?id=' . $data['Id_troquel'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                    <a href="eliminar/troquel.php?id=' . $data['Id_troquel'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>    
                 </tr>
+
                 ';
         }
         $detalleTabla .= '
@@ -597,10 +616,11 @@ if ($_POST['action'] == 'buscarInsumos') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Descripcion insumo</th>
-            <th>Proveedor</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Descripcion insumo</th>
+                <th>Proveedor</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -610,6 +630,8 @@ if ($_POST['action'] == 'buscarInsumos') {
                         <td class="item__items">' . $data['Descripcion_insumo'] . '</td>
                         <td class="item__items">' . $data['Proveedor_insumo'] . '</td>
                         <td class="item__items">' . $data['Valor_uni'] . '</td>
+                        <td><a href="actualizar/insumo.php?id=' . $data['Id_insumo'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/insumo.php?id=' . $data['Id_insumo'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>    
                     </tr>
                     ';
         }
@@ -672,6 +694,7 @@ if ($_POST['action'] == 'searchInsumo') {
         <th>Descripcion insumo</th>
         <th>Proveedor</th>
         <th>Valor</th>
+        <th>Acciones</th>
         </tr>
         ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -681,6 +704,8 @@ if ($_POST['action'] == 'searchInsumo') {
                     <td class="item__items">' . $data['Descripcion_insumo'] . '</td>
                     <td class="item__items">' . $data['Proveedor_insumo'] . '</td>
                     <td class="item__items">' . $data['Valor_uni'] . '</td>
+                    <td><a href="actualizar/insumo.php?id=' . $data['Id_insumo'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                    <a href="eliminar/insumo.php?id=' . $data['Id_insumo'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>    
                 </tr>
                 ';
         }
@@ -834,10 +859,11 @@ if ($_POST['action'] == 'buscarSublimacion') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Proveedor</th>
-            <th>Metro</th>
-            <th>Valor Uni.</th>
+                <th>Seleccionar</th>
+                <th>Proveedor</th>
+                <th>Metro</th>
+                <th>Valor Uni.</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -847,6 +873,8 @@ if ($_POST['action'] == 'buscarSublimacion') {
                         <td class="item__items">' . $data['Proveedores'] . '</td>
                         <td class="item__items">' . $data['Metro'] . '</td>
                         <td class="item__items">' . $data['Precio'] . '</td>
+                        <td><a href="actualizar/sublimacion.php?id=' . $data['Id_sublimacion'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/sublimacion.php?id=' . $data['Id_sublimacion'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -863,7 +891,6 @@ if ($_POST['action'] == 'buscarSublimacion') {
     mysqli_close($conex);
     exit;
 }
-
 //buscar sublimacion
 if ($_POST['action'] == 'infoSublimacion') {
     if (!empty($_POST['sublimacion']) || !empty($_POST['sublimacionSeleccionado'])) {
@@ -910,6 +937,7 @@ if ($_POST['action'] == 'searchSublimacion') {
         <th>Proveedor</th>
         <th>Metro</th>
         <th>Valor Uni.</th>
+        <th>Acciones</th>
         </tr>
         ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -919,6 +947,8 @@ if ($_POST['action'] == 'searchSublimacion') {
                     <td class="item__items">' . $data['Proveedores'] . '</td>
                     <td class="item__items">' . $data['Metro'] . '</td>
                     <td class="item__items">' . $data['Precio'] . '</td>
+                    <td><a href="actualizar/sublimacion.php?id=' . $data['Id_sublimacion'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                    <a href="eliminar/sublimacion.php?id=' . $data['Id_sublimacion'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                 </tr>
                 ';
         }
@@ -1067,11 +1097,12 @@ if ($_POST['action'] == 'buscarCorteManual') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Codigo</th>
-            <th>Media Ancho</th>
-            <th>Media Largo</th>
-            <th>Valor Uni.</th>
+                <th>Seleccionar</th>
+                <th>Codigo</th>
+                <th>Media Ancho</th>
+                <th>Media Largo</th>
+                <th>Valor Uni.</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -1082,6 +1113,8 @@ if ($_POST['action'] == 'buscarCorteManual') {
                         <td class="item__items">' . $data['Media_ancho'] . '</td>
                         <td class="item__items">' . $data['Media_largo'] . '</td>
                         <td class="item__items">' . $data['Valor_uni'] . '</td>
+                        <td><a href="actualizar/cortemanual.php?id=' . $data['Codigo'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/cortemanual.php?id=' . $data['Codigo'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -1140,11 +1173,12 @@ if ($_POST['action'] == 'searchCorteManual') {
         $detalleTabla .= '
         <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Codigo</th>
-            <th>Media Ancho</th>
-            <th>Media Largo</th>
-            <th>Valor Uni.</th>
+                <th>Seleccionar</th>
+                <th>Codigo</th>
+                <th>Media Ancho</th>
+                <th>Media Largo</th>
+                <th>Valor Uni.</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -1155,6 +1189,8 @@ if ($_POST['action'] == 'searchCorteManual') {
                         <td class="item__items">' . $data['Media_ancho'] . '</td>
                         <td class="item__items">' . $data['Media_largo'] . '</td>
                         <td class="item__items">' . $data['Valor_uni'] . '</td>
+                        <td><a href="actualizar/cortemanual.php?id=' . $data['Codigo'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/cortemanual.php?id=' . $data['Codigo'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -1306,9 +1342,10 @@ if ($_POST['action'] == 'buscarConfeccion') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Descripcion</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Descripcion</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -1317,6 +1354,8 @@ if ($_POST['action'] == 'buscarConfeccion') {
                         <td class="item__items"><a href="#" onclick="selectConfeccion(' . $data['Id_confeccion'] . ');recargar(event);" class="select--confeccion"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
                         <td class="item__items">' . $data['Descripcion_confeccion'] . '</td>
                         <td class="item__items">' . $data['Valor_confeccion'] . '</td>
+                        <td><a href="actualizar/confeccion.php?id=' . $data['Id_confeccion'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/confeccion.php?id=' . $data['Id_confeccion'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -1357,7 +1396,7 @@ if ($_POST['action'] == 'infoConfeccion') {
     }
     exit;
 }
-// buscar corte manual en el modal
+// buscar confección en el modal
 if ($_POST['action'] == 'searchConfeccion') {
     $detalleTabla = "";
     $arrayData = array();
@@ -1378,6 +1417,7 @@ if ($_POST['action'] == 'searchConfeccion') {
             <th>Seleccionar</th>
             <th>Descripcion</th>
             <th>Valor</th>
+            <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -1386,6 +1426,8 @@ if ($_POST['action'] == 'searchConfeccion') {
                         <td class="item__items"><a href="#" onclick="selectConfeccion(' . $data['Id_confeccion'] . ');recargar(event);" class="select--confeccion"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
                         <td class="item__items">' . $data['Descripcion_confeccion'] . '</td>
                         <td class="item__items">' . $data['Valor_confeccion'] . '</td>
+                        <td><a href="actualizar/confeccion.php?id=' . $data['Id_confeccion'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/confeccion.php?id=' . $data['Id_confeccion'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -1530,9 +1572,10 @@ if ($_POST['action'] == 'buscarTerminacion') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Descripcion</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Descripcion</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -1541,6 +1584,8 @@ if ($_POST['action'] == 'buscarTerminacion') {
                         <td class="item__items"><a href="#" onclick="selectTerminacion(' . $data['Id_terminacion'] . ');recargar(event);" class="select--terminacion"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
                         <td class="item__items">' . $data['Descripcion_terminacion'] . '</td>
                         <td class="item__items">' . $data['Valor_terminacion'] . '</td>
+                        <td><a href="actualizar/terminacion.php?id=' . $data['Id_terminacion'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/terminacion.php?id=' . $data['Id_terminacion'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -1599,9 +1644,10 @@ if ($_POST['action'] == 'searchTerminacion') {
         $detalleTabla .= '
         <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Descripcion</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Descripcion</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -1610,6 +1656,8 @@ if ($_POST['action'] == 'searchTerminacion') {
                         <td class="item__items"><a href="#" onclick="selectTerminacion(' . $data['Id_terminacion'] . ');recargar(event);" class="select--terminacion"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
                         <td class="item__items">' . $data['Descripcion_terminacion'] . '</td>
                         <td class="item__items">' . $data['Valor_terminacion'] . '</td>
+                        <td><a href="actualizar/terminacion.php?id=' . $data['Id_terminacion'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/terminacion.php?id=' . $data['Id_terminacion'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -1753,9 +1801,10 @@ if ($_POST['action'] == 'buscarEntretelado') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Descripcion</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Descripcion</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -1764,6 +1813,8 @@ if ($_POST['action'] == 'buscarEntretelado') {
                         <td class="item__items"><a href="#" onclick="selectEntretelado(' . $data['Id_entretelado'] . ');recargar(event);" class="select--entretelado"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
                         <td class="item__items">' . $data['Descripcion_entretelado'] . '</td>
                         <td class="item__items">' . $data['Valor_entretelado'] . '</td>
+                        <td><a href="actualizar/entretelado.php?id=' . $data['Id_entretelado'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/entretelado.php?id=' . $data['Id_entretelado'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -1822,9 +1873,10 @@ if ($_POST['action'] == 'searchEntretelado') {
         $detalleTabla .= '
         <table class="tb">
         <tr>
-        <th>Seleccionar</th>
-        <th>Descripcion</th>
-        <th>Valor</th>
+            <th>Seleccionar</th>
+            <th>Descripcion</th>
+            <th>Valor</th>
+            <th>Acciones</th>
         </tr>
         ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -1833,6 +1885,8 @@ if ($_POST['action'] == 'searchEntretelado') {
                     <td class="item__items"><a href="#" onclick="selectEntretelado(' . $data['Id_entretelado'] . ');recargar(event);" class="select--entretelado"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
                     <td class="item__items">' . $data['Descripcion_entretelado'] . '</td>
                     <td class="item__items">' . $data['Valor_entretelado'] . '</td>
+                    <td><a href="actualizar/entretelado.php?id=' . $data['Id_entretelado'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                    <a href="eliminar/entretelado.php?id=' . $data['Id_entretelado'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                 </tr>
                 ';
         }
@@ -1979,6 +2033,7 @@ if ($_POST['action'] == 'buscarCorteDigital') {
             <th>Seleccionar</th>
             <th>Pieza</th>
             <th>Valor</th>
+            <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -1987,6 +2042,8 @@ if ($_POST['action'] == 'buscarCorteDigital') {
                         <td class="item__items"><a href="#" onclick="selectCorteDigital(' . $data['Id_cortedigital'] . ');recargar(event);" class="select--cortedigital"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
                         <td class="item__items">' . $data['Descripcion_cortedigital'] . '</td>
                         <td class="item__items">' . $data['Valor_cortedigital'] . '</td>
+                        <td><a href="actualizar/cortedigital.php?id=' . $data['Id_cortedigital'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/cortedigital.php?id=' . $data['Id_cortedigital'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -2048,6 +2105,7 @@ if ($_POST['action'] == 'searchCorteDigital') {
             <th>Seleccionar</th>
             <th>Pieza</th>
             <th>Valor</th>
+            <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -2056,6 +2114,8 @@ if ($_POST['action'] == 'searchCorteDigital') {
                         <td class="item__items"><a href="#" onclick="selectCorteDigital(' . $data['Id_cortedigital'] . ');recargar(event);" class="select--cortedigital"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
                         <td class="item__items">' . $data['Descripcion_cortedigital'] . '</td>
                         <td class="item__items">' . $data['Valor_cortedigital'] . '</td>
+                        <td><a href="actualizar/cortedigital.php?id=' . $data['Id_cortedigital'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/cortedigital.php?id=' . $data['Id_cortedigital'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -2200,10 +2260,11 @@ if ($_POST['action'] == 'buscarLaser') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -2213,6 +2274,9 @@ if ($_POST['action'] == 'buscarLaser') {
                         <td class="item__items">' . $data['Nombre_laser'] . '</td>
                         <td class="item__items">' . $data['Descripcion_laser'] . '</td>
                         <td class="item__items">' . $data['Valor_laser'] . '</td>
+                        <td><a href="actualizar/laser.php?id=' . $data['Id_laser'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/laser.php?id=' . $data['Id_laser'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
+                    </tr>
                     </tr>
                     ';
         }
@@ -2271,10 +2335,11 @@ if ($_POST['action'] == 'searchLaser') {
         $detalleTabla .= '
         <table class="tb">
         <tr>
-        <th>Seleccionar</th>
-        <th>Nombre</th>
-        <th>Descripción</th>
-        <th>Valor</th>
+            <th>Seleccionar</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Valor</th>
+            <th>Acciones</th>
         </tr>
         ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -2284,6 +2349,8 @@ if ($_POST['action'] == 'searchLaser') {
                     <td class="item__items">' . $data['Nombre_laser'] . '</td>
                     <td class="item__items">' . $data['Descripcion_laser'] . '</td>
                     <td class="item__items">' . $data['Valor_laser'] . '</td>
+                    <td><a href="actualizar/laser.php?id=' . $data['Id_laser'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                    <a href="eliminar/laser.php?id=' . $data['Id_laser'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                 </tr>
                 ';
         }
@@ -2430,11 +2497,12 @@ if ($_POST['action'] == 'buscarBordado') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Estado</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Estado</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -2445,6 +2513,8 @@ if ($_POST['action'] == 'buscarBordado') {
                         <td class="item__items">' . $data['Descripcion_bordado'] . '</td>
                         <td class="item__items">' . $data['Estado_bordado'] . '</td>
                         <td class="item__items">' . $data['Precio_bordado'] . '</td>
+                        <td><a href="actualizar/bordado.php?id=' . $data['Id_bordado'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/bordado.php?id=' . $data['Id_bordado'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -2508,6 +2578,7 @@ if ($_POST['action'] == 'searchBordado') {
         <th>Descripción</th>
         <th>Estado</th>
         <th>Valor</th>
+        <th>Acciones</th>
         </tr>
         ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -2518,6 +2589,8 @@ if ($_POST['action'] == 'searchBordado') {
                     <td class="item__items">' . $data['Descripcion_bordado'] . '</td>
                     <td class="item__items">' . $data['Estado_bordado'] . '</td>
                     <td class="item__items">' . $data['Precio_bordado'] . '</td>
+                    <td><a href="actualizar/bordado.php?id=' . $data['Id_bordado'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                    <a href="eliminar/bordado.php?id=' . $data['Id_bordado'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                 </tr>
                 ';
         }

@@ -2,7 +2,7 @@
 include("../include/conexion.php");
 
 $id = $_GET['id'];
-$eliminar = "DELETE FROM detatempinsumos WHERE Id_tempinsumo = '$id'";
+$eliminar = "DELETE FROM troquel WHERE Id_troquel = '$id'";
 $resultadoeliminar = mysqli_query($conex, $eliminar);
 if ($resultadoeliminar) {
     echo "<script>alert('Se pudo eliminar');location.replace('../costos.php');</script>";

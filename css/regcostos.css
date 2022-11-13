@@ -21,6 +21,15 @@
     text-decoration: none;
     font-family: var(--fontcentury)
 }
+.update{
+    width: max-content;
+    border: 2px solid var(--bordes);
+    padding: 0.5rem;
+    border-radius: 10px;
+    background-color: var(--blanco);
+    cursor: pointer;
+    color: var(--colorletrahead);
+}
 .btnlink{
     margin-left: 2rem;
     border: 2px solid var(--bordes);

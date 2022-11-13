@@ -1,4 +1,5 @@
 <?php
+	error_reporting(0);
 	include "../include/conexion.php";
 	require_once '../dompdf/vendor/autoload.php';
 	use Dompdf\Dompdf;

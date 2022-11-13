@@ -1,3 +1,6 @@
+<?php 
+error_reporting(0);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +46,7 @@
 				</td>
 			</tr>
 			<tr class="parrafo">
-				<td colspan="2"><p>&lt;/ &quot;Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga dicta iusto, a porro aliquam numquam ipsam sequi placeat. Error excepturi alias eos fugiat earum, harum doloribus provident possimus. Dolorem, iste?&quot; /&gt;</p></td>
+				<td colspan="2"><p>&lt;/ &quot;Somos la marca que viste a los mejores&quot; /&gt;</p></td>
 			</tr>
 		</table>
 		<!-- materia prima -->
