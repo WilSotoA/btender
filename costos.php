@@ -1,6 +1,7 @@
 <?php
 error_reporting(0);
 include "include/conexion.php";
+include "include/logeado.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -231,9 +232,13 @@ include "include/conexion.php";
     <div class="containerhead">
         <div class="container__reg">
             <a href="regcostos.php" class="btnlink">Hojas de Costos</a>
-        </div>
+        </div>   
         <h1 class="title title__head">Hoja de Costos</h1>
         <img class="icon" src="src/logo.jpg" alt="Icono">
+        <div class="container-log">
+            <p class="text-log"><?php echo $_SESSION['Nombre']?></p>
+            <a href="include/logout.php" id="logout" onclick="logout(event);"><img src="src/svg/log out.svg" alt="Cerrar Sesion" class="svg svg--delete"></a>
+        </div>
     </div>
     <form class="form" id="costos" method="post">
         <section class="factura">
@@ -839,6 +844,13 @@ include "include/conexion.php";
     <script>
         function confirmacion(e) {
             if (confirm("¿Está seguro que desea eliminar este registro?")) {
+                return true;
+            } else {
+                event.preventDefault();
+            }
+        }
+            function logout(e) {
+            if (confirm("¿Desea Cerrar Sesion?")) {
                 return true;
             } else {
                 event.preventDefault();

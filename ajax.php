@@ -1,5 +1,11 @@
 <?php
+<<<<<<< HEAD
 error_reporting(0);
+=======
+session_start();
+error_reporting(0);
+$Iduser = $_SESSION['Id'];
+>>>>>>> d8061539ea4d572e23af219058a5d9a8daf63d94
 include "include/conexion.php";
 
 //TELAS//
@@ -142,8 +148,8 @@ if ($_POST['action'] == 'aggTelatemp') {
         $cantela = $_POST['cantela'];
         $costo = $_POST['costo'];
 
-        $query = mysqli_query($conex, "INSERT INTO detatemptelas(Nombre_tela, Precio_tela, Consumo, Costo) VALUES ('$nomtela','$preciotela','$cantela','$costo')");
-        $consultar = mysqli_query($conex, "SELECT * FROM detatemptelas");
+        $query = mysqli_query($conex, "INSERT INTO detatemptelas(Nombre_tela, Precio_tela, Consumo, Costo, ID_USER) VALUES ('$nomtela','$preciotela','$cantela','$costo','$Iduser')");
+        $consultar = mysqli_query($conex, "SELECT * FROM detatemptelas WHERE ID_USER = '$Iduser'");
         $result = mysqli_num_rows($consultar);
 
         $detalleTabla = '';
@@ -191,7 +197,7 @@ if ($_POST['action'] == 'aggTelatemp') {
 }
 // extraer datos de tela del detalle temp
 if ($_POST['action'] == 'serchForDetalle') {
-    $consultar = mysqli_query($conex, "SELECT * FROM detatemptelas");
+    $consultar = mysqli_query($conex, "SELECT * FROM detatemptelas WHERE ID_USER = '$Iduser'");
 
     $result = mysqli_num_rows($consultar);
 
@@ -501,8 +507,8 @@ if ($_POST['action'] == 'aggCuerotemp') {
         $cantidadcuero = $_POST['cantcuero'];
         $costocuero = $_POST['costocuero'];
 
-        $query = mysqli_query($conex, "INSERT INTO detatempcuero(Descripcion_cuero, Precio_cuero, Troquel, dcm, Cantidad, Costo) VALUES ('$nomcuero','$preciocuero','$nomtroquel','$dcmtroquel','$cantidadcuero','$costocuero')");
-        $consultar = mysqli_query($conex, "SELECT * FROM detatempcuero");
+        $query = mysqli_query($conex, "INSERT INTO detatempcuero(Descripcion_cuero, Precio_cuero, Troquel, dcm, Cantidad, Costo, ID_USER) VALUES ('$nomcuero','$preciocuero','$nomtroquel','$dcmtroquel','$cantidadcuero','$costocuero','$Iduser')");
+        $consultar = mysqli_query($conex, "SELECT * FROM detatempcuero WHERE ID_USER = '$Iduser'");
         $result = mysqli_num_rows($consultar);
 
         $detalleTabla = '';
@@ -552,7 +558,7 @@ if ($_POST['action'] == 'aggCuerotemp') {
 }
 //extraer cuero del detalle temp
 if ($_POST['action'] == 'serchForDetalleCuero') {
-    $consultar = mysqli_query($conex, "SELECT * FROM detatempcuero");
+    $consultar = mysqli_query($conex, "SELECT * FROM detatempcuero WHERE ID_USER = '$Iduser'");
 
     $result = mysqli_num_rows($consultar);
 
@@ -744,8 +750,8 @@ if ($_POST['action'] == 'aggInsumotemp') {
         $cantinsumo = $_POST['cantinsumo'];
         $costoinsumo = $_POST['costoinsumo'];
 
-        $query = mysqli_query($conex, "INSERT INTO detatempinsumos(Descripcion_insumo, proveedor, Valor_uni, Cantidad, Costo) VALUES ('$nominsumo','$proveedorinsumo','$precioinsumo','$cantinsumo','$costoinsumo')");
-        $consultar = mysqli_query($conex, "SELECT * FROM detatempinsumos");
+        $query = mysqli_query($conex, "INSERT INTO detatempinsumos(Descripcion_insumo, proveedor, Valor_uni, Cantidad, Costo, ID_USER) VALUES ('$nominsumo','$proveedorinsumo','$precioinsumo','$cantinsumo','$costoinsumo', '$Iduser')");
+        $consultar = mysqli_query($conex, "SELECT * FROM detatempinsumos WHERE ID_USER = '$Iduser'");
         $result = mysqli_num_rows($consultar);
 
         $detalleTabla = '';
@@ -794,7 +800,7 @@ if ($_POST['action'] == 'aggInsumotemp') {
 }
 //extraer insumos del detalle temp
 if ($_POST['action'] == 'serchForDetalleInsumo') {
-    $consultar = mysqli_query($conex, "SELECT * FROM detatempinsumos");
+    $consultar = mysqli_query($conex, "SELECT * FROM detatempinsumos WHERE ID_USER = '$Iduser'");
 
     $result = mysqli_num_rows($consultar);
 
@@ -987,8 +993,8 @@ if ($_POST['action'] == 'aggSublimaciontemp') {
         $cantidad = $_POST['cantSublimacion'];
         $costo = $_POST['costoSublimacion'];
 
-        $query = mysqli_query($conex, "INSERT INTO detatempsublimacion(Proveedor_sublimacion, Precio_metro, Valor_uni, Cantidad, Costo) VALUES ('$proveedor','$metro','$precio','$cantidad','$costo')");
-        $consultar = mysqli_query($conex, "SELECT * FROM detatempsublimacion");
+        $query = mysqli_query($conex, "INSERT INTO detatempsublimacion(Proveedor_sublimacion, Precio_metro, Valor_uni, Cantidad, Costo, ID_USER) VALUES ('$proveedor','$metro','$precio','$cantidad','$costo','$Iduser')");
+        $consultar = mysqli_query($conex, "SELECT * FROM detatempsublimacion WHERE ID_USER = '$Iduser'");
         $result = mysqli_num_rows($consultar);
 
         $detalleTabla = '';
@@ -1038,7 +1044,7 @@ if ($_POST['action'] == 'aggSublimaciontemp') {
 
 // extraer datos de sublimacion del detalle temp
 if ($_POST['action'] == 'serchForDetalleSublimacion') {
-    $consultar = mysqli_query($conex, "SELECT * FROM detatempsublimacion");
+    $consultar = mysqli_query($conex, "SELECT * FROM detatempsublimacion WHERE ID_USER = '$Iduser'");
     $result = mysqli_num_rows($consultar);
 
     $detalleTabla = '';
@@ -1231,8 +1237,8 @@ if ($_POST['action'] == 'aggCorteManualtemp') {
         $cantidad = $_POST['cantcortemanual'];
         $costo = $_POST['costocortemanual'];
 
-        $query = mysqli_query($conex, "INSERT INTO detatempcortemanual(Codigo, Media_ancho, Media_largo, Valor_uni, Cantidad, Costo) VALUES ('$codigo','$ancho','$largo','$precio','$cantidad','$costo')");
-        $consultar = mysqli_query($conex, "SELECT * FROM detatempcortemanual");
+        $query = mysqli_query($conex, "INSERT INTO detatempcortemanual(Codigo, Media_ancho, Media_largo, Valor_uni, Cantidad, Costo, ID_USER) VALUES ('$codigo','$ancho','$largo','$precio','$cantidad','$costo','$Iduser')");
+        $consultar = mysqli_query($conex, "SELECT * FROM detatempcortemanual WHERE ID_USER = '$Iduser'");
         $result = mysqli_num_rows($consultar);
 
         $detalleTabla = '';
@@ -1282,7 +1288,7 @@ if ($_POST['action'] == 'aggCorteManualtemp') {
 }
 // extraer datos de corte manual del detalle temp
 if ($_POST['action'] == 'serchForDetalleCorteManual') {
-    $consultar = mysqli_query($conex, "SELECT * FROM detatempcortemanual");
+    $consultar = mysqli_query($conex, "SELECT * FROM detatempcortemanual WHERE ID_USER = '$Iduser'");
     $result = mysqli_num_rows($consultar);
 
     $detalleTabla = '';
@@ -1464,7 +1470,7 @@ if ($_POST['action'] == 'aggConfecciontemp') {
         $cantidad = $_POST['cantconfeccion'];
         $costo = $_POST['costoconfeccion'];
 
-        $query = mysqli_query($conex, "INSERT INTO detatempconfeccion(Descripcion, Valor, Cantidad, Costo) VALUES ('$descripcion','$precio','$cantidad','$costo')");
+        $query = mysqli_query($conex, "INSERT INTO detatempconfeccion(Descripcion, Valor, Cantidad, Costo, ID_USER) VALUES ('$descripcion','$precio','$cantidad','$costo','$Iduser')");
         $consultar = mysqli_query($conex, "SELECT * FROM detatempconfeccion");
         $result = mysqli_num_rows($consultar);
 
@@ -1514,7 +1520,7 @@ if ($_POST['action'] == 'aggConfecciontemp') {
 
 // extraer datos de confección del detalle temp
 if ($_POST['action'] == 'serchForDetalleConfeccion') {
-    $consultar = mysqli_query($conex, "SELECT * FROM detatempconfeccion");
+    $consultar = mysqli_query($conex, "SELECT * FROM detatempconfeccion WHERE ID_USER = '$Iduser'");
     $result = mysqli_num_rows($consultar);
 
     $detalleTabla = '';
@@ -1694,8 +1700,8 @@ if ($_POST['action'] == 'aggTerminaciontemp') {
         $cantidad = $_POST['canterminacion'];
         $costo = $_POST['costoterminacion'];
 
-        $query = mysqli_query($conex, "INSERT INTO detatempterminacion(Descripcion, Valor, Cantidad, Costo) VALUES ('$descripcion','$precio','$cantidad','$costo')");
-        $consultar = mysqli_query($conex, "SELECT * FROM detatempterminacion");
+        $query = mysqli_query($conex, "INSERT INTO detatempterminacion(Descripcion, Valor, Cantidad, Costo, ID_USER) VALUES ('$descripcion','$precio','$cantidad','$costo','$Iduser')");
+        $consultar = mysqli_query($conex, "SELECT * FROM detatempterminacion WHERE ID_USER = '$Iduser'");
         $result = mysqli_num_rows($consultar);
 
         $detalleTabla = '';
@@ -1743,7 +1749,7 @@ if ($_POST['action'] == 'aggTerminaciontemp') {
 }
 // extraer datos de terminación del detalle temp
 if ($_POST['action'] == 'serchForDetalleTerminacion') {
-    $consultar = mysqli_query($conex, "SELECT * FROM detatempterminacion");
+    $consultar = mysqli_query($conex, "SELECT * FROM detatempterminacion WHERE ID_USER = '$Iduser'");
     $result = mysqli_num_rows($consultar);
 
     $detalleTabla = '';
@@ -1923,8 +1929,8 @@ if ($_POST['action'] == 'aggEntreteladotemp') {
         $cantidad = $_POST['cantentretelado'];
         $costo = $_POST['costoentretelado'];
 
-        $query = mysqli_query($conex, "INSERT INTO detatempentretelado(Descripcion, Valor, Cantidad, Costo) VALUES ('$descripcion','$precio','$cantidad','$costo')");
-        $consultar = mysqli_query($conex, "SELECT * FROM detatempentretelado");
+        $query = mysqli_query($conex, "INSERT INTO detatempentretelado(Descripcion, Valor, Cantidad, Costo, ID_USER) VALUES ('$descripcion','$precio','$cantidad','$costo','$Iduser')");
+        $consultar = mysqli_query($conex, "SELECT * FROM detatempentretelado WHERE ID_USER = '$Iduser'");
         $result = mysqli_num_rows($consultar);
 
         $detalleTabla = '';
@@ -1972,7 +1978,7 @@ if ($_POST['action'] == 'aggEntreteladotemp') {
 }
 // extraer datos de entretelado del detalle temp
 if ($_POST['action'] == 'serchForDetalleEntretelado') {
-    $consultar = mysqli_query($conex, "SELECT * FROM detatempentretelado");
+    $consultar = mysqli_query($conex, "SELECT * FROM detatempentretelado WHERE ID_USER = '$Iduser'");
     $result = mysqli_num_rows($consultar);
 
     $detalleTabla = '';
@@ -2153,8 +2159,8 @@ if ($_POST['action'] == 'aggCorteDigitaltemp') {
         $cantidad = $_POST['cantcortedigital'];
         $costo = $_POST['costocortedigital'];
 
-        $query = mysqli_query($conex, "INSERT INTO detatempcortedigital(Descripcion, Valor, Cantidad, Costo) VALUES ('$descripcion','$precio','$cantidad','$costo')");
-        $consultar = mysqli_query($conex, "SELECT * FROM detatempcortedigital");
+        $query = mysqli_query($conex, "INSERT INTO detatempcortedigital(Descripcion, Valor, Cantidad, Costo, ID_USER) VALUES ('$descripcion','$precio','$cantidad','$costo','$Iduser')");
+        $consultar = mysqli_query($conex, "SELECT * FROM detatempcortedigital WHERE ID_USER = '$Iduser'");
         $result = mysqli_num_rows($consultar);
 
         $detalleTabla = '';
@@ -2202,7 +2208,7 @@ if ($_POST['action'] == 'aggCorteDigitaltemp') {
 }
 // extraer datos de corte digital del detalle temp
 if ($_POST['action'] == 'serchForDetalleCorteDigital') {
-    $consultar = mysqli_query($conex, "SELECT * FROM detatempcortedigital");
+    $consultar = mysqli_query($conex, "SELECT * FROM detatempcortedigital WHERE ID_USER = '$Iduser'");
     $result = mysqli_num_rows($consultar);
 
     $detalleTabla = '';
@@ -2389,8 +2395,8 @@ if ($_POST['action'] == 'aggLasertemp') {
         $cantidad = $_POST['cantlaser'];
         $costo = $_POST['costolaser'];
 
-        $query = mysqli_query($conex, "INSERT INTO detatemplaser(Nombre, Descripcion, Valor, Cantidad, Costo) VALUES ('$nombre','$descripcion','$precio','$cantidad','$costo')");
-        $consultar = mysqli_query($conex, "SELECT * FROM detatemplaser");
+        $query = mysqli_query($conex, "INSERT INTO detatemplaser(Nombre, Descripcion, Valor, Cantidad, Costo, ID_USER) VALUES ('$nombre','$descripcion','$precio','$cantidad','$costo','$Iduser')");
+        $consultar = mysqli_query($conex, "SELECT * FROM detatemplaser WHERE ID_USER = '$Iduser'");
         $result = mysqli_num_rows($consultar);
 
         $detalleTabla = '';
@@ -2439,7 +2445,7 @@ if ($_POST['action'] == 'aggLasertemp') {
 }
 // extraer datos de laser del detalle temp
 if ($_POST['action'] == 'serchForDetalleLaser') {
-    $consultar = mysqli_query($conex, "SELECT * FROM detatemplaser");
+    $consultar = mysqli_query($conex, "SELECT * FROM detatemplaser WHERE ID_USER = '$Iduser'");
     $result = mysqli_num_rows($consultar);
 
     $detalleTabla = '';
@@ -2630,8 +2636,8 @@ if ($_POST['action'] == 'aggBordadotemp') {
         $cantidad = $_POST['cantbordado'];
         $costo = $_POST['costobordado'];
 
-        $query = mysqli_query($conex, "INSERT INTO detatempbordado(Nombre, Descripcion, Valor, Cantidad, Costo) VALUES ('$nombre','$descripcion','$precio','$cantidad','$costo')");
-        $consultar = mysqli_query($conex, "SELECT * FROM detatempbordado");
+        $query = mysqli_query($conex, "INSERT INTO detatempbordado(Nombre, Descripcion, Valor, Cantidad, Costo, ID_USER) VALUES ('$nombre','$descripcion','$precio','$cantidad','$costo','$Iduser')");
+        $consultar = mysqli_query($conex, "SELECT * FROM detatempbordado WHERE ID_USER = '$Iduser'");
         $result = mysqli_num_rows($consultar);
 
         $detalleTabla = '';
@@ -2680,7 +2686,7 @@ if ($_POST['action'] == 'aggBordadotemp') {
 }
 // extraer datos de bordado del detalle temp
 if ($_POST['action'] == 'serchForDetalleBordado') {
-    $consultar = mysqli_query($conex, "SELECT * FROM detatempbordado");
+    $consultar = mysqli_query($conex, "SELECT * FROM detatempbordado WHERE ID_USER = '$Iduser'");
     $result = mysqli_num_rows($consultar);
 
     $detalleTabla = '';
@@ -2729,17 +2735,17 @@ if ($_POST['action'] == 'serchForDetalleBordado') {
 
 if ($_POST['action'] == 'cancelarVenta') {
 
-    $querytela = mysqli_query($conex, "DELETE FROM detatemptelas");
-    $querycuero = mysqli_query($conex, "DELETE FROM detatempcuero");
-    $queryinsumo = mysqli_query($conex, "DELETE FROM detatempinsumos");
-    $querysublimacion = mysqli_query($conex, "DELETE FROM detatempsublimacion");
-    $querycortemanual = mysqli_query($conex, "DELETE FROM detatempcortemanual");
-    $queryconfeccion = mysqli_query($conex, "DELETE FROM detatempconfeccion");
-    $queryterminacion = mysqli_query($conex, "DELETE FROM detatempterminacion");
-    $queryentretelado = mysqli_query($conex, "DELETE FROM detatempentretelado");
-    $querycortedigital = mysqli_query($conex, "DELETE FROM detatempcortedigital");
-    $querylaser = mysqli_query($conex, "DELETE FROM detatemplaser");
-    $querybordado = mysqli_query($conex, "DELETE FROM detatempbordado");
+    $querytela = mysqli_query($conex, "DELETE FROM detatemptelas WHERE ID_USER = '$Iduser'");
+    $querycuero = mysqli_query($conex, "DELETE FROM detatempcuero WHERE ID_USER = '$Iduser'");
+    $queryinsumo = mysqli_query($conex, "DELETE FROM detatempinsumos WHERE ID_USER = '$Iduser'");
+    $querysublimacion = mysqli_query($conex, "DELETE FROM detatempsublimacion WHERE ID_USER = '$Iduser'");
+    $querycortemanual = mysqli_query($conex, "DELETE FROM detatempcortemanual WHERE ID_USER = '$Iduser'");
+    $queryconfeccion = mysqli_query($conex, "DELETE FROM detatempconfeccion WHERE ID_USER = '$Iduser'");
+    $queryterminacion = mysqli_query($conex, "DELETE FROM detatempterminacion WHERE ID_USER = '$Iduser'");
+    $queryentretelado = mysqli_query($conex, "DELETE FROM detatempentretelado WHERE ID_USER = '$Iduser'");
+    $querycortedigital = mysqli_query($conex, "DELETE FROM detatempcortedigital WHERE ID_USER = '$Iduser'");
+    $querylaser = mysqli_query($conex, "DELETE FROM detatemplaser WHERE ID_USER = '$Iduser'");
+    $querybordado = mysqli_query($conex, "DELETE FROM detatempbordado WHERE ID_USER = '$Iduser'");
 
 
     if ($querytela && $querycuero && $queryinsumo && $querysublimacion && $querycortemanual && $queryconfeccion && $queryterminacion && $queryentretelado && $querycortedigital && $querylaser && $querybordado) {
@@ -2998,7 +3004,7 @@ if ($_POST['action'] == 'serchForDetalleCostos') {
 
     exit;
 }
-// buscar bordado en el modal
+// buscar costos por fecha
 if ($_POST['action'] == 'searchCostos') {
     $detalleTabla = "";
     $arrayData = array();
