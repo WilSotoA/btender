@@ -18,7 +18,7 @@ if ($_SESSION['Id'] != '' || $_SESSION['Id'] != null) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login B●TENDER</title>
-    <link rel="stylesheet" href="css/login.min.css">
+    <link rel="stylesheet" href="css/login.css">
     <link rel="shortcut icon" href="src/favicon.png" type="image/x-icon">
 </head>
 
@@ -62,8 +62,8 @@ if ($_SESSION['Id'] != '' || $_SESSION['Id'] != null) {
     if(isset($_POST['ingresar'])){
         $user = mysqli_real_escape_string($conex,$_POST['user']);
         $password = mysqli_real_escape_string($conex,$_POST['password']);
-       $encript = password_hash($password, PASSWORD_DEFAULT);
-       echo $encript;
+    //    $encript = password_hash($password, PASSWORD_DEFAULT);
+    //    echo $encript;
         $query = mysqli_query($conex, "SELECT * FROM usuarios WHERE Nombre_user='$user'");
         $rows = mysqli_num_rows($query);
         if($rows > 0){

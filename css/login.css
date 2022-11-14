@@ -39,7 +39,6 @@
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-    background-color: rgba(132, 91, 66, 0.438);
     border: 1px solid var(--bordes);
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -54,13 +53,13 @@
     margin-top: 0.5rem;
     height: max-content;
     width: 95%;
+    display: flex;
 }
 .banner__img{
     display: inline-block;
     border-radius: 10px;
-    width: 100%;
     max-height: 120px;
-    opacity: 0.75;
+    margin: 0 auto;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
