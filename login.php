@@ -7,7 +7,7 @@ if ($_SESSION['Id'] != '' || $_SESSION['Id'] != null) {
 } 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -18,7 +18,7 @@ if ($_SESSION['Id'] != '' || $_SESSION['Id'] != null) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login B●TENDER</title>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/login.min.css">
     <link rel="shortcut icon" href="src/favicon.png" type="image/x-icon">
 </head>
 
@@ -55,6 +55,9 @@ if ($_SESSION['Id'] != '' || $_SESSION['Id'] != null) {
             </form>
         </div>
     </div>
+    <footer class="copy">
+        <small class="textcopy">&copy; 2022 <b>B&bull;TENDER</b> - Todos los Derechos Reservados. ---- DISEÑADO POR: <a target="_blank" href="https://wa.me/+573219282112">WILMER S.</a></small>
+    </footer>
     <?php 
     if(isset($_POST['ingresar'])){
         $user = mysqli_real_escape_string($conex,$_POST['user']);

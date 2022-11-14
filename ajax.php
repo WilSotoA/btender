@@ -2788,7 +2788,7 @@ if ($_POST['action'] == 'facturar') {
         $queryimpuesto = mysqli_query($conex, "INSERT INTO impuestoscostos(ID_COSTOS, Impuestos, Valor_impuesto) VALUES ('$idcostos','UTILIDAD', 0)");
     }
     // guardar tela
-    $querytela = mysqli_query($conex, "SELECT * FROM detatemptelas");
+    $querytela = mysqli_query($conex, "SELECT * FROM detatemptelas WHERE ID_USER = '$Iduser'");
     $resultela = mysqli_num_rows($querytela);
     if ($resultela > 0) {
         while ($arreglo = mysqli_fetch_assoc($querytela)) {
@@ -2798,10 +2798,10 @@ if ($_POST['action'] == 'facturar') {
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallestela(ID_COSTOS, TELA, Precio, Cantidad, Costo) VALUES ('$idcostos','$nomtela','$precio','$cantidad','$costo')");
         }
-        $query = mysqli_query($conex, "DELETE FROM detatemptelas");
+        $query = mysqli_query($conex, "DELETE FROM detatemptelas WHERE ID_USER = '$Iduser'");
     };
     // guardar cuero
-    $querycuero = mysqli_query($conex, "SELECT * FROM detatempcuero");
+    $querycuero = mysqli_query($conex, "SELECT * FROM detatempcuero WHERE ID_USER = '$Iduser'");
     $resultcuero = mysqli_num_rows($querycuero);
     if ($resultcuero > 0) {
 
@@ -2814,10 +2814,10 @@ if ($_POST['action'] == 'facturar') {
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallescuero(ID_COSTOS, CUERO, Precio, TROQUEL, DCM, Cantidad, Costo) VALUES ('$idcostos','$nomcuero','$preciocuero','$nomtroquel','$dcm','$cantidad','$costo')");
         }
-        $query = mysqli_query($conex, "DELETE FROM detatempcuero");
+        $query = mysqli_query($conex, "DELETE FROM detatempcuero WHERE ID_USER = '$Iduser'");
     };
     //guardar insumo
-    $queryinsumo = mysqli_query($conex, "SELECT * FROM detatempinsumos");
+    $queryinsumo = mysqli_query($conex, "SELECT * FROM detatempinsumos WHERE ID_USER = '$Iduser'");
     $resultinsumo = mysqli_num_rows($queryinsumo);
     if ($resultinsumo > 0) {
 
@@ -2829,10 +2829,10 @@ if ($_POST['action'] == 'facturar') {
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallesinsumos(ID_COSTOS, INSUMO, Proveedor, Precio, Cantidad, Costo) VALUES ('$idcostos','$nominsumo','$proveedor','$precio','$cantidad','$costo')");
         }
-        $query = mysqli_query($conex, "DELETE FROM detatempinsumos");
+        $query = mysqli_query($conex, "DELETE FROM detatempinsumos WHERE ID_USER = '$Iduser'");
     };
     // guardar sublimación
-    $querysublimacion = mysqli_query($conex, "SELECT * FROM detatempsublimacion");
+    $querysublimacion = mysqli_query($conex, "SELECT * FROM detatempsublimacion WHERE ID_USER = '$Iduser'");
     $resultsublimacion = mysqli_num_rows($querysublimacion);
     if ($resultsublimacion > 0) {
 
@@ -2844,10 +2844,10 @@ if ($_POST['action'] == 'facturar') {
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallessublimacion(ID_COSTOS, SUBLIMACION, Metro, Precio, Cantidad, Costo) VALUES ('$idcostos','$nomsublimacion',$metro,'$precio',$cantidad,'$costo')");
         }
-        $query = mysqli_query($conex, "DELETE FROM detatempsublimacion");
+        $query = mysqli_query($conex, "DELETE FROM detatempsublimacion WHERE ID_USER = '$Iduser'");
     };
     // guardar corte manual
-    $querycortemanual = mysqli_query($conex, "SELECT * FROM detatempcortemanual");
+    $querycortemanual = mysqli_query($conex, "SELECT * FROM detatempcortemanual WHERE ID_USER = '$Iduser'");
     $resultcortemanual = mysqli_num_rows($querycortemanual);
     if ($resultcortemanual > 0) {
 
@@ -2860,10 +2860,10 @@ if ($_POST['action'] == 'facturar') {
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallescortemanual(ID_COSTOS, CORTEMANUAL, Ancho, Largo, Precio, Cantidad, Costo) VALUES ('$idcostos','$codigo','$ancho','$largo','$precio','$cantidad','$costo')");
         }
-        $query = mysqli_query($conex, "DELETE FROM detatempcortemanual");
+        $query = mysqli_query($conex, "DELETE FROM detatempcortemanual WHERE ID_USER = '$Iduser'");
     };
     //guardar confección
-    $queryconfeccion = mysqli_query($conex, "SELECT * FROM detatempconfeccion");
+    $queryconfeccion = mysqli_query($conex, "SELECT * FROM detatempconfeccion WHERE ID_USER = '$Iduser'");
     $resultconfeccion = mysqli_num_rows($queryconfeccion);
     if ($resultconfeccion > 0) {
 
@@ -2874,10 +2874,10 @@ if ($_POST['action'] == 'facturar') {
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallesconfeccion(ID_COSTOS, CONFECCION, Precio, Cantidad, Costo) VALUES ('$idcostos','$confeccion','$precio','$cantidad','$costo')");
         }
-        $query = mysqli_query($conex, "DELETE FROM detatempconfeccion");
+        $query = mysqli_query($conex, "DELETE FROM detatempconfeccion WHERE ID_USER = '$Iduser'");
     };
     //guardar terminación
-    $queryterminacion = mysqli_query($conex, "SELECT * FROM detatempterminacion");
+    $queryterminacion = mysqli_query($conex, "SELECT * FROM detatempterminacion WHERE ID_USER = '$Iduser'");
     $resultterminacion = mysqli_num_rows($queryterminacion);
     if ($resultterminacion > 0) {
 
@@ -2888,10 +2888,10 @@ if ($_POST['action'] == 'facturar') {
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallesterminacion(ID_COSTOS, TERMINACION, Precio, Cantidad, Costo) VALUES ('$idcostos','$terminacion','$precio','$cantidad','$costo')");
         }
-        $query = mysqli_query($conex, "DELETE FROM detatempterminacion");
+        $query = mysqli_query($conex, "DELETE FROM detatempterminacion WHERE ID_USER = '$Iduser'");
     };
     // guardar entretelado
-    $queryentretelado = mysqli_query($conex, "SELECT * FROM detatempentretelado");
+    $queryentretelado = mysqli_query($conex, "SELECT * FROM detatempentretelado WHERE ID_USER = '$Iduser'");
     $resultentretelado = mysqli_num_rows($queryentretelado);
     if ($resultentretelado > 0) {
 
@@ -2902,10 +2902,10 @@ if ($_POST['action'] == 'facturar') {
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallesentretelado(ID_COSTOS, ENTRETELADO, Precio, Cantidad, Costo) VALUES ('$idcostos','$entretelado','$precio','$cantidad','$costo')");
         }
-        $query = mysqli_query($conex, "DELETE FROM detatempentretelado");
+        $query = mysqli_query($conex, "DELETE FROM detatempentretelado WHERE ID_USER = '$Iduser'");
     };
     // guardar corte digital
-    $querycortedigital = mysqli_query($conex, "SELECT * FROM detatempcortedigital");
+    $querycortedigital = mysqli_query($conex, "SELECT * FROM detatempcortedigital WHERE ID_USER = '$Iduser'");
     $resultcortedigital = mysqli_num_rows($querycortedigital);
     if ($resultcortedigital > 0) {
         while ($arreglo = mysqli_fetch_assoc($querycortedigital)) {
@@ -2915,10 +2915,10 @@ if ($_POST['action'] == 'facturar') {
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallescortedigital(ID_COSTOS, CORTEDIGITAL, Precio, Cantidad, Costo) VALUES ('$idcostos','$cortedigital','$precio','$cantidad','$costo')");
         }
-        $query = mysqli_query($conex, "DELETE FROM detatempcortedigital");
+        $query = mysqli_query($conex, "DELETE FROM detatempcortedigital WHERE ID_USER = '$Iduser'");
     };
     // guardar laser
-    $querylaser = mysqli_query($conex, "SELECT * FROM detatemplaser");
+    $querylaser = mysqli_query($conex, "SELECT * FROM detatemplaser WHERE ID_USER = '$Iduser'");
     $resultlaser = mysqli_num_rows($querylaser);
     if ($resultlaser > 0) {
         while ($arreglo = mysqli_fetch_assoc($querylaser)) {
@@ -2928,11 +2928,11 @@ if ($_POST['action'] == 'facturar') {
             $cantidad = $arreglo['Cantidad'];
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detalleslaser(ID_COSTOS, LASER, Descripcion, Precio, Cantidad, Costo) VALUES ('$idcostos','$laser','$descripcion','$precio','$cantidad','$costo')");
-            $query = mysqli_query($conex, "DELETE FROM detatemplaser");
+            $query = mysqli_query($conex, "DELETE FROM detatemplaser WHERE ID_USER = '$Iduser'");
         };
     };
     // guardar bordado
-    $querybordado  = mysqli_query($conex, "SELECT * FROM detatempbordado");
+    $querybordado  = mysqli_query($conex, "SELECT * FROM detatempbordado WHERE ID_USER = '$Iduser'");
     $resultbordado = mysqli_num_rows($querybordado);
     if ($resultbordado > 0) {
         while ($arreglo = mysqli_fetch_assoc($querybordado)) {
@@ -2942,7 +2942,7 @@ if ($_POST['action'] == 'facturar') {
             $cantidad = $arreglo['Cantidad'];
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallesbordado(ID_COSTOS, BORDADO, Descripcion, Precio, Cantidad, Costo) VALUES ('$idcostos','$bordado','$descripcion','$precio','$cantidad','$costo')");
-            $query = mysqli_query($conex, "DELETE FROM detatempbordado");
+            $query = mysqli_query($conex, "DELETE FROM detatempbordado WHERE ID_USER = '$Iduser'");
         };
     };
 }
@@ -3034,7 +3034,7 @@ if ($_POST['action'] == 'searchCostos') {
                 <td class="item__items">' . $data['Cotizacion'] . '</td>
                 <td class="item__items">' . $data['Total_impuesto'] . '</td>
                 <td class="item__items">
-                <a href="factura/generaFactura.php?f=' . $idcostos . '" class="btndownload"><img src="src/download.png" alt="descargar" class="svg svg--download"></a>
+                <a target= "_blank" href="factura/generaFactura.php?f=' . $idcostos . '" class="btndownload"><img src="src/download.png" alt="descargar" class="svg svg--download"></a>
                 <a href="eliminar/elimcostos.php?id=' . $idcostos . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a>
                 </td>
             </tr>

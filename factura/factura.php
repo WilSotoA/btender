@@ -1,5 +1,5 @@
 <?php 
-error_reporting(0);
+// error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +7,7 @@ error_reporting(0);
 <head>
 	<meta charset="UTF-8">
 	<title>Hoja de Costos B●TENDER</title>
-	<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/BTENDER/css/style.css">
+	<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/BTENDER/css/style.min.css">
 	<link rel="shortcut icon" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/BTENDER/src/favicon.png" type="image/x-icon">
 </head>
 <body>
@@ -212,8 +212,8 @@ error_reporting(0);
 				</tbody>
 				<tfoot>
 					<tr class="row__detalle">
-					<td class="items__detalle item__detalle--totales" colspan="6">TOTAL CORTE MANUAL:</td>
-					<td class="items__detalle item__detalle--totales" colspan="6">$ <?php echo number_format($totalcortemanual) ?></td>
+					<td class="items__detalle item__detalle--totales" colspan="5">TOTAL CORTE MANUAL:</td>
+					<td class="items__detalle item__detalle--totales">$ <?php echo number_format($totalcortemanual) ?></td>
 					</tr>
 				</tfoot>
 			</table>
@@ -518,7 +518,7 @@ error_reporting(0);
 				//insertar datos totales
 				$queryinsert = mysqli_query($conex, "UPDATE costos SET Total_bruto = '$totalbruto',Subtotal='$subtotal',Total_impuesto= '$totalimpuestos' WHERE ID_COSTOS = '$noCosto'");
 				if ($queryinsert == true) {
-					$queryselect = mysqli_query($conex, "SELECT Total_bruto,Subtotal,Total_impuesto,Total FROM costos WHERE ID_COSTOS = '$noCosto'");
+					$queryselect = mysqli_query($conex, "SELECT Total_bruto,Subtotal,Total_impuesto FROM costos WHERE ID_COSTOS = '$noCosto'");
 					$arrayselect = mysqli_fetch_assoc($queryselect);
 					$totalBruto = $arrayselect['Total_bruto'];
 					$subTotal = $arrayselect['Subtotal'];
