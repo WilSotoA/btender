@@ -1,11 +1,8 @@
 <?php 
-<<<<<<< HEAD
 error_reporting(0);
-
-=======
+session_start();
 include 'include/conexion.php';
 include 'include/logeado.php';
->>>>>>> d8061539ea4d572e23af219058a5d9a8daf63d94
 ?>
 <!DOCTYPE html>
 <html lang="en">

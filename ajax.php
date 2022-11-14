@@ -1,12 +1,8 @@
 <?php
-<<<<<<< HEAD
 error_reporting(0);
-=======
 session_start();
-error_reporting(0);
-$Iduser = $_SESSION['Id'];
->>>>>>> d8061539ea4d572e23af219058a5d9a8daf63d94
 include "include/conexion.php";
+$Iduser = $_SESSION['Id'];
 
 //TELAS//
 
@@ -147,7 +143,6 @@ if ($_POST['action'] == 'aggTelatemp') {
         $preciotela = $_POST['preciotela'];
         $cantela = $_POST['cantela'];
         $costo = $_POST['costo'];
-
         $query = mysqli_query($conex, "INSERT INTO detatemptelas(Nombre_tela, Precio_tela, Consumo, Costo, ID_USER) VALUES ('$nomtela','$preciotela','$cantela','$costo','$Iduser')");
         $consultar = mysqli_query($conex, "SELECT * FROM detatemptelas WHERE ID_USER = '$Iduser'");
         $result = mysqli_num_rows($consultar);

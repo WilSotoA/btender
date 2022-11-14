@@ -109,6 +109,7 @@ $(document).ready(function () {
         },
         success: function (response) {
           if (response != "error") {
+            console.log(response);
             var info = JSON.parse(response);
             $("#detatela").html(info.detalle);
             $("#telatotal").html(info.totales);

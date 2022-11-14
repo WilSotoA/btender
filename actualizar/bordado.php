@@ -1,5 +1,6 @@
 <?php
-// error_reporting(0);
+error_reporting(0);
+include ("../include/log.php");
 include("../include/conexion.php");
 $id = $_GET['id'];
 $query = mysqli_query($conex, "SELECT * FROM bordado WHERE Id_bordado = $id");

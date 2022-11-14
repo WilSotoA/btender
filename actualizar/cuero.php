@@ -1,6 +1,7 @@
 <?php
 error_reporting(0);
 include("../include/conexion.php");
+include ("../include/log.php");
 $id = $_GET['id'];
 $query = mysqli_query($conex, "SELECT * FROM cueros WHERE Id_cuero = $id");
 $rows = mysqli_num_rows($query);

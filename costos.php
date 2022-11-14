@@ -1,5 +1,4 @@
 <?php
-error_reporting(0);
 include "include/conexion.php";
 include "include/logeado.php";
 ?>
