@@ -1,13 +1,13 @@
 <?php 
+error_reporting(0);
 include 'include/conexion.php';
 session_start();
-error_reporting(0);
 if ($_SESSION['Id'] != '' || $_SESSION['Id'] != null) {
     header('location: costos.php');
-}
+} 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -55,10 +55,15 @@ if ($_SESSION['Id'] != '' || $_SESSION['Id'] != null) {
             </form>
         </div>
     </div>
+    <footer class="copy">
+        <small class="textcopy">&copy; 2022 <b>B&bull;TENDER</b> - Todos los Derechos Reservados. ---- DISEÑADO POR: <a target="_blank" href="https://wa.me/+573219282112">WILMER S.</a></small>
+    </footer>
     <?php 
     if(isset($_POST['ingresar'])){
         $user = mysqli_real_escape_string($conex,$_POST['user']);
         $password = mysqli_real_escape_string($conex,$_POST['password']);
+    //    $encript = password_hash($password, PASSWORD_DEFAULT);
+    //    echo $encript;
         $query = mysqli_query($conex, "SELECT * FROM usuarios WHERE Nombre_user='$user'");
         $rows = mysqli_num_rows($query);
         if($rows > 0){

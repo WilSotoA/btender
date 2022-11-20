@@ -1,4 +1,5 @@
 <?php 
+error_reporting(0);
 include "include/conexion.php";
 die();
 if (isset($_POST['creartroquel'])){

@@ -1,8 +1,8 @@
 <?php
-session_start();
 error_reporting(0);
-$Iduser = $_SESSION['Id'];
+session_start();
 include "include/conexion.php";
+$Iduser = $_SESSION['Id'];
 
 //TELAS//
 
@@ -20,10 +20,11 @@ if ($_POST['action'] == 'buscarTelas') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Nombre Tela</th>
-            <th>Proveedor</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Nombre Tela</th>
+                <th>Proveedor</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -33,6 +34,8 @@ if ($_POST['action'] == 'buscarTelas') {
                         <td class="item__items">' . $data['Descripcion_tela'] . '</td>
                         <td class="item__items">' . $data['Proveedor'] . '</td>
                         <td class="item__items">' . $data['Valor_uni'] . '</td>
+                        <td><a href="actualizar/tela.php?id=' . $data['Id_tela'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/tela.php?id=' . $data['Id_tela'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -89,21 +92,24 @@ if ($_POST['action'] == 'searchTela') {
     if ($resultado->num_rows > 0) {
 
         $detalleTabla .= '<table class="tb">
-        <tr>
-        <th>Seleccionar</th>
-        <th>Nombre Tela</th>
-        <th>Proveedor</th>
-        <th>Valor</th>
+            <tr>
+            <th>Seleccionar</th>
+            <th>Nombre Tela</th>
+            <th>Proveedor</th>
+            <th>Valor</th>
+            <th>Acciones</th>   
         </tr>';
 
         while ($data = mysqli_fetch_assoc($resultado)) {
             $detalleTabla .= '
          <tr class="item">
-         <td class="item__items"><a href="#" onclick="selectTela(' . $data['Id_tela'] . ');recargar(event);" class="select--tela"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
-         <td class="item__items">' . $data['Descripcion_tela'] . '</td>
-         <td class="item__items">' . $data['Proveedor'] . '</td>
-         <td class="item__items">' . $data['Valor_uni'] . '</td>
-        </tr>
+            <td class="item__items"><a href="#" onclick="selectTela(' . $data['Id_tela'] . ');recargar(event);" class="select--tela"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
+            <td class="item__items">' . $data['Descripcion_tela'] . '</td>
+            <td class="item__items">' . $data['Proveedor'] . '</td>
+            <td class="item__items">' . $data['Valor_uni'] . '</td>
+            <td><a href="actualizar/tela.php?id=' . $data['Id_tela'] . '" class="update"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+            <a href="eliminar/tela.php?id=' . $data['Id_tela'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
+         </tr>
          ';
         }
         $detalleTabla .= "</table>";
@@ -137,7 +143,6 @@ if ($_POST['action'] == 'aggTelatemp') {
         $preciotela = $_POST['preciotela'];
         $cantela = $_POST['cantela'];
         $costo = $_POST['costo'];
-
         $query = mysqli_query($conex, "INSERT INTO detatemptelas(Nombre_tela, Precio_tela, Consumo, Costo, ID_USER) VALUES ('$nomtela','$preciotela','$cantela','$costo','$Iduser')");
         $consultar = mysqli_query($conex, "SELECT * FROM detatemptelas WHERE ID_USER = '$Iduser'");
         $result = mysqli_num_rows($consultar);
@@ -247,10 +252,11 @@ if ($_POST['action'] == 'buscarCueros') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Nombre Cuero</th>
-            <th>Proveedor</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Nombre Cuero</th>
+                <th>Proveedor</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -260,6 +266,8 @@ if ($_POST['action'] == 'buscarCueros') {
                         <td class="item__items">' . $data['Descripcion_cuero'] . '</td>
                         <td class="item__items">' . $data['Proveedor'] . '</td>
                         <td class="item__items">' . $data['Valor_uni'] . '</td>
+                        <td><a href="actualizar/cuero.php?id=' . $data['Id_cuero'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/cuero.php?id=' . $data['Id_cuero'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -326,10 +334,11 @@ if ($_POST['action'] == 'searchCuero') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Nombre Cuero</th>
-            <th>Proveedor</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Nombre Cuero</th>
+                <th>Proveedor</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -339,6 +348,8 @@ if ($_POST['action'] == 'searchCuero') {
                         <td class="item__items">' . $data['Descripcion_cuero'] . '</td>
                         <td class="item__items">' . $data['Proveedor'] . '</td>
                         <td class="item__items">' . $data['Valor_uni'] . '</td>
+                        <td><a href="actualizar/cuero.php?id=' . $data['Id_cuero'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/cuero.php?id=' . $data['Id_cuero'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -371,10 +382,11 @@ if ($_POST['action'] == 'buscarTroquel') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Nombre Troquel</th>
-            <th>Decimetros</th>
-            <th>Imagen</th>
+                <th>Seleccionar</th>
+                <th>Nombre Troquel</th>
+                <th>Decimetros</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -385,6 +397,8 @@ if ($_POST['action'] == 'buscarTroquel') {
                         <td class="item__items">' . $data['Nombre_troquel'] . '</td>
                         <td class="item__items">' . $data['DCM'] . '</td>
                         <td class="item__items"><img class="img__modal" src="data:image/jpeg;base64,' . base64_encode($data['Img_troquel']) . '"></td>
+                        <td><a href="actualizar/troquel.php?id=' . $data['Id_troquel'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/troquel.php?id=' . $data['Id_troquel'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -445,6 +459,7 @@ if ($_POST['action'] == 'searchTroquel') {
         <th>Nombre Troquel</th>
         <th>Decimetros</th>
         <th>Imagen</th>
+        <th>Acciones</th>
         </tr>
         ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -455,7 +470,10 @@ if ($_POST['action'] == 'searchTroquel') {
                     <td class="item__items">' . $data['Nombre_troquel'] . '</td>
                     <td class="item__items">' . $data['DCM'] . '</td>
                     <td class="item__items"><img class="img__modal" src="data:image/jpeg;base64,' . base64_encode($data['Img_troquel']) . '"></td>
+                    <td><a href="actualizar/troquel.php?id=' . $data['Id_troquel'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                    <a href="eliminar/troquel.php?id=' . $data['Id_troquel'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>    
                 </tr>
+
                 ';
         }
         $detalleTabla .= '
@@ -599,10 +617,11 @@ if ($_POST['action'] == 'buscarInsumos') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Descripcion insumo</th>
-            <th>Proveedor</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Descripcion insumo</th>
+                <th>Proveedor</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -612,6 +631,8 @@ if ($_POST['action'] == 'buscarInsumos') {
                         <td class="item__items">' . $data['Descripcion_insumo'] . '</td>
                         <td class="item__items">' . $data['Proveedor_insumo'] . '</td>
                         <td class="item__items">' . $data['Valor_uni'] . '</td>
+                        <td><a href="actualizar/insumo.php?id=' . $data['Id_insumo'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/insumo.php?id=' . $data['Id_insumo'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>    
                     </tr>
                     ';
         }
@@ -674,6 +695,7 @@ if ($_POST['action'] == 'searchInsumo') {
         <th>Descripcion insumo</th>
         <th>Proveedor</th>
         <th>Valor</th>
+        <th>Acciones</th>
         </tr>
         ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -683,6 +705,8 @@ if ($_POST['action'] == 'searchInsumo') {
                     <td class="item__items">' . $data['Descripcion_insumo'] . '</td>
                     <td class="item__items">' . $data['Proveedor_insumo'] . '</td>
                     <td class="item__items">' . $data['Valor_uni'] . '</td>
+                    <td><a href="actualizar/insumo.php?id=' . $data['Id_insumo'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                    <a href="eliminar/insumo.php?id=' . $data['Id_insumo'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>    
                 </tr>
                 ';
         }
@@ -836,10 +860,11 @@ if ($_POST['action'] == 'buscarSublimacion') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Proveedor</th>
-            <th>Metro</th>
-            <th>Valor Uni.</th>
+                <th>Seleccionar</th>
+                <th>Proveedor</th>
+                <th>Metro</th>
+                <th>Valor Uni.</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -849,6 +874,8 @@ if ($_POST['action'] == 'buscarSublimacion') {
                         <td class="item__items">' . $data['Proveedores'] . '</td>
                         <td class="item__items">' . $data['Metro'] . '</td>
                         <td class="item__items">' . $data['Precio'] . '</td>
+                        <td><a href="actualizar/sublimacion.php?id=' . $data['Id_sublimacion'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/sublimacion.php?id=' . $data['Id_sublimacion'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -865,7 +892,6 @@ if ($_POST['action'] == 'buscarSublimacion') {
     mysqli_close($conex);
     exit;
 }
-
 //buscar sublimacion
 if ($_POST['action'] == 'infoSublimacion') {
     if (!empty($_POST['sublimacion']) || !empty($_POST['sublimacionSeleccionado'])) {
@@ -912,6 +938,7 @@ if ($_POST['action'] == 'searchSublimacion') {
         <th>Proveedor</th>
         <th>Metro</th>
         <th>Valor Uni.</th>
+        <th>Acciones</th>
         </tr>
         ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -921,6 +948,8 @@ if ($_POST['action'] == 'searchSublimacion') {
                     <td class="item__items">' . $data['Proveedores'] . '</td>
                     <td class="item__items">' . $data['Metro'] . '</td>
                     <td class="item__items">' . $data['Precio'] . '</td>
+                    <td><a href="actualizar/sublimacion.php?id=' . $data['Id_sublimacion'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                    <a href="eliminar/sublimacion.php?id=' . $data['Id_sublimacion'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                 </tr>
                 ';
         }
@@ -1069,11 +1098,12 @@ if ($_POST['action'] == 'buscarCorteManual') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Codigo</th>
-            <th>Media Ancho</th>
-            <th>Media Largo</th>
-            <th>Valor Uni.</th>
+                <th>Seleccionar</th>
+                <th>Codigo</th>
+                <th>Media Ancho</th>
+                <th>Media Largo</th>
+                <th>Valor Uni.</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -1084,6 +1114,8 @@ if ($_POST['action'] == 'buscarCorteManual') {
                         <td class="item__items">' . $data['Media_ancho'] . '</td>
                         <td class="item__items">' . $data['Media_largo'] . '</td>
                         <td class="item__items">' . $data['Valor_uni'] . '</td>
+                        <td><a href="actualizar/cortemanual.php?id=' . $data['Codigo'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/cortemanual.php?id=' . $data['Codigo'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -1142,11 +1174,12 @@ if ($_POST['action'] == 'searchCorteManual') {
         $detalleTabla .= '
         <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Codigo</th>
-            <th>Media Ancho</th>
-            <th>Media Largo</th>
-            <th>Valor Uni.</th>
+                <th>Seleccionar</th>
+                <th>Codigo</th>
+                <th>Media Ancho</th>
+                <th>Media Largo</th>
+                <th>Valor Uni.</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -1157,6 +1190,8 @@ if ($_POST['action'] == 'searchCorteManual') {
                         <td class="item__items">' . $data['Media_ancho'] . '</td>
                         <td class="item__items">' . $data['Media_largo'] . '</td>
                         <td class="item__items">' . $data['Valor_uni'] . '</td>
+                        <td><a href="actualizar/cortemanual.php?id=' . $data['Codigo'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/cortemanual.php?id=' . $data['Codigo'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -1308,9 +1343,10 @@ if ($_POST['action'] == 'buscarConfeccion') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Descripcion</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Descripcion</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -1319,6 +1355,8 @@ if ($_POST['action'] == 'buscarConfeccion') {
                         <td class="item__items"><a href="#" onclick="selectConfeccion(' . $data['Id_confeccion'] . ');recargar(event);" class="select--confeccion"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
                         <td class="item__items">' . $data['Descripcion_confeccion'] . '</td>
                         <td class="item__items">' . $data['Valor_confeccion'] . '</td>
+                        <td><a href="actualizar/confeccion.php?id=' . $data['Id_confeccion'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/confeccion.php?id=' . $data['Id_confeccion'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -1359,7 +1397,7 @@ if ($_POST['action'] == 'infoConfeccion') {
     }
     exit;
 }
-// buscar corte manual en el modal
+// buscar confección en el modal
 if ($_POST['action'] == 'searchConfeccion') {
     $detalleTabla = "";
     $arrayData = array();
@@ -1380,6 +1418,7 @@ if ($_POST['action'] == 'searchConfeccion') {
             <th>Seleccionar</th>
             <th>Descripcion</th>
             <th>Valor</th>
+            <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -1388,6 +1427,8 @@ if ($_POST['action'] == 'searchConfeccion') {
                         <td class="item__items"><a href="#" onclick="selectConfeccion(' . $data['Id_confeccion'] . ');recargar(event);" class="select--confeccion"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
                         <td class="item__items">' . $data['Descripcion_confeccion'] . '</td>
                         <td class="item__items">' . $data['Valor_confeccion'] . '</td>
+                        <td><a href="actualizar/confeccion.php?id=' . $data['Id_confeccion'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/confeccion.php?id=' . $data['Id_confeccion'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -1532,9 +1573,10 @@ if ($_POST['action'] == 'buscarTerminacion') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Descripcion</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Descripcion</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -1543,6 +1585,8 @@ if ($_POST['action'] == 'buscarTerminacion') {
                         <td class="item__items"><a href="#" onclick="selectTerminacion(' . $data['Id_terminacion'] . ');recargar(event);" class="select--terminacion"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
                         <td class="item__items">' . $data['Descripcion_terminacion'] . '</td>
                         <td class="item__items">' . $data['Valor_terminacion'] . '</td>
+                        <td><a href="actualizar/terminacion.php?id=' . $data['Id_terminacion'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/terminacion.php?id=' . $data['Id_terminacion'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -1601,9 +1645,10 @@ if ($_POST['action'] == 'searchTerminacion') {
         $detalleTabla .= '
         <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Descripcion</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Descripcion</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -1612,6 +1657,8 @@ if ($_POST['action'] == 'searchTerminacion') {
                         <td class="item__items"><a href="#" onclick="selectTerminacion(' . $data['Id_terminacion'] . ');recargar(event);" class="select--terminacion"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
                         <td class="item__items">' . $data['Descripcion_terminacion'] . '</td>
                         <td class="item__items">' . $data['Valor_terminacion'] . '</td>
+                        <td><a href="actualizar/terminacion.php?id=' . $data['Id_terminacion'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/terminacion.php?id=' . $data['Id_terminacion'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -1755,9 +1802,10 @@ if ($_POST['action'] == 'buscarEntretelado') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Descripcion</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Descripcion</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -1766,6 +1814,8 @@ if ($_POST['action'] == 'buscarEntretelado') {
                         <td class="item__items"><a href="#" onclick="selectEntretelado(' . $data['Id_entretelado'] . ');recargar(event);" class="select--entretelado"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
                         <td class="item__items">' . $data['Descripcion_entretelado'] . '</td>
                         <td class="item__items">' . $data['Valor_entretelado'] . '</td>
+                        <td><a href="actualizar/entretelado.php?id=' . $data['Id_entretelado'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/entretelado.php?id=' . $data['Id_entretelado'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -1824,9 +1874,10 @@ if ($_POST['action'] == 'searchEntretelado') {
         $detalleTabla .= '
         <table class="tb">
         <tr>
-        <th>Seleccionar</th>
-        <th>Descripcion</th>
-        <th>Valor</th>
+            <th>Seleccionar</th>
+            <th>Descripcion</th>
+            <th>Valor</th>
+            <th>Acciones</th>
         </tr>
         ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -1835,6 +1886,8 @@ if ($_POST['action'] == 'searchEntretelado') {
                     <td class="item__items"><a href="#" onclick="selectEntretelado(' . $data['Id_entretelado'] . ');recargar(event);" class="select--entretelado"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
                     <td class="item__items">' . $data['Descripcion_entretelado'] . '</td>
                     <td class="item__items">' . $data['Valor_entretelado'] . '</td>
+                    <td><a href="actualizar/entretelado.php?id=' . $data['Id_entretelado'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                    <a href="eliminar/entretelado.php?id=' . $data['Id_entretelado'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                 </tr>
                 ';
         }
@@ -1981,6 +2034,7 @@ if ($_POST['action'] == 'buscarCorteDigital') {
             <th>Seleccionar</th>
             <th>Pieza</th>
             <th>Valor</th>
+            <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -1989,6 +2043,8 @@ if ($_POST['action'] == 'buscarCorteDigital') {
                         <td class="item__items"><a href="#" onclick="selectCorteDigital(' . $data['Id_cortedigital'] . ');recargar(event);" class="select--cortedigital"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
                         <td class="item__items">' . $data['Descripcion_cortedigital'] . '</td>
                         <td class="item__items">' . $data['Valor_cortedigital'] . '</td>
+                        <td><a href="actualizar/cortedigital.php?id=' . $data['Id_cortedigital'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/cortedigital.php?id=' . $data['Id_cortedigital'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -2050,6 +2106,7 @@ if ($_POST['action'] == 'searchCorteDigital') {
             <th>Seleccionar</th>
             <th>Pieza</th>
             <th>Valor</th>
+            <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -2058,6 +2115,8 @@ if ($_POST['action'] == 'searchCorteDigital') {
                         <td class="item__items"><a href="#" onclick="selectCorteDigital(' . $data['Id_cortedigital'] . ');recargar(event);" class="select--cortedigital"><img src="src/svg/select.svg" alt="Seleccionar" class="svg svg--select"></a></td>
                         <td class="item__items">' . $data['Descripcion_cortedigital'] . '</td>
                         <td class="item__items">' . $data['Valor_cortedigital'] . '</td>
+                        <td><a href="actualizar/cortedigital.php?id=' . $data['Id_cortedigital'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/cortedigital.php?id=' . $data['Id_cortedigital'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -2202,10 +2261,11 @@ if ($_POST['action'] == 'buscarLaser') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -2215,6 +2275,9 @@ if ($_POST['action'] == 'buscarLaser') {
                         <td class="item__items">' . $data['Nombre_laser'] . '</td>
                         <td class="item__items">' . $data['Descripcion_laser'] . '</td>
                         <td class="item__items">' . $data['Valor_laser'] . '</td>
+                        <td><a href="actualizar/laser.php?id=' . $data['Id_laser'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/laser.php?id=' . $data['Id_laser'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
+                    </tr>
                     </tr>
                     ';
         }
@@ -2273,10 +2336,11 @@ if ($_POST['action'] == 'searchLaser') {
         $detalleTabla .= '
         <table class="tb">
         <tr>
-        <th>Seleccionar</th>
-        <th>Nombre</th>
-        <th>Descripción</th>
-        <th>Valor</th>
+            <th>Seleccionar</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Valor</th>
+            <th>Acciones</th>
         </tr>
         ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -2286,6 +2350,8 @@ if ($_POST['action'] == 'searchLaser') {
                     <td class="item__items">' . $data['Nombre_laser'] . '</td>
                     <td class="item__items">' . $data['Descripcion_laser'] . '</td>
                     <td class="item__items">' . $data['Valor_laser'] . '</td>
+                    <td><a href="actualizar/laser.php?id=' . $data['Id_laser'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                    <a href="eliminar/laser.php?id=' . $data['Id_laser'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                 </tr>
                 ';
         }
@@ -2432,11 +2498,12 @@ if ($_POST['action'] == 'buscarBordado') {
         $detalleTabla .= '
             <table class="tb">
             <tr>
-            <th>Seleccionar</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Estado</th>
-            <th>Valor</th>
+                <th>Seleccionar</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Estado</th>
+                <th>Valor</th>
+                <th>Acciones</th>
             </tr>
             ';
         while ($data = mysqli_fetch_assoc($consultar)) {
@@ -2447,6 +2514,8 @@ if ($_POST['action'] == 'buscarBordado') {
                         <td class="item__items">' . $data['Descripcion_bordado'] . '</td>
                         <td class="item__items">' . $data['Estado_bordado'] . '</td>
                         <td class="item__items">' . $data['Precio_bordado'] . '</td>
+                        <td><a href="actualizar/bordado.php?id=' . $data['Id_bordado'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                        <a href="eliminar/bordado.php?id=' . $data['Id_bordado'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                     </tr>
                     ';
         }
@@ -2510,6 +2579,7 @@ if ($_POST['action'] == 'searchBordado') {
         <th>Descripción</th>
         <th>Estado</th>
         <th>Valor</th>
+        <th>Acciones</th>
         </tr>
         ';
         while ($data = mysqli_fetch_assoc($resultado)) {
@@ -2520,6 +2590,8 @@ if ($_POST['action'] == 'searchBordado') {
                     <td class="item__items">' . $data['Descripcion_bordado'] . '</td>
                     <td class="item__items">' . $data['Estado_bordado'] . '</td>
                     <td class="item__items">' . $data['Precio_bordado'] . '</td>
+                    <td><a href="actualizar/bordado.php?id=' . $data['Id_bordado'] . '" class="btnupdate"><img src="src/svg/update.svg" alt="actualizar" class="svg svg--select"></a>
+                    <a href="eliminar/bordado.php?id=' . $data['Id_bordado'] . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a></td>
                 </tr>
                 ';
         }
@@ -2716,7 +2788,7 @@ if ($_POST['action'] == 'facturar') {
         $queryimpuesto = mysqli_query($conex, "INSERT INTO impuestoscostos(ID_COSTOS, Impuestos, Valor_impuesto) VALUES ('$idcostos','UTILIDAD', 0)");
     }
     // guardar tela
-    $querytela = mysqli_query($conex, "SELECT * FROM detatemptelas");
+    $querytela = mysqli_query($conex, "SELECT * FROM detatemptelas WHERE ID_USER = '$Iduser'");
     $resultela = mysqli_num_rows($querytela);
     if ($resultela > 0) {
         while ($arreglo = mysqli_fetch_assoc($querytela)) {
@@ -2726,10 +2798,10 @@ if ($_POST['action'] == 'facturar') {
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallestela(ID_COSTOS, TELA, Precio, Cantidad, Costo) VALUES ('$idcostos','$nomtela','$precio','$cantidad','$costo')");
         }
-        $query = mysqli_query($conex, "DELETE FROM detatemptelas");
+        $query = mysqli_query($conex, "DELETE FROM detatemptelas WHERE ID_USER = '$Iduser'");
     };
     // guardar cuero
-    $querycuero = mysqli_query($conex, "SELECT * FROM detatempcuero");
+    $querycuero = mysqli_query($conex, "SELECT * FROM detatempcuero WHERE ID_USER = '$Iduser'");
     $resultcuero = mysqli_num_rows($querycuero);
     if ($resultcuero > 0) {
 
@@ -2742,10 +2814,10 @@ if ($_POST['action'] == 'facturar') {
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallescuero(ID_COSTOS, CUERO, Precio, TROQUEL, DCM, Cantidad, Costo) VALUES ('$idcostos','$nomcuero','$preciocuero','$nomtroquel','$dcm','$cantidad','$costo')");
         }
-        $query = mysqli_query($conex, "DELETE FROM detatempcuero");
+        $query = mysqli_query($conex, "DELETE FROM detatempcuero WHERE ID_USER = '$Iduser'");
     };
     //guardar insumo
-    $queryinsumo = mysqli_query($conex, "SELECT * FROM detatempinsumos");
+    $queryinsumo = mysqli_query($conex, "SELECT * FROM detatempinsumos WHERE ID_USER = '$Iduser'");
     $resultinsumo = mysqli_num_rows($queryinsumo);
     if ($resultinsumo > 0) {
 
@@ -2757,10 +2829,10 @@ if ($_POST['action'] == 'facturar') {
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallesinsumos(ID_COSTOS, INSUMO, Proveedor, Precio, Cantidad, Costo) VALUES ('$idcostos','$nominsumo','$proveedor','$precio','$cantidad','$costo')");
         }
-        $query = mysqli_query($conex, "DELETE FROM detatempinsumos");
+        $query = mysqli_query($conex, "DELETE FROM detatempinsumos WHERE ID_USER = '$Iduser'");
     };
     // guardar sublimación
-    $querysublimacion = mysqli_query($conex, "SELECT * FROM detatempsublimacion");
+    $querysublimacion = mysqli_query($conex, "SELECT * FROM detatempsublimacion WHERE ID_USER = '$Iduser'");
     $resultsublimacion = mysqli_num_rows($querysublimacion);
     if ($resultsublimacion > 0) {
 
@@ -2772,10 +2844,10 @@ if ($_POST['action'] == 'facturar') {
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallessublimacion(ID_COSTOS, SUBLIMACION, Metro, Precio, Cantidad, Costo) VALUES ('$idcostos','$nomsublimacion',$metro,'$precio',$cantidad,'$costo')");
         }
-        $query = mysqli_query($conex, "DELETE FROM detatempsublimacion");
+        $query = mysqli_query($conex, "DELETE FROM detatempsublimacion WHERE ID_USER = '$Iduser'");
     };
     // guardar corte manual
-    $querycortemanual = mysqli_query($conex, "SELECT * FROM detatempcortemanual");
+    $querycortemanual = mysqli_query($conex, "SELECT * FROM detatempcortemanual WHERE ID_USER = '$Iduser'");
     $resultcortemanual = mysqli_num_rows($querycortemanual);
     if ($resultcortemanual > 0) {
 
@@ -2788,10 +2860,10 @@ if ($_POST['action'] == 'facturar') {
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallescortemanual(ID_COSTOS, CORTEMANUAL, Ancho, Largo, Precio, Cantidad, Costo) VALUES ('$idcostos','$codigo','$ancho','$largo','$precio','$cantidad','$costo')");
         }
-        $query = mysqli_query($conex, "DELETE FROM detatempcortemanual");
+        $query = mysqli_query($conex, "DELETE FROM detatempcortemanual WHERE ID_USER = '$Iduser'");
     };
     //guardar confección
-    $queryconfeccion = mysqli_query($conex, "SELECT * FROM detatempconfeccion");
+    $queryconfeccion = mysqli_query($conex, "SELECT * FROM detatempconfeccion WHERE ID_USER = '$Iduser'");
     $resultconfeccion = mysqli_num_rows($queryconfeccion);
     if ($resultconfeccion > 0) {
 
@@ -2802,10 +2874,10 @@ if ($_POST['action'] == 'facturar') {
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallesconfeccion(ID_COSTOS, CONFECCION, Precio, Cantidad, Costo) VALUES ('$idcostos','$confeccion','$precio','$cantidad','$costo')");
         }
-        $query = mysqli_query($conex, "DELETE FROM detatempconfeccion");
+        $query = mysqli_query($conex, "DELETE FROM detatempconfeccion WHERE ID_USER = '$Iduser'");
     };
     //guardar terminación
-    $queryterminacion = mysqli_query($conex, "SELECT * FROM detatempterminacion");
+    $queryterminacion = mysqli_query($conex, "SELECT * FROM detatempterminacion WHERE ID_USER = '$Iduser'");
     $resultterminacion = mysqli_num_rows($queryterminacion);
     if ($resultterminacion > 0) {
 
@@ -2816,10 +2888,10 @@ if ($_POST['action'] == 'facturar') {
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallesterminacion(ID_COSTOS, TERMINACION, Precio, Cantidad, Costo) VALUES ('$idcostos','$terminacion','$precio','$cantidad','$costo')");
         }
-        $query = mysqli_query($conex, "DELETE FROM detatempterminacion");
+        $query = mysqli_query($conex, "DELETE FROM detatempterminacion WHERE ID_USER = '$Iduser'");
     };
     // guardar entretelado
-    $queryentretelado = mysqli_query($conex, "SELECT * FROM detatempentretelado");
+    $queryentretelado = mysqli_query($conex, "SELECT * FROM detatempentretelado WHERE ID_USER = '$Iduser'");
     $resultentretelado = mysqli_num_rows($queryentretelado);
     if ($resultentretelado > 0) {
 
@@ -2830,10 +2902,10 @@ if ($_POST['action'] == 'facturar') {
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallesentretelado(ID_COSTOS, ENTRETELADO, Precio, Cantidad, Costo) VALUES ('$idcostos','$entretelado','$precio','$cantidad','$costo')");
         }
-        $query = mysqli_query($conex, "DELETE FROM detatempentretelado");
+        $query = mysqli_query($conex, "DELETE FROM detatempentretelado WHERE ID_USER = '$Iduser'");
     };
     // guardar corte digital
-    $querycortedigital = mysqli_query($conex, "SELECT * FROM detatempcortedigital");
+    $querycortedigital = mysqli_query($conex, "SELECT * FROM detatempcortedigital WHERE ID_USER = '$Iduser'");
     $resultcortedigital = mysqli_num_rows($querycortedigital);
     if ($resultcortedigital > 0) {
         while ($arreglo = mysqli_fetch_assoc($querycortedigital)) {
@@ -2843,10 +2915,10 @@ if ($_POST['action'] == 'facturar') {
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallescortedigital(ID_COSTOS, CORTEDIGITAL, Precio, Cantidad, Costo) VALUES ('$idcostos','$cortedigital','$precio','$cantidad','$costo')");
         }
-        $query = mysqli_query($conex, "DELETE FROM detatempcortedigital");
+        $query = mysqli_query($conex, "DELETE FROM detatempcortedigital WHERE ID_USER = '$Iduser'");
     };
     // guardar laser
-    $querylaser = mysqli_query($conex, "SELECT * FROM detatemplaser");
+    $querylaser = mysqli_query($conex, "SELECT * FROM detatemplaser WHERE ID_USER = '$Iduser'");
     $resultlaser = mysqli_num_rows($querylaser);
     if ($resultlaser > 0) {
         while ($arreglo = mysqli_fetch_assoc($querylaser)) {
@@ -2856,11 +2928,11 @@ if ($_POST['action'] == 'facturar') {
             $cantidad = $arreglo['Cantidad'];
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detalleslaser(ID_COSTOS, LASER, Descripcion, Precio, Cantidad, Costo) VALUES ('$idcostos','$laser','$descripcion','$precio','$cantidad','$costo')");
-            $query = mysqli_query($conex, "DELETE FROM detatemplaser");
+            $query = mysqli_query($conex, "DELETE FROM detatemplaser WHERE ID_USER = '$Iduser'");
         };
     };
     // guardar bordado
-    $querybordado  = mysqli_query($conex, "SELECT * FROM detatempbordado");
+    $querybordado  = mysqli_query($conex, "SELECT * FROM detatempbordado WHERE ID_USER = '$Iduser'");
     $resultbordado = mysqli_num_rows($querybordado);
     if ($resultbordado > 0) {
         while ($arreglo = mysqli_fetch_assoc($querybordado)) {
@@ -2870,7 +2942,7 @@ if ($_POST['action'] == 'facturar') {
             $cantidad = $arreglo['Cantidad'];
             $costo = $arreglo['Costo'];
             $queryde = mysqli_query($conex, "INSERT INTO detallesbordado(ID_COSTOS, BORDADO, Descripcion, Precio, Cantidad, Costo) VALUES ('$idcostos','$bordado','$descripcion','$precio','$cantidad','$costo')");
-            $query = mysqli_query($conex, "DELETE FROM detatempbordado");
+            $query = mysqli_query($conex, "DELETE FROM detatempbordado WHERE ID_USER = '$Iduser'");
         };
     };
 }
@@ -2962,7 +3034,7 @@ if ($_POST['action'] == 'searchCostos') {
                 <td class="item__items">' . $data['Cotizacion'] . '</td>
                 <td class="item__items">' . $data['Total_impuesto'] . '</td>
                 <td class="item__items">
-                <a href="factura/generaFactura.php?f=' . $idcostos . '" class="btndownload"><img src="src/download.png" alt="descargar" class="svg svg--download"></a>
+                <a target= "_blank" href="factura/generaFactura.php?f=' . $idcostos . '" class="btndownload"><img src="src/download.png" alt="descargar" class="svg svg--download"></a>
                 <a href="eliminar/elimcostos.php?id=' . $idcostos . '" class="btnborrar" onclick="confirmacion();"><img src="src/svg/delete.svg" alt="borrar" class="svg svg--delete"></a>
                 </td>
             </tr>

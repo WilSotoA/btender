@@ -109,6 +109,7 @@ $(document).ready(function () {
         },
         success: function (response) {
           if (response != "error") {
+            console.log(response);
             var info = JSON.parse(response);
             $("#detatela").html(info.detalle);
             $("#telatotal").html(info.totales);
@@ -2067,25 +2068,9 @@ $(document).ready(function () {
 
 //generar PDF
 function generarPDF(factura) {
-  var ancho = 1000;
-  var alto = 800;
-  //centrar ventana
-  var x = parseInt(window.screen.width / 2 - ancho / 2);
-  var y = parseInt(window.screen.height / 2 - alto / 2);
-
   $url = "factura/generaFactura.php?f=" + factura;
   window.open(
-    $url,
-    "Factura",
-    "left=" +
-      x +
-      ",top=" +
-      y +
-      ",height=" +
-      alto +
-      ",width=" +
-      ancho +
-      ",scrollbar=si,location=no,resizable=si,menubar=no"
+    $url, '_blank'
   );
 }
 // prevenir recarga
